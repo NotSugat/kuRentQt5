@@ -5,13 +5,6 @@ import QtQuick.Layouts 1.3
 ColumnLayout {
     id: textlayout
 
-    anchors {
-        left: parent.left
-        right: parent.right
-        leftMargin: parent.width * 0.1
-        rightMargin: parent.width * 0.1
-    }
-
     spacing: 10
     property string title: "Pick up Point"
     property string placeHolderText: "Pick up Point"

@@ -4,16 +4,20 @@ import QtQuick.Layouts 1.3
 
 ColumnLayout {
     id: textlayout
-
-    spacing: 20
+    spacing: 0
+    width: parent.width
     property string title: "Pick up Point"
     property string placeHolderText: "Pick up Point"
-    property color titleColor: "white"
-    property color bgColor: "white"
+    property color titleColor: "black"
+    property color bgColor: "#E5E5E5"
+
+    property alias text: textField.text
 
     Text {
         id: text1
         text: qsTr(textlayout.title)
+        padding: 12
+        leftPadding: 0
         font.pixelSize: 16
         color: textlayout.titleColor
     }
@@ -36,10 +40,3 @@ ColumnLayout {
         }
     }
 }
-
-/*##^##
-Designer {
-    D{i:0;autoSize:true;height:480;width:640}
-}
-##^##*/
-

@@ -51,5 +51,8 @@
         <file>pages/login/SignUpFinal.qml</file>
         <file>pages/login/components/MenuBar.qml</file>
         <file>pages/login/components/ComboBar.qml</file>
+        <file>database/Auth.db</file>
+        <file>pages/renter/components/InputText.qml</file>
+        <file>pages/renter/BookNowFinal.qml</file>
     </qresource>
 </RCC>

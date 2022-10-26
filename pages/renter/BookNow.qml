@@ -7,144 +7,183 @@ import "../../components"
 Item {
     id: bookNowPage
     property color bgColor: "#f0daa3"
-//    anchors{
-//        fill: parent
-    //    }
+    property real topValue: .04
 
-    Rectangle{
+    //    anchors{
+    //        fill: parent
+    //    }
+    Rectangle {
         id: bookNow
-        height: parent.height / 1.25
+        height: parent.height * .90
         color: "#50afff"
         width: parent.width * .4
         anchors.centerIn: parent
         radius: 16
+        // -----------------pick up point -----------------//
+        InputText {
+            id: pickUpPoint
+            bgColor: "#ffffff"
+            anchors {
+                top: parent.top
+                left: parent.left
+                right: parent.right
 
+                topMargin: parent.height * bookNowPage.topValue
+                leftMargin: parent.width * .05
 
-
-        TextInput {
-            id: textInput
-            x: 43
-            y: 29
+                rightMargin: parent.width * .05
+            }
 
             titleColor: "#000000"
         }
-        TextInput {
-            id: textInput1
-            x: 423
-            y: 122
+        // -----------------pick up location -----------------//
+        InputText {
+            id: location
+            title: "Pick up Location"
+            placeHolderText: "Pick up Location"
+            bgColor: "#ffffff"
+            anchors {
+                top: pickUpPoint.bottom
+                left: parent.left
+                right: parent.right
+                topMargin: parent.height * bookNowPage.topValue
+                leftMargin: parent.width * .05
+                rightMargin: parent.width * .05
+            }
+
             titleColor: "#000000"
-            title: "Drop off Location"
-            placeHolderText: "Destinatoin Location"
         }
-        DateInput {
+
+        // ---------------Date Input-------------------//
+        RowLayout {
             id: dateInput
-            anchors{
+            anchors {
+                top: location.bottom
                 left: parent.left
-                leftMargin: parent.width * 0.1
-            }
-
-
-            y: 219
-            title: "Pick Up Date"
-            placeHolderText: "DD/MM/YY"
-
-        }
-
-        DateInput {
-            id: dateInput1
-            anchors{
                 right: parent.right
-                rightMargin: parent.width*0.1
+                topMargin: parent.height * bookNowPage.topValue
+                leftMargin: parent.width * 0.05
+                rightMargin: parent.width * 0.05
+            }
+            height: parent.height / 7
+
+            spacing: 12
+
+            InputText {
+                id: username
+                width: parent.width / 2.1
+                bgColor: "#ffffff"
+                title: "Start Date"
+                placeHolderText: "DD/MM/YY"
             }
 
-            y: 219
-            placeHolderText: "DD/MM/YY"
-            title: "Drop off Date"
+            InputText {
+                id: password
+                width: parent.width / 2.1
+                bgColor: "#ffffff"
+                placeHolderText: "DD/MM/YY"
+                title: "End Date"
+            }
         }
-        DateInput {
-            id: pickTime
-
-            anchors{
+        // ---------------Time Input-------------------//
+        RowLayout {
+            id: time
+            anchors {
+                top: dateInput.bottom
                 left: parent.left
-                leftMargin: parent.width * 0.1
-            }
-
-            y: 309
-            placeHolderText: "Pick Time"
-            title: "Pick Time"
-        }
-        DateInput {
-            id: dropTime
-
-            anchors{
                 right: parent.right
-                rightMargin: parent.width*0.1
+                topMargin: parent.height * bookNowPage.topValue
+                leftMargin: parent.width * 0.05
+                rightMargin: parent.width * 0.05
+            }
+            height: parent.height / 7
+
+            spacing: 12
+
+            InputText {
+                id: timePick
+                anchors.right: parent
+                bgColor: "#ffffff"
+                width: parent.width / 2.1
+                title: "Pick Up Time"
+                placeHolderText: "HH:MM"
             }
 
-            y: 309
-
-            placeHolderText: "Drop Time"
-            title: "Drop Time"
+            InputText {
+                id: timeDrop
+                anchors.right: parent
+                bgColor: "#ffffff"
+                width: parent.width / 2.1
+                placeHolderText: "HH:MM"
+                title: "Drop Off Time"
+            }
         }
 
         DropDownMenu {
             id: dropDownMenu
-            x: 37
-            y: 410
+            anchors {
+                top: time.bottom
+                left: parent.left
+                right: parent.right
+                topMargin: parent.height * bookNowPage.topValue
+                leftMargin: parent.width * 0.05
+                rightMargin: parent.width * 0.05
+            }
+
             titleColor: "#000000"
-            bgColor: "#454575"
+            bgColor: "#ffffff"
             title: "Vehicle Type"
             placeHolderText: ""
         }
 
         CustomButton {
             id: customButton
-            anchors{
-                left:parent.left
-                right:parent.right
-//                leftMargin: parent.width * 0.2
-//                rightMargin: parent.width * 0.2
-                leftMargin: parent.width * 0.1
-                rightMargin: parent.width * 0.1
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: dropDownMenu.bottom
+                topMargin: parent.height * bookNowPage.topValue
+                //                leftMargin: parent.width * 0.2
+                //                rightMargin: parent.width * 0.2
+                leftMargin: parent.width * 0.05
+                rightMargin: parent.width * 0.05
             }
 
-            y: 484
             width: parent.width
             height: 30
             colorMouseOver: "#0b58a5"
             colorDefault: "#454575"
 
             title: "Book Now"
-
-
         }
 
-        //        Test {
-        //            id:test
-        //        }
+        Text {
+            id: notNow
+            text: qsTr("Not Now?")
+            font.pixelSize: 16
+            anchors {
+                top: customButton.bottom
+                left: parent.left
+                right: parent.right
+                topMargin: 5
+            }
+            horizontalAlignment: Text.AlignHCenter
 
-
-
-
-
-
-
+            MouseArea {
+                id: textHover
+                anchors.fill: parent
+                cursorShape: Qt.PointingHandCursor
+                hoverEnabled: true
+                onClicked: stackView.push("Dashboard.qml")
+            }
+            color: textHover.containsMouse ? "red" : "white"
+        }
     }
-
-
-
-
-
-
-
-
-
-
 }
-
 
 /*##^##
 Designer {
     D{i:0;autoSize:true;formeditorZoom:1.25;height:850;width:640}
 }
 ##^##*/
+
