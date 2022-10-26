@@ -53,7 +53,8 @@ private:
 public slots:
     bool insertIntoTable(const QVariantList &data);      // Adding entries to the table
     bool insertIntoTable(const QString &email, const QString &password , const QString &username,const QString &fname, const QString &lname, const QString &location, const QString &number);
-    bool validation(const QString &email, const QString &password);
+    //bool validation(const QString &email, const QString &password,  const QString &username);
+    bool validation(const QString &email, const QString &password,  const QString &username);
     bool getLoginSession();
     void setloginSession(bool newLoginSession);
 

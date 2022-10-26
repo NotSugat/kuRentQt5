@@ -52,23 +52,21 @@ bool Database::createTable()
                             "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                             TABLE_EMAIL     " VARCHAR(255)    NOT NULL,"
                             TABLE_PASSWORD     " VARCHAR(255)    NOT NULL,"
-                            TABLE_USERNAME   "VARCHAR(255)     NOT NULL,"
-                            TABLE_FNAME   "VARCHAR(255) NOT NULL,"
-                            TABLE_LNAME   "VARCHAR(255) NOT NULL,"
-                            TABLE_LOCATION   "VARCHAR(255) NOT NULL,"
-                            TABLE_NUMBER   "VARCHAR(255) NOT NULL"
+                            TABLE_USERNAME       " VARCHAR(255)    NOT NULL,"
+                            TABLE_FNAME    " VARCHAR(255)    NOT NULL,"
+                            TABLE_LNAME     " VARCHAR(255)    NOT NULL,"
+                            TABLE_LOCATION     " VARCHAR(255)    NOT NULL,"
+                            TABLE_NUMBER     " VARCHAR(255)    NOT NULL"
                         " )"
                     )){
         qDebug() << "DataBase: error of create " << TABLE;
         qDebug() << query.lastError().text();
         return false;
-
     } else {
         return true;
     }
     return false;
 }
-
 void Database::closeDataBase()
 {
     db.close();
@@ -103,6 +101,8 @@ bool Database::insertIntoTable(const QVariantList &data)
     }
     return false;
 }
+
+
 
 bool Database::insertIntoTable(const QString &email, const QString &password , const QString &username,const QString &fname, const QString &lname, const QString &location, const QString &number )
 {
@@ -144,13 +144,14 @@ void Database::setloginSession(bool newLoginSession)
     emit loginSessionChanged();
 }
 
-bool Database::validation(const QString &email, const QString &password)
+bool Database::validation(const QString &email, const QString &password, const QString &username)
 {
     QSqlQuery query(QSqlDatabase::database(DATABASE_NAME));
-    query.prepare(QString("SELECT * FROM authTable WHERE Email = :Email AND Password = :Password "));
+    query.prepare(QString("SELECT * FROM authTable WHERE Email = :Email OR Username = :Username AND Password = :Password  "));
 
     query.bindValue(":Email", email);
     query.bindValue(":Password", password);
+    query.bindValue(":Username", username);
 
     if(!query.exec()) {
         qDebug() << "failed to execute";
@@ -158,8 +159,9 @@ bool Database::validation(const QString &email, const QString &password)
         while (query.next()) {
             QString emailFromDb = query.value(1).toString();
             QString passwordFromDb = query.value(2).toString();
+            QString usernameFromDb = query.value(3).toString();
 
-            if(email == emailFromDb  && password == passwordFromDb) {
+            if( (email == usernameFromDb || email == emailFromDb) && password == passwordFromDb) {
                 qDebug() << "success";
                 return true;
             } else {

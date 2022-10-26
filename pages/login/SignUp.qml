@@ -3,6 +3,7 @@ import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
 import "components"
+import QtQuick.Dialogs 1.1
 
 Item {
 
@@ -61,6 +62,16 @@ Item {
                 title: "Email"
                 placeHolderText: "email@example.com"
             }
+            //            ComboBox {
+            //                id: menuBar
+            //                anchors {
+            //                    left: email.right
+            //                    top: parent.top
+
+            //                }
+
+            //                model: ["Owner", "Renter"]
+            //            }
         }
 
         // username and Password
@@ -206,11 +217,30 @@ Item {
                 color: "white"
             }
 
-            onClicked: database.insertIntoTable(email.text, password.text,
-                                                username.text, firstName.text,
-                                                lastName.text, location.text,
-                                                phone.text)
-                       && mainStackView.push("Login.qml")
+            onClicked: {
+                if (email.text && password.text && username.text
+                        && firstName.text && lastName.text && location.text) {
+                    database.insertIntoTable(email.text, password.text,
+                                             username.text, firstName.text,
+                                             lastName.text, location.text,
+                                             phone.text) && mainStackView.push(
+                                "Login.qml")
+                } else {
+                    messageDialog.open()
+                }
+            }
+        }
+
+        //---------------------------Message Dialogue-----------------------//
+        MessageDialog {
+            id: messageDialog
+            title: "Invalid SignUp Credential"
+            text: "Enter all Field before submitting"
+            icon: StandardIcon.Warning
+            standardButtons: StandardButton.Retry
+            onAccepted: {
+                console.log("And of course you could only agree.")
+            }
         }
 
         // end of sign up section

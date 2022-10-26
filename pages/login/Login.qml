@@ -110,7 +110,8 @@ Item {
                 }
 
                 onClicked: if (database.validation(userName.text,
-                                                   userPassword.text)) {
+                                                   userPassword.text,
+                                                   userName.text)) {
                                mainStackView.push("qrc:/renterPage.qml")
                            } else {
                                messageDialog.open()

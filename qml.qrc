@@ -56,5 +56,6 @@
         <file>pages/login/components/InputText.qml</file>
         <file>database/hello.qml</file>
         <file>pages/login/SignUpFinal.qml</file>
+        <file>pages/login/components/MenuBar.qml</file>
     </qresource>
 </RCC>
