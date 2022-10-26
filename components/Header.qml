@@ -1,16 +1,15 @@
 import QtQuick 2.5
-import QtQuick.Controls 6.3
+import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.0
 
 Rectangle {
     id: navbar
     height: parent.width / 25
 
-    anchors{
+    anchors {
         top: parent.top
         left: sidebar.right
         right: parent.right
-
     }
 
     Image {
@@ -18,35 +17,28 @@ Rectangle {
         source: "qrc:/images/menu.png"
         fillMode: Image.PreserveAspectFit
         width: 20
-        anchors{
+        anchors {
             top: parent.top
             left: parent.left
             bottom: parent.bottom
             leftMargin: 20
-
         }
         horizontalAlignment: Image.AlignHCenter
         verticalAlignment: Image.AlignVCenter
     }
 
-    TextField{
+    TextField {
         id: dashboardText
         text: qsTr("Dashboard")
 
-        anchors{
+        anchors {
             top: parent.top
             centerIn: parent
         }
-        background: Rectangle{
+        background: Rectangle {
             border.width: 0
-
         }
         font.pointSize: 15
         font.bold: true
-
     }
-
 }
-
-
-

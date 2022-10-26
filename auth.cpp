@@ -56,6 +56,7 @@ bool Database::createTable()
                             TABLE_FNAME    " VARCHAR(255)    NOT NULL,"
                             TABLE_LNAME     " VARCHAR(255)    NOT NULL,"
                             TABLE_LOCATION     " VARCHAR(255)    NOT NULL,"
+                            TABLE_ROLE     " VARCHAR(255)    NOT NULL,"
                             TABLE_NUMBER     " VARCHAR(255)    NOT NULL"
                         " )"
                     )){
@@ -81,15 +82,17 @@ bool Database::insertIntoTable(const QVariantList &data)
                                              TABLE_FNAME ", "
                                              TABLE_LNAME ", "
                                              TABLE_LOCATION ", "
+                                             TABLE_ROLE ", "
                                              TABLE_NUMBER " ) "
-                  "VALUES (:Email, :Password, :Username, :Fname, :Lname, :Location, :Number)");
+                  "VALUES (:Email, :Password, :Username, :Fname, :Lname, :Location, :Role, :Number)");
     query.bindValue(":Email",       data[0].toString());
     query.bindValue(":Password",       data[1].toString());
     query.bindValue(":Username",       data[2].toString());
     query.bindValue(":Fname",       data[3].toString());
     query.bindValue(":Lname",       data[4].toString());
     query.bindValue(":Location",       data[5].toString());
-    query.bindValue(":Number",       data[6].toString());
+    query.bindValue(":Role",       data[6].toString());
+    query.bindValue(":Number",       data[7].toString());
 
 
     if(!query.exec()){
@@ -104,7 +107,7 @@ bool Database::insertIntoTable(const QVariantList &data)
 
 
 
-bool Database::insertIntoTable(const QString &email, const QString &password , const QString &username,const QString &fname, const QString &lname, const QString &location, const QString &number )
+bool Database::insertIntoTable(const QString &email, const QString &password , const QString &username,const QString &fname, const QString &lname, const QString &location, const QString &role, const QString &number )
 {
     QVariantList data;
     data.append(email);
@@ -113,6 +116,7 @@ bool Database::insertIntoTable(const QString &email, const QString &password , c
     data.append(fname);
     data.append(lname);
     data.append(location);
+    data.append(role);
     data.append(number);
 
     if(insertIntoTable(data))
@@ -144,14 +148,16 @@ void Database::setloginSession(bool newLoginSession)
     emit loginSessionChanged();
 }
 
-bool Database::validation(const QString &email, const QString &password, const QString &username)
+QString Database::validation(const QString &email, const QString &password, const QString &username)
 {
     QSqlQuery query(QSqlDatabase::database(DATABASE_NAME));
-    query.prepare(QString("SELECT * FROM authTable WHERE Email = :Email OR Username = :Username AND Password = :Password  "));
+    query.prepare(QString("SELECT * FROM authTable WHERE Email = :Email OR Username = :Username AND Password = :Password OR Role = :Role "));
 
     query.bindValue(":Email", email);
     query.bindValue(":Password", password);
     query.bindValue(":Username", username);
+
+
 
     if(!query.exec()) {
         qDebug() << "failed to execute";
@@ -160,17 +166,25 @@ bool Database::validation(const QString &email, const QString &password, const Q
             QString emailFromDb = query.value(1).toString();
             QString passwordFromDb = query.value(2).toString();
             QString usernameFromDb = query.value(3).toString();
+            QString roleFromDb = query.value(7).toString();
 
             if( (email == usernameFromDb || email == emailFromDb) && password == passwordFromDb) {
-                qDebug() << "success";
-                return true;
+                if(roleFromDb == "Renter") {
+                    return "renter";
+                } else if(roleFromDb == "Owner") {
+                    return "owner";
+                } else {
+                    return "admin";
+                }
+
+
             } else {
                 qDebug() << "failed";
-                return false;
+                return "fail";
             }
 
         }
     }
-    return false;
+    return "fail";
 
 }

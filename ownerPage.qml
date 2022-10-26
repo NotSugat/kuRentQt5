@@ -9,11 +9,9 @@ Window {
     visible: true
     title: qsTr("Owner Window")
 
-
-
     Rectangle {
         id: statusBar
-        width:parent.width
+        width: parent.width
         height: parent.width / 30
         color: "red"
 
@@ -24,39 +22,22 @@ Window {
             anchors {
                 top: parent.top
                 left: parent.left
-
             }
             fillMode: Image.PreserveAspectFit
 
             MouseArea {
                 id: logoMouseArea
                 anchors.fill: parent
-                HoverHandler {
-                       id: registerHover
-                       acceptedDevices: PointerDevice.Mouse
-                       cursorShape: Qt.PointingHandCursor
-                }
-
             }
-
-
-
         }
-
-
-
-
 
         Text {
             id: home
             text: "hello"
             anchors {
-                top:parent.top
+                top: parent.top
                 right: parent.right
             }
         }
-
     }
-
-
 }

@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("database", &database);
 
-    const QUrl url(QStringLiteral("qrc:main.qml"));
+    const QUrl url(QStringLiteral("qrc:/main.qml"));
 
 
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

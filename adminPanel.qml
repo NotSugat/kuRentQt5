@@ -1,10 +1,8 @@
 import QtQuick 2.5
-import QtQuick.Controls 6.3
+import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.0
 import QtQuick.Window 2.3
 import "components"
-
-
 
 Window {
     id: mainWindow
@@ -26,7 +24,6 @@ Window {
     }
 
     // main contain
-
     Rectangle {
         id: mainContent
         color: "purple"
@@ -46,7 +43,7 @@ Window {
 
             height: mainWindow.height * .70
 
-//            anchors.fill: parent
+            //            anchors.fill: parent
             anchors {
                 top: mainContent.top
                 left: parent.left
@@ -78,7 +75,7 @@ Window {
                         font.pointSize: 20
                         font.bold: true
 
-                        anchors{
+                        anchors {
                             top: parent.top
                             left: parent.left
                             right: parent.right
@@ -89,7 +86,6 @@ Window {
                         background: Rectangle {
                             border.width: 0
                         }
-
                     }
 
                     TextField {
@@ -99,17 +95,13 @@ Window {
                         font.pointSize: 30
 
                         anchors {
-                            left:parent.left
-                            leftMargin : parent.width * .4
-
+                            left: parent.left
+                            leftMargin: parent.width * .4
                         }
 
-
-
-                        background: Rectangle{
+                        background: Rectangle {
                             border.width: 0
                         }
-
                     }
 
                     TextField {
@@ -118,28 +110,19 @@ Window {
                         readOnly: true
                         font.pointSize: 15
 
-
                         anchors {
                             bottom: parent.bottom
                             left: parent.left
                             leftMargin: parent.width * .32
                         }
 
-                        background: Rectangle{
+                        background: Rectangle {
                             border.width: 0
                         }
 
-                        HoverHandler {
-                               id: registerHover
-                               acceptedDevices: PointerDevice.Mouse
-                               cursorShape: Qt.PointingHandCursor
-                        }
                         color: registerHover.hovered ? "#0e42eb" : "black"
-
                     }
-
                 }
-
             }
 
             //categories card
@@ -165,7 +148,7 @@ Window {
                         font.pointSize: 20
                         font.bold: true
 
-                        anchors{
+                        anchors {
                             top: parent.top
                             left: parent.left
                             right: parent.right
@@ -176,7 +159,6 @@ Window {
                         background: Rectangle {
                             border.width: 0
                         }
-
                     }
 
                     TextField {
@@ -186,17 +168,13 @@ Window {
                         font.pointSize: 30
 
                         anchors {
-                            left:parent.left
-                            leftMargin : parent.width * .4
-
+                            left: parent.left
+                            leftMargin: parent.width * .4
                         }
 
-
-
-                        background: Rectangle{
+                        background: Rectangle {
                             border.width: 0
                         }
-
                     }
 
                     TextField {
@@ -205,28 +183,20 @@ Window {
                         readOnly: true
                         font.pointSize: 15
 
-
                         anchors {
                             bottom: parent.bottom
                             left: parent.left
                             leftMargin: parent.width * .32
                         }
 
-                        background: Rectangle{
+                        background: Rectangle {
                             border.width: 0
                         }
 
-                        HoverHandler {
-                               id: vehicleCategoriesHover
-                               acceptedDevices: PointerDevice.Mouse
-                               cursorShape: Qt.PointingHandCursor
-                        }
+                        // ---hover baki
                         color: vehicleCategoriesHover.hovered ? "#0e42eb" : "black"
-
                     }
-
                 }
-
             }
             //car Variant
             Rectangle {
@@ -251,7 +221,7 @@ Window {
                         font.pointSize: 20
                         font.bold: true
 
-                        anchors{
+                        anchors {
                             top: parent.top
                             left: parent.left
                             right: parent.right
@@ -262,7 +232,6 @@ Window {
                         background: Rectangle {
                             border.width: 0
                         }
-
                     }
 
                     TextField {
@@ -272,17 +241,13 @@ Window {
                         font.pointSize: 30
 
                         anchors {
-                            left:parent.left
-                            leftMargin : parent.width * .4
-
+                            left: parent.left
+                            leftMargin: parent.width * .4
                         }
 
-
-
-                        background: Rectangle{
+                        background: Rectangle {
                             border.width: 0
                         }
-
                     }
 
                     TextField {
@@ -291,28 +256,19 @@ Window {
                         readOnly: true
                         font.pointSize: 15
 
-
                         anchors {
                             bottom: parent.bottom
                             left: parent.left
                             leftMargin: parent.width * .32
                         }
 
-                        background: Rectangle{
+                        background: Rectangle {
                             border.width: 0
                         }
 
-                        HoverHandler {
-                               id: carVariantHover
-                               acceptedDevices: PointerDevice.Mouse
-                               cursorShape: Qt.PointingHandCursor
-                        }
                         color: carVariantHover.hovered ? "#0e42eb" : "black"
-
                     }
-
                 }
-
             }
 
             //carAvailable
@@ -338,7 +294,7 @@ Window {
                         font.pointSize: 20
                         font.bold: true
 
-                        anchors{
+                        anchors {
                             top: parent.top
                             left: parent.left
                             right: parent.right
@@ -349,7 +305,6 @@ Window {
                         background: Rectangle {
                             border.width: 0
                         }
-
                     }
 
                     TextField {
@@ -359,17 +314,13 @@ Window {
                         font.pointSize: 30
 
                         anchors {
-                            left:parent.left
-                            leftMargin : parent.width * .4
-
+                            left: parent.left
+                            leftMargin: parent.width * .4
                         }
 
-
-
-                        background: Rectangle{
+                        background: Rectangle {
                             border.width: 0
                         }
-
                     }
 
                     TextField {
@@ -378,28 +329,19 @@ Window {
                         readOnly: true
                         font.pointSize: 15
 
-
                         anchors {
                             bottom: parent.bottom
                             left: parent.left
                             leftMargin: parent.width * .32
                         }
 
-                        background: Rectangle{
+                        background: Rectangle {
                             border.width: 0
                         }
 
-                        HoverHandler {
-                               id: carAvailableHover
-                               acceptedDevices: PointerDevice.Mouse
-                               cursorShape: Qt.PointingHandCursor
-                        }
                         color: carAvailableHover.hovered ? "#0e42eb" : "black"
-
                     }
-
                 }
-
             }
 
             //Reservation
@@ -425,7 +367,7 @@ Window {
                         font.pointSize: 20
                         font.bold: true
 
-                        anchors{
+                        anchors {
                             top: parent.top
                             left: parent.left
                             right: parent.right
@@ -436,7 +378,6 @@ Window {
                         background: Rectangle {
                             border.width: 0
                         }
-
                     }
 
                     TextField {
@@ -446,17 +387,13 @@ Window {
                         font.pointSize: 30
 
                         anchors {
-                            left:parent.left
-                            leftMargin : parent.width * .4
-
+                            left: parent.left
+                            leftMargin: parent.width * .4
                         }
 
-
-
-                        background: Rectangle{
+                        background: Rectangle {
                             border.width: 0
                         }
-
                     }
 
                     TextField {
@@ -465,28 +402,19 @@ Window {
                         readOnly: true
                         font.pointSize: 15
 
-
                         anchors {
                             bottom: parent.bottom
                             left: parent.left
                             leftMargin: parent.width * .32
                         }
 
-                        background: Rectangle{
+                        background: Rectangle {
                             border.width: 0
                         }
 
-                        HoverHandler {
-                               id: reservationHover
-                               acceptedDevices: PointerDevice.Mouse
-                               cursorShape: Qt.PointingHandCursor
-                        }
                         color: reservationHover.hovered ? "#0e42eb" : "black"
-
                     }
-
                 }
-
             }
 
             // New Booking
@@ -512,7 +440,7 @@ Window {
                         font.pointSize: 20
                         font.bold: true
 
-                        anchors{
+                        anchors {
                             top: parent.top
                             left: parent.left
                             right: parent.right
@@ -523,7 +451,6 @@ Window {
                         background: Rectangle {
                             border.width: 0
                         }
-
                     }
 
                     TextField {
@@ -533,17 +460,13 @@ Window {
                         font.pointSize: 30
 
                         anchors {
-                            left:parent.left
-                            leftMargin : parent.width * .4
-
+                            left: parent.left
+                            leftMargin: parent.width * .4
                         }
 
-
-
-                        background: Rectangle{
+                        background: Rectangle {
                             border.width: 0
                         }
-
                     }
 
                     TextField {
@@ -552,60 +475,40 @@ Window {
                         readOnly: true
                         font.pointSize: 15
 
-
                         anchors {
                             bottom: parent.bottom
                             left: parent.left
                             leftMargin: parent.width * .32
                         }
 
-                        background: Rectangle{
+                        background: Rectangle {
                             border.width: 0
                         }
 
-                        HoverHandler {
-                               id: newBookingHover
-                               acceptedDevices: PointerDevice.Mouse
-                               cursorShape: Qt.PointingHandCursor
-                        }
                         color: newBookingHover.hovered ? "#0e42eb" : "black"
-
                     }
-
                 }
-
             }
-
         }
-
     }
 
+    //    // content
+    //    Rectangle {
+    //        id: content
+    //        anchors{
+    //            left: sidebar.right
+    //            right: parent.right
+    //        }
 
+    //        TextField{
 
-
-
-//    // content
-//    Rectangle {
-//        id: content
-//        anchors{
-//            left: sidebar.right
-//            right: parent.right
-//        }
-
-//        TextField{
-
-//        }
-//    }
-
+    //        }
+    //    }
 }
-
-
-
-
-
 
 /*##^##
 Designer {
     D{i:0;formeditorZoom:0.5}
 }
 ##^##*/
+

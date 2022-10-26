@@ -23,6 +23,7 @@
 #define TABLE_PASSWORD       "Password"
 #define TABLE_NUMBER         "PhoneNumber"
 #define TABLE_LOCATION         "Location"
+#define TABLE_ROLE        "Role"
 
 
 
@@ -52,9 +53,9 @@ private:
 
 public slots:
     bool insertIntoTable(const QVariantList &data);      // Adding entries to the table
-    bool insertIntoTable(const QString &email, const QString &password , const QString &username,const QString &fname, const QString &lname, const QString &location, const QString &number);
+    bool insertIntoTable(const QString &email, const QString &password , const QString &username,const QString &fname, const QString &lname, const QString &location, const QString &role, const QString &number);
     //bool validation(const QString &email, const QString &password,  const QString &username);
-    bool validation(const QString &email, const QString &password,  const QString &username);
+    QString validation(const QString &email, const QString &password,  const QString &username);
     bool getLoginSession();
     void setloginSession(bool newLoginSession);
 

@@ -57,5 +57,6 @@
         <file>database/hello.qml</file>
         <file>pages/login/SignUpFinal.qml</file>
         <file>pages/login/components/MenuBar.qml</file>
+        <file>pages/login/components/ComboBar.qml</file>
     </qresource>
 </RCC>

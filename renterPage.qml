@@ -5,12 +5,8 @@ import QtQuick.Layouts 1.3
 import "components"
 import "pages/renter"
 
-Window {
-    id: mainWindow
-    width: 1280
-    height: 720
-    visible: true
-    title: qsTr("Owner Window")
+Item {
+    id: renterPage
 
     StatusBar {
         id: statusBar

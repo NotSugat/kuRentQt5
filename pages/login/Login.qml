@@ -109,10 +109,18 @@ Item {
                     color: "white"
                 }
 
-                onClicked: if (database.validation(userName.text,
-                                                   userPassword.text,
-                                                   userName.text)) {
+                onClicked: if (database.validation(
+                                       userName.text, userPassword.text,
+                                       userName.text) === "renter") {
                                mainStackView.push("qrc:/renterPage.qml")
+                           } else if (database.validation(
+                                          userName.text, userPassword.text,
+                                          userName.text) === "owner") {
+                               mainStackView.push("qrc:/ownerPage.qml")
+                           } else if (database.validation(
+                                          userName.text, userPassword.text,
+                                          userName.text) === "admin") {
+                               mainStackView.push("qrc:/adminPanel.qml")
                            } else {
                                messageDialog.open()
                            }

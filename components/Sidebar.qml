@@ -54,12 +54,6 @@ Rectangle {
                 fillMode: Image.PreserveAspectFit
                 horizontalAlignment: Image.AlignHCenter
                 verticalAlignment: Image.AlignVCenter
-
-                HoverHandler {
-                    id: mouse
-                    acceptedDevices: PointerDevice.Mouse
-                    cursorShape: Qt.PointingHandCursor
-                }
             }
 
             radius: 20
@@ -87,12 +81,6 @@ Rectangle {
                 fillMode: Image.PreserveAspectFit
                 horizontalAlignment: Image.AlignHCenter
                 verticalAlignment: Image.AlignVCenter
-
-                HoverHandler {
-                    id: mouseEmail
-                    acceptedDevices: PointerDevice.Mouse
-                    cursorShape: Qt.PointingHandCursor
-                }
             }
 
             radius: 20
@@ -120,12 +108,6 @@ Rectangle {
                 fillMode: Image.PreserveAspectFit
                 horizontalAlignment: Image.AlignHCenter
                 verticalAlignment: Image.AlignVCenter
-
-                HoverHandler {
-                    id: mouseReport
-                    acceptedDevices: PointerDevice.Mouse
-                    cursorShape: Qt.PointingHandCursor
-                }
             }
 
             radius: 20
@@ -153,12 +135,6 @@ Rectangle {
                 fillMode: Image.PreserveAspectFit
                 horizontalAlignment: Image.AlignHCenter
                 verticalAlignment: Image.AlignVCenter
-
-                HoverHandler {
-                    id: mouseUser
-                    acceptedDevices: PointerDevice.Mouse
-                    cursorShape: Qt.PointingHandCursor
-                }
             }
 
             radius: 20
@@ -186,12 +162,6 @@ Rectangle {
                 fillMode: Image.PreserveAspectFit
                 horizontalAlignment: Image.AlignHCenter
                 verticalAlignment: Image.AlignVCenter
-
-                HoverHandler {
-                    id: mouseTelephone
-                    acceptedDevices: PointerDevice.Mouse
-                    cursorShape: Qt.PointingHandCursor
-                }
             }
 
             radius: 20
@@ -219,12 +189,6 @@ Rectangle {
                 fillMode: Image.PreserveAspectFit
                 horizontalAlignment: Image.AlignHCenter
                 verticalAlignment: Image.AlignVCenter
-
-                HoverHandler {
-                    id: mouseChart
-                    acceptedDevices: PointerDevice.Mouse
-                    cursorShape: Qt.PointingHandCursor
-                }
             }
 
             radius: 20

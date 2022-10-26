@@ -58,20 +58,15 @@ Item {
 
             InputText {
                 id: email
-                width: parent.width
+                width: parent.width / 2
                 title: "Email"
                 placeHolderText: "email@example.com"
             }
-            //            ComboBox {
-            //                id: menuBar
-            //                anchors {
-            //                    left: email.right
-            //                    top: parent.top
 
-            //                }
-
-            //                model: ["Owner", "Renter"]
-            //            }
+            ComboBar {
+                id: menuBar
+                width: parent.width / 2
+            }
         }
 
         // username and Password
@@ -223,8 +218,8 @@ Item {
                     database.insertIntoTable(email.text, password.text,
                                              username.text, firstName.text,
                                              lastName.text, location.text,
-                                             phone.text) && mainStackView.push(
-                                "Login.qml")
+                                             menuBar.text, phone.text)
+                            && mainStackView.push("Login.qml")
                 } else {
                     messageDialog.open()
                 }
