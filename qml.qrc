@@ -38,16 +38,9 @@
         <file>pages/renter/Dashboard.qml</file>
         <file>pages/renter/StackViewPage.qml</file>
         <file>adminPanel.qml</file>
-        <file>ButtonWithImg.qml</file>
-        <file>CardImproved.qml</file>
-        <file>girdOne.qml</file>
-        <file>login.qml</file>
-        <file>loginTest.qml</file>
         <file>ownerPage.qml</file>
         <file>renterPage.qml</file>
-        <file>signUpFinal.qml</file>
         <file>mainStackView.qml</file>
-        <file>signUp.qml</file>
         <file>components/signupUi/SignUpNavbar.qml</file>
         <file>components/signupUi/InputText.qml</file>
         <file>pages/login/Login.qml</file>
