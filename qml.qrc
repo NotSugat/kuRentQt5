@@ -85,5 +85,6 @@
         <file>pages/owner/HomeStackView.qml</file>
         <file>pages/owner/components/DropDownMenu.qml</file>
         <file>pages/owner/components/InputText.qml</file>
+        <file>pages/owner/CyclePage.qml</file>
     </qresource>
 </RCC>

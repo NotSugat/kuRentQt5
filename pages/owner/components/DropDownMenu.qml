@@ -26,7 +26,7 @@ ColumnLayout {
         flat: true
         Layout.preferredHeight: 30
         Layout.preferredWidth: parent.width
-        model: ["Bike", "Cycle", "Car"]
+        model: ["Geared",  "Non-Geared"]
 
         background: Rectangle {
             color: textlayout.bgColor

@@ -4,16 +4,15 @@ import QtQuick.Layouts 1.3
 import "components"
 import "../../components"
 
-Rectangle{
+Rectangle {
     id: bookNowPage
     property color bgColor: "#282c34"
     property real topValue: .04
     color: "black"
 
-//        anchors{
-//            fill: parent
-//        }
-
+    //    anchors{
+    //        fill: parent
+    //    }
     Rectangle {
         id: bookNow
         height: parent.height * .65
@@ -26,7 +25,7 @@ Rectangle{
         // -----------------pick up point -----------------//
         InputText {
             id: pickUpPoint
-            text: "Bike"
+            text: "Bicycle"
             title: "Vehicle Type"
             bgColor: "#ffffff"
             anchors {
@@ -43,23 +42,22 @@ Rectangle{
 
             titleColor: "#ffffff"
         }
-        // -----------------pick up location -----------------//
-        InputText {
-            id: location
-            title: "Model"
-            placeHolderText: "Bike Model"
-            bgColor: "#ffffff"
+
+        DropDownMenu {
+            id: dropDownMenu
             anchors {
                 top: pickUpPoint.bottom
                 left: parent.left
                 right: parent.right
                 topMargin: parent.height * bookNowPage.topValue
-                leftMargin: parent.width * .05
-                rightMargin: parent.width * .05
+                leftMargin: parent.width * 0.05
+                rightMargin: parent.width * 0.05
             }
 
-
             titleColor: "#ffffff"
+            bgColor: "#ffffff"
+            title: "Vehicle Type"
+            placeHolderText: ""
         }
         Text {
             id: avDate
@@ -70,7 +68,7 @@ Rectangle{
             font.styleName: "Regular"
             font.bold: false
             anchors{
-                top: location.bottom
+                top: dropDownMenu.bottom
                 left: parent.left
                 right: parent.right
                 topMargin: parent.height * bookNowPage.topValue
@@ -164,22 +162,7 @@ Rectangle{
             }
         }
 
-//        DropDownMenu {
-//            id: dropDownMenu
-//            anchors {
-//                top: time.bottom
-//                left: parent.left
-//                right: parent.right
-//                topMargin: parent.height * bookNowPage.topValue
-//                leftMargin: parent.width * 0.05
-//                rightMargin: parent.width * 0.05
-//            }
 
-//            titleColor: "#000000"
-//            bgColor: "#ffffff"
-//            title: "Vehicle Type"
-//            placeHolderText: ""
-//        }
 
         CustomButton {
             id: customButton

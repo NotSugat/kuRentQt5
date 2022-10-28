@@ -46,6 +46,7 @@ Rectangle {
 
         ToggleButton {
             id: menuButton
+            btnIconSource: "../../../images/menu.png"
 
             onClicked: animationMenu.running = true
         }

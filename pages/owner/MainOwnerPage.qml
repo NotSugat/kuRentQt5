@@ -17,54 +17,54 @@ Window {
     }
 
     //--------------------------------StatusBar start-------------------//
-    Rectangle {
-        id: statusBar
+//    Rectangle {
+//        id: statusBar
 
-        width: parent.width
-        height: parent.width / 45
-        color: "red"
+//        width: parent.width
+//        height: parent.width / 45
+//        color: "red"
 
-        //right Side
-        Rectangle {
-            id: rightNav
-            anchors {
-                top: parent.top
-                right: parent.right
-            }
+//        //right Side
+//        Rectangle {
+//            id: rightNav
+//            anchors {
+//                top: parent.top
+//                right: parent.right
+//            }
 
-            width: parent.width / 10
-            height: parent.height
+//            width: parent.width / 10
+//            height: parent.height
 
-            ProfileLogo {
-                id: profile
-                anchors {
-                    left: parent.left
+//            ProfileLogo {
+//                id: profile
+//                anchors {
+//                    left: parent.left
 
-                    verticalCenter: statusBar.verticalCenter
-                }
-            }
+//                    verticalCenter: statusBar.verticalCenter
+//                }
+//            }
 
-            Text {
-                id: signOut
-                text: "Sign Out"
-                height: parent.height
+//            Text {
+//                id: signOut
+//                text: "Sign Out"
+//                height: parent.height
 
-                anchors {
-                    left: profile.right
-                    leftMargin: 10
-                }
-                verticalAlignment: Text.AlignVCenter
+//                anchors {
+//                    left: profile.right
+//                    leftMargin: 10
+//                }
+//                verticalAlignment: Text.AlignVCenter
 
-                MouseArea {
-                    id: signOutBtn
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onClicked: mainStackView.push("SignUp.qml")
-                }
-                color: signOutBtn.containsMouse ? "green" : "black"
-            }
-        }
-    }
+//                MouseArea {
+//                    id: signOutBtn
+//                    anchors.fill: parent
+//                    hoverEnabled: true
+//                    onClicked: mainStackView.push("SignUp.qml")
+//                }
+//                color: signOutBtn.containsMouse ? "green" : "black"
+//            }
+//        }
+//    }
 
     //-------------------------- sidebar-----------------------------//
     Loader {
@@ -74,9 +74,5 @@ Window {
     }
 }
 
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:0.25}
-}
-##^##*/
+
 

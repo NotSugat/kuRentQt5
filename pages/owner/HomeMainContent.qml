@@ -63,12 +63,14 @@ Rectangle {
             spacing: parent.width * 0.08
             Card {
                 id: bike
+                text: "Bike"
                 page: "qrc:/pages/owner/BikePage.qml"
             }
             Card {
                 id: bicycle
+                text: "Bicycle"
                 source: "qrc:/images/bicycle.png"
-                page: "qrc:/pages/owner/BikePage.qml"
+                page: "qrc:/pages/owner/CyclePage.qml"
             }
         }
     }
