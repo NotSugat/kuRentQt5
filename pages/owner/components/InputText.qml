@@ -12,6 +12,7 @@ ColumnLayout {
     property color bgColor: "#E5E5E5"
 
     property alias text: textField.text
+    property bool readonly: false
 
     Text {
         id: text1
@@ -30,6 +31,7 @@ ColumnLayout {
         horizontalAlignment: Text.AlignLeft
         placeholderText: qsTr(textlayout.placeHolderText)
         leftPadding: 12
+        readOnly: textlayout.readonly
 
         background: Rectangle {
             id: borderBottom

@@ -6,7 +6,7 @@ import "../../components"
 
 Item {
     id: bookNowPage
-    property color bgColor: "#f0daa3"
+    property color bgColor: "#282c34"
     property real topValue: .04
 
     //    anchors{
@@ -14,14 +14,18 @@ Item {
     //    }
     Rectangle {
         id: bookNow
-        height: parent.height * .90
-        color: "#50afff"
+        height: parent.height * .65
+        color: "#282c34"
         width: parent.width * .4
         anchors.centerIn: parent
         radius: 16
+        anchors.verticalCenterOffset: 0
+        anchors.horizontalCenterOffset: 0
         // -----------------pick up point -----------------//
         InputText {
-            id: pickUpPoint
+            id: vehicleType
+            text: "Bike"
+            title: "Vehicle Type"
             bgColor: "#ffffff"
             anchors {
                 top: parent.top
@@ -33,17 +37,18 @@ Item {
 
                 rightMargin: parent.width * .05
             }
+            readonly: true
 
-            titleColor: "#000000"
+            titleColor: "#ffffff"
         }
-        // -----------------pick up location -----------------//
+        // -----------------Model -----------------//
         InputText {
-            id: location
-            title: "Pick up Location"
-            placeHolderText: "Pick up Location"
+            id: model
+            title: "Model"
+            placeHolderText: "Bike Model"
             bgColor: "#ffffff"
             anchors {
-                top: pickUpPoint.bottom
+                top: vehicleType.bottom
                 left: parent.left
                 right: parent.right
                 topMargin: parent.height * bookNowPage.topValue
@@ -51,17 +56,33 @@ Item {
                 rightMargin: parent.width * .05
             }
 
-            titleColor: "#000000"
+            titleColor: "#ffffff"
         }
-
+        Text {
+            id: avDate
+            color: "#ffffff"
+            text: qsTr("Available Date")
+            font.pixelSize: 20
+            font.family: "Verdana"
+            font.styleName: "Regular"
+            font.bold: false
+            anchors {
+                top: model.bottom
+                left: parent.left
+                right: parent.right
+                topMargin: parent.height * bookNowPage.topValue
+                leftMargin: parent.width * 0.05
+                rightMargin: parent.width * 0.05
+            }
+        }
         // ---------------Date Input-------------------//
         RowLayout {
             id: dateInput
             anchors {
-                top: location.bottom
+                top: avDate.bottom
                 left: parent.left
                 right: parent.right
-                topMargin: parent.height * bookNowPage.topValue
+
                 leftMargin: parent.width * 0.05
                 rightMargin: parent.width * 0.05
             }
@@ -70,29 +91,48 @@ Item {
             spacing: 12
 
             InputText {
-                id: username
+                id: startDate
                 width: parent.width / 2.1
+                titleColor: "#ffffff"
                 bgColor: "#ffffff"
                 title: "Start Date"
                 placeHolderText: "DD/MM/YY"
             }
 
             InputText {
-                id: password
+                id: endDate
                 width: parent.width / 2.1
+                titleColor: "#ffffff"
                 bgColor: "#ffffff"
                 placeHolderText: "DD/MM/YY"
                 title: "End Date"
+            }
+        }
+
+        Text {
+            id: avTime
+            color: "#ffffff"
+            text: qsTr("Available Time")
+            font.pixelSize: 20
+            font.family: "Verdana"
+            font.bold: false
+            anchors {
+                top: dateInput.bottom
+                left: parent.left
+                right: parent.right
+                topMargin: parent.height * bookNowPage.topValue
+                leftMargin: parent.width * 0.05
+                rightMargin: parent.width * 0.05
             }
         }
         // ---------------Time Input-------------------//
         RowLayout {
             id: time
             anchors {
-                top: dateInput.bottom
+                top: avTime.bottom
                 left: parent.left
                 right: parent.right
-                topMargin: parent.height * bookNowPage.topValue
+
                 leftMargin: parent.width * 0.05
                 rightMargin: parent.width * 0.05
             }
@@ -103,6 +143,7 @@ Item {
             InputText {
                 id: timePick
                 anchors.right: parent
+                titleColor: "#ffffff"
                 bgColor: "#ffffff"
                 width: parent.width / 2.1
                 title: "Pick Up Time"
@@ -112,6 +153,7 @@ Item {
             InputText {
                 id: timeDrop
                 anchors.right: parent
+                titleColor: "#ffffff"
                 bgColor: "#ffffff"
                 width: parent.width / 2.1
                 placeHolderText: "HH:MM"
@@ -119,29 +161,28 @@ Item {
             }
         }
 
-        DropDownMenu {
-            id: dropDownMenu
-            anchors {
-                top: time.bottom
-                left: parent.left
-                right: parent.right
-                topMargin: parent.height * bookNowPage.topValue
-                leftMargin: parent.width * 0.05
-                rightMargin: parent.width * 0.05
-            }
+        //        DropDownMenu {
+        //            id: dropDownMenu
+        //            anchors {
+        //                top: time.bottom
+        //                left: parent.left
+        //                right: parent.right
+        //                topMargin: parent.height * bookNowPage.topValue
+        //                leftMargin: parent.width * 0.05
+        //                rightMargin: parent.width * 0.05
+        //            }
 
-            titleColor: "#000000"
-            bgColor: "#ffffff"
-            title: "Vehicle Type"
-            placeHolderText: ""
-        }
-
+        //            titleColor: "#000000"
+        //            bgColor: "#ffffff"
+        //            title: "Vehicle Type"
+        //            placeHolderText: ""
+        //        }
         CustomButton {
             id: customButton
             anchors {
                 left: parent.left
                 right: parent.right
-                top: dropDownMenu.bottom
+                top: time.bottom
                 topMargin: parent.height * bookNowPage.topValue
                 //                leftMargin: parent.width * 0.2
                 //                rightMargin: parent.width * 0.2
@@ -153,8 +194,14 @@ Item {
             height: 30
             colorMouseOver: "#0b58a5"
             colorDefault: "#454575"
+            onClicked: vehicleDatabase.insertIntoTable(vehicleType.text,
+                                                       model.text,
+                                                       startDate.text,
+                                                       endDate.text,
+                                                       timePick.text,
+                                                       timeDrop.text)
 
-            title: "Book Now"
+            title: "Add Vehicle"
         }
 
         Text {
@@ -174,7 +221,7 @@ Item {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
                 hoverEnabled: true
-                onClicked: stackView.push("Dashboard.qml")
+                onClicked: homeStackView.push("HomePage.qml")
             }
             color: textHover.containsMouse ? "red" : "white"
         }
