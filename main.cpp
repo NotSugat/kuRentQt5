@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("database", &database);
 
-    const QUrl url(QStringLiteral("qrc:/renterPage.qml"));
+    const QUrl url(QStringLiteral("qrc:/pages/owner/MainOwnerPage.qml"));
 
 
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

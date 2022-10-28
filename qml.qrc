@@ -54,5 +54,36 @@
         <file>database/Auth.db</file>
         <file>pages/renter/components/InputText.qml</file>
         <file>pages/renter/BookNowFinal.qml</file>
+        <file>pages/Dashboard.qml</file>
+        <file>pages/owner/MainOwnerPage.qml</file>
+        <file>pages/owner/components/StatusBarOwner.qml</file>
+        <file>pages/owner/components/NavBar.qml</file>
+        <file>pages/owner/NewTry.qml</file>
+        <file>pages/owner/components/LeftMenuBtn.qml</file>
+        <file>pages/owner/components/TopBarButton.qml</file>
+        <file>pages/owner/components/ToggleButton.qml</file>
+        <file>images/svg_images/close_icon.svg</file>
+        <file>images/svg_images/home_icon.svg</file>
+        <file>images/svg_images/icon_app_top.svg</file>
+        <file>images/svg_images/maximize_icon.svg</file>
+        <file>images/svg_images/menu_icon.svg</file>
+        <file>images/svg_images/minimize_icon.svg</file>
+        <file>images/svg_images/open_icon.svg</file>
+        <file>images/svg_images/resize_icon.svg</file>
+        <file>images/svg_images/restore_icon.svg</file>
+        <file>images/svg_images/save_icon.svg</file>
+        <file>images/svg_images/settings_icon.svg</file>
+        <file>pages/owner/components/OwnerSidebar.qml</file>
+        <file>pages/owner/components/Card.qml</file>
+        <file>images/bicycle.png</file>
+        <file>images/motorcycle.png</file>
+        <file>pages/owner/BikePage.qml</file>
+        <file>pages/owner/HomePage.qml</file>
+        <file>pages/owner/OwnerStackView.qml</file>
+        <file>pages/owner/ContentStackView.qml</file>
+        <file>pages/owner/HomeMainContent.qml</file>
+        <file>pages/owner/HomeStackView.qml</file>
+        <file>pages/owner/components/DropDownMenu.qml</file>
+        <file>pages/owner/components/InputText.qml</file>
     </qresource>
 </RCC>
