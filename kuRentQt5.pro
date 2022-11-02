@@ -9,6 +9,7 @@ CONFIG += c++11
 
 SOURCES += \
         auth.cpp \
+        cycledatabase.cpp \
         main.cpp \
         vehicledatabase.cpp
 
@@ -27,4 +28,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     auth.h \
+    cycledatabase.h \
     vehicledatabase.h

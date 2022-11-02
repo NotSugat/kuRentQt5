@@ -54,7 +54,6 @@
         <file>database/Auth.db</file>
         <file>pages/renter/components/InputText.qml</file>
         <file>pages/renter/BookNowFinal.qml</file>
-        <file>pages/Dashboard.qml</file>
         <file>pages/owner/MainOwnerPage.qml</file>
         <file>pages/owner/components/StatusBarOwner.qml</file>
         <file>pages/owner/components/NavBar.qml</file>

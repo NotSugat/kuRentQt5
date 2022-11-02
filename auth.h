@@ -100,12 +100,11 @@ public slots:
     bool insertIntoTable(const QString &email, const QString &password , const QString &username,const QString &fname, const QString &lname, const QString &location, const QString &role, const QString &number);
     //bool validation(const QString &email, const QString &password,  const QString &username);
     QString validation(const QString &email, const QString &password,  const QString &username);
-    bool getLoginSession();
-    void setloginSession(bool newLoginSession);
+
 
 
 signals:
-    void loginSessionChanged();
+
     void UserIdChanged();
     void FnameChanged();
     void UsernameChanged();

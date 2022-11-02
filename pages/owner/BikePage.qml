@@ -201,11 +201,11 @@ Rectangle {
         }
         MessageDialog {
             id: goodMessageDialog
-            title: "Invalid Login Credential"
-            text: "Email and Password doesn't match"
+            title: "Thank you!"
+            text: "Your vehicle has been Listed"
             icon: StandardIcon.Information
             standardButtons: StandardButton.Ok
-            informativeText: "Register Now"
+
             onAccepted: {
                 ownerStackView.push("HomePage.qml")
             }

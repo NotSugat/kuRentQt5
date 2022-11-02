@@ -9,7 +9,6 @@ Database::Database(QObject *parent)
 
 Database::~Database()
 {
-
 }
 
 void Database::connectToDataBase()
@@ -140,30 +139,7 @@ bool Database::insertIntoTable(const QString &email, const QString &password , c
 }
 
 
-
-
-bool Database::getLoginSession()
-{
-    qDebug() << "stop calling me";
-    return m_loginSession;
-}
-
-bool Database::loginSession() const
-{
-    return m_loginSession;
-}
-
-
-void Database::setloginSession(bool newLoginSession)
-{
-    if (m_loginSession == newLoginSession)
-        return;
-    m_loginSession = newLoginSession;
-    qDebug() <<"setter function getting called";
-    emit loginSessionChanged();
-}
-
-
+//Login validation funciton
 
 QString Database::validation(const QString &email, const QString &password, const QString &username)
 {

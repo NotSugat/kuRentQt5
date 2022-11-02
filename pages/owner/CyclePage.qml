@@ -1,6 +1,7 @@
 import QtQuick 2.5
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
+import QtQuick.Dialogs 1.1
 import "components"
 import "../../components"
 
@@ -20,11 +21,10 @@ Rectangle {
         width: parent.width * .4
         anchors.centerIn: parent
         radius: 16
-        anchors.verticalCenterOffset: 0
-        anchors.horizontalCenterOffset: 0
+
         // -----------------pick up point -----------------//
         InputText {
-            id: pickUpPoint
+            id: vehicleType
             text: "Bicycle"
             title: "Vehicle Type"
             bgColor: "#ffffff"
@@ -44,9 +44,9 @@ Rectangle {
         }
 
         DropDownMenu {
-            id: dropDownMenu
+            id: model
             anchors {
-                top: pickUpPoint.bottom
+                top: vehicleType.bottom
                 left: parent.left
                 right: parent.right
                 topMargin: parent.height * bookNowPage.topValue
@@ -68,7 +68,7 @@ Rectangle {
             font.styleName: "Regular"
             font.bold: false
             anchors {
-                top: dropDownMenu.bottom
+                top: model.bottom
                 left: parent.left
                 right: parent.right
                 topMargin: parent.height * bookNowPage.topValue
@@ -92,7 +92,7 @@ Rectangle {
             spacing: 12
 
             InputText {
-                id: username
+                id: dateStart
                 width: parent.width / 2.1
                 titleColor: "#ffffff"
                 bgColor: "#ffffff"
@@ -101,7 +101,7 @@ Rectangle {
             }
 
             InputText {
-                id: password
+                id: dateEnd
                 width: parent.width / 2.1
                 titleColor: "#ffffff"
                 bgColor: "#ffffff"
@@ -179,8 +179,46 @@ Rectangle {
             height: 30
             colorMouseOver: "#0b58a5"
             colorDefault: "#454575"
+            MouseArea {
+                id: mouse
+                anchors.fill: parent
+                onClicked: if (dateStart.text && dateEnd.text && timePick.text
+                                   && timeDrop.text) {
+                               cycleDatabase.insertIntoTable(
+                                           database.FirstName,
+                                           database.LastName, database.Number,
+                                           vehicleType.text, model.text,
+                                           dateStart.text, dateEnd.text,
+                                           timePick.text, timeDrop.text)
+                               //                               goodMessageDialog.open()
+                           } else {
+                               messageDialog.open()
+                           }
+            }
 
             title: "Add Vehicle"
+        }
+        MessageDialog {
+            id: goodMessageDialog
+            title: "Thank you!"
+            text: "Your vehicle has been Listed"
+            icon: StandardIcon.Information
+            standardButtons: StandardButton.Ok
+
+            onAccepted: {
+                ownerStackView.push("HomePage.qml")
+            }
+        }
+        MessageDialog {
+            id: messageDialog
+            title: "Incomplete text Field"
+            text: "Fill all the empty Field before submitting"
+            icon: StandardIcon.Warning
+            standardButtons: StandardButton.Retry
+            //            informativeText: "Fill all the empty Field before submitting"
+            onAccepted: {
+                console.log("And of course you could only agree.")
+            }
         }
 
         Text {
@@ -209,7 +247,7 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;formeditorZoom:1.25;height:850;width:640}
+    D{i:0;autoSize:true;formeditorZoom:0.75;height:850;width:640}
 }
 ##^##*/
 
