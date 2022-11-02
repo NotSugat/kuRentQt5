@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "auth.h"
+#include "vehicledatabase.h"
 
 
 int main(int argc, char *argv[])
@@ -16,14 +17,16 @@ int main(int argc, char *argv[])
 
     Database database;
     database.connectToDataBase();
-
+    VehicleDatabase vehicleDatabase;
+//    vehicleDatabase.connectToDataBase();
 
 
 
 
     engine.rootContext()->setContextProperty("database", &database);
+    engine.rootContext()->setContextProperty("vehicleDatabase", &vehicleDatabase);
 
-    const QUrl url(QStringLiteral("qrc:/pages/owner/MainOwnerPage.qml"));
+    const QUrl url(QStringLiteral("qrc:/main.qml"));
 
 
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

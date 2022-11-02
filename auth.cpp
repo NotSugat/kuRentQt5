@@ -1,6 +1,7 @@
 #include "auth.h"
 
 
+
 Database::Database(QObject *parent)
 {
 
@@ -139,6 +140,7 @@ bool Database::loginSession() const
     return m_loginSession;
 }
 
+
 void Database::setloginSession(bool newLoginSession)
 {
     if (m_loginSession == newLoginSession)
@@ -147,6 +149,8 @@ void Database::setloginSession(bool newLoginSession)
     qDebug() <<"setter function getting called";
     emit loginSessionChanged();
 }
+
+
 
 QString Database::validation(const QString &email, const QString &password, const QString &username)
 {
@@ -163,12 +167,14 @@ QString Database::validation(const QString &email, const QString &password, cons
         qDebug() << "failed to execute";
     } else {
         while (query.next()) {
+            int idFromDb = query.value(0).toInt();
             QString emailFromDb = query.value(1).toString();
             QString passwordFromDb = query.value(2).toString();
             QString usernameFromDb = query.value(3).toString();
             QString roleFromDb = query.value(7).toString();
 
             if( (email == usernameFromDb || email == emailFromDb) && password == passwordFromDb) {
+//                UserId(idFromDb);
                 if(roleFromDb == "Renter") {
                     return "renter";
                 } else if(roleFromDb == "Owner") {
@@ -178,13 +184,27 @@ QString Database::validation(const QString &email, const QString &password, cons
                 }
 
 
-            } else {
-                qDebug() << "failed";
-                return "fail";
-            }
+//            } else {
+//                qDebug() << "failed";
+//                return "fail";
+//            }
 
         }
     }
     return "fail";
-
+    }
+    return "fail";
 }
+
+//int Database::UserId(int idFromDb)
+//{
+//    return idFromDb;
+//}
+
+
+//int Database::UserId(int id)
+//{
+//    return id;
+//}
+
+

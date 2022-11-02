@@ -125,7 +125,7 @@ Item {
             color: "transparent"
 
             Text {
-                text: "i have no money donate me plz"
+                text: "Hello world"
                 anchors.centerIn: parent
                 font.pixelSize: 50
             }

@@ -2,6 +2,7 @@
 #define DATABASE_H
 
 #include <QDebug>
+#include <QCryptographicHash>
 
 
 #include <QObject>
@@ -32,12 +33,16 @@ class Database : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool loginSession READ loginSession WRITE setloginSession NOTIFY loginSessionChanged)
+    Q_PROPERTY(int UserId READ UserId WRITE setUserId NOTIFY UserIdChanged)
 public:
     explicit Database(QObject *parent = nullptr);
     ~Database();
     void connectToDataBase();
 
     bool loginSession() const;
+    int user_id;
+
+
 
 
 private:
@@ -51,6 +56,8 @@ private:
 
     bool m_loginSession = false;
 
+    int m_UserId;
+
 public slots:
     bool insertIntoTable(const QVariantList &data);      // Adding entries to the table
     bool insertIntoTable(const QString &email, const QString &password , const QString &username,const QString &fname, const QString &lname, const QString &location, const QString &role, const QString &number);
@@ -62,6 +69,7 @@ public slots:
 
 signals:
     void loginSessionChanged();
+    void UserIdChanged();
 };
 
 #endif // DATABASE_H

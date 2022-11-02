@@ -9,7 +9,8 @@ CONFIG += c++11
 
 SOURCES += \
         auth.cpp \
-        main.cpp
+        main.cpp \
+        vehicledatabase.cpp
 
 RESOURCES += qml.qrc
 
@@ -25,4 +26,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    auth.h
+    auth.h \
+    vehicledatabase.h

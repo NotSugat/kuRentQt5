@@ -112,14 +112,18 @@ Item {
                 onClicked: if (database.validation(
                                        userName.text, userPassword.text,
                                        userName.text) === "renter") {
+
                                mainStackView.push("qrc:/renterPage.qml")
                            } else if (database.validation(
                                           userName.text, userPassword.text,
                                           userName.text) === "owner") {
-                               mainStackView.push("qrc:/ownerPage.qml")
+
+                               mainStackView.push(
+                                           "qrc:/pages/owner/MainOwnerPage.qml")
                            } else if (database.validation(
                                           userName.text, userPassword.text,
                                           userName.text) === "admin") {
+
                                mainStackView.push("qrc:/adminPanel.qml")
                            } else {
                                messageDialog.open()

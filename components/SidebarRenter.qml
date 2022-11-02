@@ -3,7 +3,7 @@ import QtQuick.Controls 6.3
 import QtQuick.Layouts 1.0
 import "../components"
 
-R    Rectangle {
+Rectangle {
     id: sidebar
     width: 200
     height: parent.height
@@ -17,7 +17,6 @@ R    Rectangle {
             topMargin: 150
         }
 
-
         spacing: 20
 
         ButtonWithImage {
@@ -28,13 +27,11 @@ R    Rectangle {
                 right: parent.right
                 leftMargin: 20
                 rightMargin: 20
-
             }
             Layout.preferredHeight: 30
             btnText: "Dashboard"
             imgSrc: "qrc:/images/dashboard.png"
             page: "qrc:/pages/renter/Dashboard.qml"
-
         }
 
         // Account button
@@ -46,13 +43,11 @@ R    Rectangle {
                 right: parent.right
                 leftMargin: 20
                 rightMargin: 20
-
             }
             Layout.preferredHeight: 30
             btnText: "Account"
             imgSrc: "qrc:/images/user.png"
             page: "qrc:/pages/renter/Account.qml"
-
         }
 
         ButtonWithImage {
@@ -63,7 +58,6 @@ R    Rectangle {
                 right: parent.right
                 leftMargin: 20
                 rightMargin: 20
-
             }
             Layout.preferredHeight: 30
             btnText: "My Booking"
@@ -80,7 +74,6 @@ R    Rectangle {
                 right: parent.right
                 leftMargin: 20
                 rightMargin: 20
-
             }
             Layout.preferredHeight: 30
             btnText: "Setting"
@@ -91,9 +84,8 @@ R    Rectangle {
         CustomButton {
             id: button
             anchors {
-                top:setting.bottom
+                top: setting.bottom
                 horizontalCenter: parent.horizontalCenter
-
             }
 
             Layout.preferredHeight: 30
@@ -101,10 +93,5 @@ R    Rectangle {
             title: "Book Now"
             onClicked: stackView.push("bookNow.qml")
         }
-
-
-
-
+    }
 }
-}
-

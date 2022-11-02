@@ -3,12 +3,12 @@ import QtQuick.Window 2.3
 import QtQuick.Controls 2.5
 import "components"
 
-Window {
-    width: 1920
-    height: 1080
-    visible: true
-    title: qsTr("Owner Window")
+Item {
 
+    //    width: 1920
+    //    height: 1080
+    //    visible: true
+    //    title: qsTr("Owner Window")
     Loader {
         id: ownerPageLoader
         anchors {

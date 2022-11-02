@@ -4,16 +4,15 @@ import QtQuick.Layouts 1.3
 import "components"
 import "../../components"
 
-Rectangle{
+Rectangle {
     id: bookNowPage
     property color bgColor: "#282c34"
     property real topValue: .04
     color: "black"
 
-//        anchors{
-//            fill: parent
-//        }
-
+    //        anchors{
+    //            fill: parent
+    //        }
     Rectangle {
         id: bookNow
         height: parent.height * .65
@@ -58,7 +57,6 @@ Rectangle{
                 rightMargin: parent.width * .05
             }
 
-
             titleColor: "#ffffff"
         }
         Text {
@@ -69,7 +67,7 @@ Rectangle{
             font.family: "Verdana"
             font.styleName: "Regular"
             font.bold: false
-            anchors{
+            anchors {
                 top: location.bottom
                 left: parent.left
                 right: parent.right
@@ -119,7 +117,7 @@ Rectangle{
             font.pixelSize: 20
             font.family: "Verdana"
             font.bold: false
-            anchors{
+            anchors {
                 top: dateInput.bottom
                 left: parent.left
                 right: parent.right
@@ -164,23 +162,22 @@ Rectangle{
             }
         }
 
-//        DropDownMenu {
-//            id: dropDownMenu
-//            anchors {
-//                top: time.bottom
-//                left: parent.left
-//                right: parent.right
-//                topMargin: parent.height * bookNowPage.topValue
-//                leftMargin: parent.width * 0.05
-//                rightMargin: parent.width * 0.05
-//            }
+        //        DropDownMenu {
+        //            id: dropDownMenu
+        //            anchors {
+        //                top: time.bottom
+        //                left: parent.left
+        //                right: parent.right
+        //                topMargin: parent.height * bookNowPage.topValue
+        //                leftMargin: parent.width * 0.05
+        //                rightMargin: parent.width * 0.05
+        //            }
 
-//            titleColor: "#000000"
-//            bgColor: "#ffffff"
-//            title: "Vehicle Type"
-//            placeHolderText: ""
-//        }
-
+        //            titleColor: "#000000"
+        //            bgColor: "#ffffff"
+        //            title: "Vehicle Type"
+        //            placeHolderText: ""
+        //        }
         CustomButton {
             id: customButton
             anchors {

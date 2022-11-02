@@ -5,13 +5,13 @@ import QtQuick.Layouts 1.3
 import "components"
 import "pages/renter"
 
-Window {
-    id: renterPage
-    width: 1280
-    height: 720
-    visible: true
-    title: qsTr("KuRent Move Freely")
+Item {
 
+    //    id: renterPage
+    //    width: 1280
+    //    height: 720
+    //    visible: true
+    //    title: qsTr("KuRent Move Freely")
     StatusBar {
         id: statusBar
     }
