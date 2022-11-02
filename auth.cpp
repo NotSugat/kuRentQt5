@@ -34,7 +34,8 @@ bool Database::restoreDataBase()
 
 bool Database::openDataBase()
 {
-    db = QSqlDatabase::addDatabase("QSQLITE");
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE" , "connectDb");
+    if(QSqlDatabase::contains("connectDb")){
     db.setHostName(DATABASE_HOSTNAME);
     db.setDatabaseName("/home/crux/qtProject/kuRentQt5/database/" DATABASE_NAME);
     if(db.open()){
@@ -44,11 +45,16 @@ bool Database::openDataBase()
         qDebug() << "not connected";
         return false;
     }
+    } else {
+        return false;
+    }
+
 }
 
 bool Database::createTable()
 {
-    QSqlQuery query;
+    if(QSqlDatabase::contains("connectDb")){
+    QSqlQuery query(QSqlDatabase::database("connectDb"));
     if(!query.exec( "CREATE TABLE " TABLE " ("
                             "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                             TABLE_EMAIL     " VARCHAR(255)    NOT NULL,"
@@ -67,6 +73,10 @@ bool Database::createTable()
     } else {
         return true;
     }
+
+    } else {
+        return false;
+    }
     return false;
 }
 void Database::closeDataBase()
@@ -76,7 +86,8 @@ void Database::closeDataBase()
 
 bool Database::insertIntoTable(const QVariantList &data)
 {
-    QSqlQuery query;
+
+    QSqlQuery query(QSqlDatabase::database("connectDb"));
     query.prepare("INSERT INTO " TABLE " ( " TABLE_EMAIL ", "
                                              TABLE_PASSWORD ", "
                                              TABLE_USERNAME ", "
@@ -101,8 +112,10 @@ bool Database::insertIntoTable(const QVariantList &data)
         qDebug() << query.lastError().text();
         return false;
     } else {
+
         return true;
     }
+
     return false;
 }
 
@@ -154,15 +167,9 @@ void Database::setloginSession(bool newLoginSession)
 
 QString Database::validation(const QString &email, const QString &password, const QString &username)
 {
-    QSqlQuery query(QSqlDatabase::database(DATABASE_NAME));
-    query.prepare(QString("SELECT * FROM authTable WHERE Email = :Email OR Username = :Username AND Password = :Password OR Role = :Role "));
 
-    query.bindValue(":Email", email);
-    query.bindValue(":Password", password);
-    query.bindValue(":Username", username);
-
-
-
+    QSqlQuery query(QSqlDatabase::database("connectDb"));
+    query.prepare(QString("SELECT * FROM authTable"));
     if(!query.exec()) {
         qDebug() << "failed to execute";
     } else {
@@ -171,10 +178,17 @@ QString Database::validation(const QString &email, const QString &password, cons
             QString emailFromDb = query.value(1).toString();
             QString passwordFromDb = query.value(2).toString();
             QString usernameFromDb = query.value(3).toString();
+            QString fName = query.value(4).toString();
+            QString lastNameFromDb = query.value(5).toString();
+            QString number = query.value(8).toString();
             QString roleFromDb = query.value(7).toString();
 
-            if( (email == usernameFromDb || email == emailFromDb) && password == passwordFromDb) {
-//                UserId(idFromDb);
+            if( (username == usernameFromDb || email == emailFromDb) && password == passwordFromDb) {
+                setUserId(idFromDb);
+                setFirstName(fName);
+                setLastName(lastNameFromDb);
+                setNumber(number);
+                setUsername(fName);
                 if(roleFromDb == "Renter") {
                     return "renter";
                 } else if(roleFromDb == "Owner") {
@@ -193,18 +207,80 @@ QString Database::validation(const QString &email, const QString &password, cons
     }
     return "fail";
     }
+
     return "fail";
 }
 
-//int Database::UserId(int idFromDb)
-//{
-//    return idFromDb;
-//}
 
 
-//int Database::UserId(int id)
-//{
-//    return id;
-//}
+
+int Database::UserId() const
+{
+    return m_UserId;
+}
+
+void Database::setUserId(int newUserId)
+{
+    if (m_UserId == newUserId)
+        return;
+    m_UserId = newUserId;
+    emit UserIdChanged();
+}
 
 
+
+//username setter
+
+const QString &Database::Username() const
+{
+    return m_Username;
+}
+
+void Database::setUsername(const QString &newUsername)
+{
+    if (m_Username == newUsername)
+        return;
+    m_Username = newUsername;
+    emit UsernameChanged();
+}
+
+//first name setter and getter fucntion
+
+const QString &Database::FirstName() const
+{
+    return m_FirstName;
+}
+
+void Database::setFirstName(const QString &newFirstName)
+{
+    if (m_FirstName == newFirstName)
+        return;
+    m_FirstName = newFirstName;
+    emit FirstNameChanged();
+}
+
+const QString &Database::LastName() const
+{
+    return m_LastName;
+}
+
+void Database::setLastName(const QString &newLastName)
+{
+    if (m_LastName == newLastName)
+        return;
+    m_LastName = newLastName;
+    emit LastNameChanged();
+}
+
+const QString &Database::Number() const
+{
+    return m_Number;
+}
+
+void Database::setNumber(const QString &newNumber)
+{
+    if (m_Number == newNumber)
+        return;
+    m_Number = newNumber;
+    emit NumberChanged();
+}

@@ -10,7 +10,7 @@ Rectangle {
     color: "#282c34"
     anchors.left: parent.left
     anchors.right: parent.right
-    anchors.top: statusBar.bottom
+    anchors.top: parent.top
     anchors.bottom: parent.bottom
     anchors.topMargin: 0
 
@@ -75,3 +75,10 @@ Rectangle {
         }
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;formeditorZoom:0.5;height:480;width:640}
+}
+##^##*/
+

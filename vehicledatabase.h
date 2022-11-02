@@ -1,6 +1,6 @@
 #ifndef VECHICLEDATABASE_H
 #define VECHICLEDATABASE_H
-//#include "auth.h"
+
 
 #include <QObject>
 #include <QDebug>
@@ -11,11 +11,13 @@
 #include <QFile>
 #include <QDate>
 #include <QDebug>
+
 #define DATABASE_HOSTNAME   "NameDataBase"
 #define DATABASE_NAME       "Auth.db"
 
 #define TABLE1                "vehicleTable"
-#define TABLE_NAME      "OwnerName"
+#define TABLE_FNAME      "FirstName"
+#define TABLE_LNAME      "LastName"
 #define TABLE_PHONENUM      "PhoneNumber"
 #define TABLE_VEHICLETYPE         "VehicleType"
 #define TABLE_MODEL         "Model"
@@ -32,7 +34,7 @@ class VehicleDatabase : public QObject
 public:
     explicit VehicleDatabase(QObject *parent = nullptr);
     ~VehicleDatabase();
-    void connectToDataBase();
+    void connectToVehicleDataBase();
     int userId;
 
 private:
@@ -45,9 +47,7 @@ private:
 
 public slots:
     bool insertIntoTable(const QVariantList &data);      // Adding entries to the table
-    bool insertIntoTable(const QString &vehicleType, const QString &model, const QString &startDate,const QString &endDate, const QString &pickTime, const QString &dropTime);
-//    void getLoginInfo(const QString &email);
-
+    bool insertIntoTable(const QString &fname, const QString &lname, const QString &number, const QString &vehicleType, const QString &model, const QString &startDate, const QString &endDate, const QString &pickTime, const QString &dropTime);
 
 };
 

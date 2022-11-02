@@ -34,6 +34,12 @@ class Database : public QObject
     Q_OBJECT
     Q_PROPERTY(bool loginSession READ loginSession WRITE setloginSession NOTIFY loginSessionChanged)
     Q_PROPERTY(int UserId READ UserId WRITE setUserId NOTIFY UserIdChanged)
+    Q_PROPERTY(QString Username READ Username WRITE setUsername NOTIFY UsernameChanged)
+    Q_PROPERTY(QString FirstName READ FirstName WRITE setFirstName NOTIFY FirstNameChanged)
+    Q_PROPERTY(QString LastName READ LastName WRITE setLastName NOTIFY LastNameChanged)
+    Q_PROPERTY(QString Number READ Number WRITE setNumber NOTIFY NumberChanged)
+
+
 public:
     explicit Database(QObject *parent = nullptr);
     ~Database();
@@ -44,6 +50,25 @@ public:
 
 
 
+
+    int UserId() const;
+    void setUserId(int newUserId);
+
+    void setFname(const QString &newFnameREAD);
+
+    const QString &Fname() const;
+
+    const QString &Username() const;
+    void setUsername(const QString &newUsername);
+
+    const QString &FirstName() const;
+    void setFirstName(const QString &newFirstName);
+
+    const QString &LastName() const;
+    void setLastName(const QString &newLastName);
+
+    const QString &Number() const;
+    void setNumber(const QString &newNumber);
 
 private:
     QSqlDatabase    db;
@@ -58,6 +83,18 @@ private:
 
     int m_UserId;
 
+    QString m_FnameREAD;
+
+    QString m_Fname;
+
+    QString m_Username;
+
+    QString m_FirstName;
+
+    QString m_LastName;
+
+    QString m_Number;
+
 public slots:
     bool insertIntoTable(const QVariantList &data);      // Adding entries to the table
     bool insertIntoTable(const QString &email, const QString &password , const QString &username,const QString &fname, const QString &lname, const QString &location, const QString &role, const QString &number);
@@ -70,6 +107,11 @@ public slots:
 signals:
     void loginSessionChanged();
     void UserIdChanged();
+    void FnameChanged();
+    void UsernameChanged();
+    void FirstNameChanged();
+    void LastNameChanged();
+    void NumberChanged();
 };
 
 #endif // DATABASE_H

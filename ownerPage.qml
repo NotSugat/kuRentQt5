@@ -9,12 +9,18 @@ Item {
     //    height: 1080
     //    visible: true
     //    title: qsTr("Owner Window")
+    Text {
+        id: username
+        text: database.Username
+        color: "white"
+    }
+
     Loader {
         id: ownerPageLoader
         anchors {
             left: parent.left
             right: parent.right
-            top: parent.bottom
+            top: parent.top
             bottom: parent.bottom
         }
 

@@ -86,5 +86,7 @@
         <file>pages/owner/components/DropDownMenu.qml</file>
         <file>pages/owner/components/InputText.qml</file>
         <file>pages/owner/CyclePage.qml</file>
+        <file>pages/owner/OwnerAccount.qml</file>
+        <file>pages/owner/components/OwnerCustomButton.qml</file>
     </qresource>
 </RCC>

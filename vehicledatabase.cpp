@@ -1,8 +1,21 @@
 #include "vehicledatabase.h"
-#include "auth.h"
+
 
 VehicleDatabase::VehicleDatabase(QObject *parent)
 {
+
+//    QSqlQuery query(QSqlDatabase::database(DATABASE_NAME));
+
+//    query.prepare(QString("SELECT * FROM authTable"));
+//    query.exec();
+//    while (query.next()) {
+//            QString emailFromDb = query.value(1).toString();
+
+//            qDebug() <<"email is:" << emailFromDb;
+
+//        }
+
+
 
 }
 
@@ -11,12 +24,8 @@ VehicleDatabase::~VehicleDatabase()
 
 }
 
-void VehicleDatabase::connectToDataBase()
+void VehicleDatabase::connectToVehicleDataBase()
 {
-//    qDebug() << user_id
-
-
-
     if(!QFile("/home/crux/qtProject/kuRentQt5/database/" DATABASE_NAME).exists()){
         this->restoreDataBase();
     } else {
@@ -38,14 +47,14 @@ bool VehicleDatabase::restoreDataBase()
 
 bool VehicleDatabase::openDataBase()
 {
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setHostName(DATABASE_HOSTNAME);
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "vehicleDb");
+
     db.setDatabaseName("/home/crux/qtProject/kuRentQt5/database/" DATABASE_NAME);
     if(db.open()){
-        qDebug() << "connected to db";
+        qDebug() << "connected to vehicle db";
         return true;
     } else {
-        qDebug() << "not connected";
+        qDebug() << "not connected to vehicle db";
         return false;
     }
 }
@@ -55,10 +64,11 @@ bool VehicleDatabase::openDataBase()
 
 bool VehicleDatabase::createTable()
 {
-    QSqlQuery query;
+    QSqlQuery query(QSqlDatabase::database("vehicleDb"));
     if(!query.exec( "CREATE TABLE " TABLE1 " ("
                             "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                            TABLE_NAME     " VARCHAR(255)    NOT NULL,"
+                            TABLE_FNAME     " VARCHAR(255)    NOT NULL,"
+                            TABLE_LNAME     " VARCHAR(255)    NOT NULL,"
                             TABLE_PHONENUM     " VARCHAR(255)    NOT NULL,"
                             TABLE_VEHICLETYPE       " VARCHAR(255)    NOT NULL,"
                             TABLE_MODEL    " VARCHAR(255)    NOT NULL,"
@@ -84,8 +94,9 @@ void VehicleDatabase::closeDataBase()
 
 bool VehicleDatabase::insertIntoTable(const QVariantList &data)
 {
-    QSqlQuery query;
-    query.prepare("INSERT INTO " TABLE1 " ( " TABLE_NAME ", "
+    QSqlQuery query(QSqlDatabase::database("vehicleDb"));
+    query.prepare("INSERT INTO " TABLE1 " ( " TABLE_FNAME ", "
+                                             TABLE_LNAME ", "
                                              TABLE_PHONENUM ", "
                                              TABLE_VEHICLETYPE ", "
                                              TABLE_MODEL ", "
@@ -93,21 +104,17 @@ bool VehicleDatabase::insertIntoTable(const QVariantList &data)
                                              TABLE_ENDDATE ", "
                                              TABLE_PICKTIME ", "
                                              TABLE_DROPTIME " ) "
-                  "VALUES (:OwnerName, :PhoneNum, :VehicleType, :Model, :StartDate, :EndDate, :PickTime, :DropTime)");
+                  "VALUES (:FirstName, :LastName, :Number, :VehicleType, :Model, :StartDate, :EndDate, :PickTime, :DropTime)");
 
-//    QSqlQuery quary(QSqlDatabase::database(DATABASE_NAME));
-//    quary.prepare(QString("SELECT * FROM authTable WHERE FirstName = :Fname OR LastName = :Lname AND PhoneNumber = :Number"));
-
-
-
-    query.bindValue(":OwnerName",       data[0].toString());
-    query.bindValue(":Number",       data[1].toString());
-    query.bindValue(":VehicleType",       data[2].toString());
-    query.bindValue(":Model",       data[3].toString());
-    query.bindValue(":StartDate",       data[4].toString());
-    query.bindValue(":EndDate",       data[5].toString());
-    query.bindValue(":PickTime",       data[6].toString());
-    query.bindValue(":DropTime",       data[7].toString());
+    query.bindValue(":FirstName",       data[0].toString());
+    query.bindValue(":LastName",       data[1].toString());
+    query.bindValue(":Number",       data[2].toString());
+    query.bindValue(":VehicleType",       data[3].toString());
+    query.bindValue(":Model",       data[4].toString());
+    query.bindValue(":StartDate",       data[5].toString());
+    query.bindValue(":EndDate",       data[6].toString());
+    query.bindValue(":PickTime",       data[7].toString());
+    query.bindValue(":DropTime",       data[8].toString());
 
 
     if(!query.exec()){
@@ -115,51 +122,18 @@ bool VehicleDatabase::insertIntoTable(const QVariantList &data)
         qDebug() << query.lastError().text();
         return false;
     } else {
+        qDebug() << "added to vehicle db";
         return true;
     }
     return false;
 }
 
-//int VehicleDatabase::getLoginInfo(const QString &email)
-//{
-//    QSqlQuery query(QSqlDatabase::database(DATABASE_NAME));
-//    query.prepare(QString("SELECT * FROM authTable WHERE Email = :Email OR Username = :Email  "));
 
-//    query.bindValue(":Email", email);
-
-//    if(!query.exec()) {
-//        qDebug() << "failed to execute";
-//    } else {
-//        while (query.next()) {
-//            int idFromDb = query.value(0).toInt();
-//            QString emailFromDb = query.value(1).toString();
-//            QString usernameFromDb = query.value(3).toString();
-
-
-//            if( (email == usernameFromDb || email == emailFromDb)) {
-//                qDebug() << idFromDb;
-//                return idFromDb;
-
-//            }
-//        }
-
-//    }
-
-//}
-
-
-bool VehicleDatabase::insertIntoTable(const QString &vehicleType, const QString &model, const QString &startDate, const QString &endDate, const QString &pickTime, const QString &dropTime)
+bool VehicleDatabase::insertIntoTable(const QString &fname, const QString &lname, const QString &number, const QString &vehicleType, const QString &model, const QString &startDate, const QString &endDate, const QString &pickTime, const QString &dropTime)
 {
     QVariantList data;
-    QSqlQuery query(QSqlDatabase::database("Auth.db"));
-    query.prepare(QString("SELECT * FROM authTable WHERE FirstName = :Fname OR LastName = :Lname AND PhoneNumber = :Number"));
-    QString name;
-    QString number;
-
-    query.bindValue(":Fname", name);
-    query.bindValue("Number", number);
-    qDebug() <<name;
-    data.append(name);
+    data.append(fname);
+    data.append(lname);
     data.append(number);
     data.append(vehicleType);
     data.append(model);

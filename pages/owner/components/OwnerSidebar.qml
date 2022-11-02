@@ -96,7 +96,7 @@ Rectangle {
             onClicked: {
                 btnAccount.isActiveMenu = true
                 btnSettings.isActiveMenu = false
-                ownerStackView.push("qrc:/pages/owner/HomePage.qml")
+                ownerStackView.push("qrc:/pages/owner/OwnerAccount.qml")
             }
         }
         LeftMenuBtn {

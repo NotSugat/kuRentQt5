@@ -67,7 +67,7 @@ Rectangle {
             font.family: "Verdana"
             font.styleName: "Regular"
             font.bold: false
-            anchors{
+            anchors {
                 top: dropDownMenu.bottom
                 left: parent.left
                 right: parent.right
@@ -117,7 +117,7 @@ Rectangle {
             font.pixelSize: 20
             font.family: "Verdana"
             font.bold: false
-            anchors{
+            anchors {
                 top: dateInput.bottom
                 left: parent.left
                 right: parent.right
@@ -162,8 +162,6 @@ Rectangle {
             }
         }
 
-
-
         CustomButton {
             id: customButton
             anchors {
@@ -202,7 +200,7 @@ Rectangle {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
                 hoverEnabled: true
-                onClicked: stackView.push("Dashboard.qml")
+                onClicked: ownerStackView.push("HomePage.qml")
             }
             color: textHover.containsMouse ? "red" : "white"
         }

@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     Database database;
     database.connectToDataBase();
     VehicleDatabase vehicleDatabase;
-//    vehicleDatabase.connectToDataBase();
+    vehicleDatabase.connectToVehicleDataBase();
 
 
 
