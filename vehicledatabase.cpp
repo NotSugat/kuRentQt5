@@ -47,7 +47,7 @@ bool VehicleDatabase::restoreDataBase()
 
 bool VehicleDatabase::openDataBase()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "vehicleDb");
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
     db.setDatabaseName("/home/crux/qtProject/kuRentQt5/database/" DATABASE_NAME);
     if(db.open()){
@@ -64,6 +64,7 @@ bool VehicleDatabase::openDataBase()
 
 bool VehicleDatabase::createTable()
 {
+    if(QSqlDatabase::contains("vehicleDb")){
     QSqlQuery query(QSqlDatabase::database("vehicleDb"));
     if(!query.exec( "CREATE TABLE " TABLE1 " ("
                             "id INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -83,6 +84,9 @@ bool VehicleDatabase::createTable()
         return false;
     } else {
         return true;
+    }
+    } else {
+        return false;
     }
     return false;
 }

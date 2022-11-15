@@ -4,10 +4,24 @@ import QtQuick.Layouts 1.3
 import "components"
 import "../../components"
 
-Item {
+Rectangle {
     id: bookNowPage
     property color bgColor: "#f0daa3"
     property real topValue: .04
+
+    color: "#282c34"
+    anchors.left: sidebar.right
+    anchors.right: parent.right
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.topMargin: 0
+
+    RenterSidebar {
+        id: sidebar
+        homeActive: false
+        bookNowActive: true
+        z: 100
+    }
 
     //    anchors{
     //        fill: parent
@@ -183,7 +197,7 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;formeditorZoom:1.25;height:850;width:640}
+    D{i:0;autoSize:true;formeditorZoom:0.5;height:850;width:640}
 }
 ##^##*/
 

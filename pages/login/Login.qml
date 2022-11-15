@@ -113,7 +113,8 @@ Item {
                                        userName.text, userPassword.text,
                                        userName.text) === "renter") {
 
-                               mainStackView.push("qrc:/renterPage.qml")
+                               mainStackView.push(
+                                           "qrc:/pages/renter/MainRenterPage.qml")
                            } else if (database.validation(
                                           userName.text, userPassword.text,
                                           userName.text) === "owner") {

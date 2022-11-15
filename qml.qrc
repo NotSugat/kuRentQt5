@@ -38,7 +38,6 @@
         <file>pages/renter/Dashboard.qml</file>
         <file>pages/renter/StackViewPage.qml</file>
         <file>adminPanel.qml</file>
-        <file>ownerPage.qml</file>
         <file>renterPage.qml</file>
         <file>mainStackView.qml</file>
         <file>components/signupUi/SignUpNavbar.qml</file>
@@ -51,7 +50,6 @@
         <file>pages/login/SignUpFinal.qml</file>
         <file>pages/login/components/MenuBar.qml</file>
         <file>pages/login/components/ComboBar.qml</file>
-        <file>database/Auth.db</file>
         <file>pages/renter/components/InputText.qml</file>
         <file>pages/renter/BookNowFinal.qml</file>
         <file>pages/owner/MainOwnerPage.qml</file>
@@ -87,5 +85,19 @@
         <file>pages/owner/CyclePage.qml</file>
         <file>pages/owner/OwnerAccount.qml</file>
         <file>pages/owner/components/OwnerCustomButton.qml</file>
+        <file>pages/renter/MainRenterPage.qml</file>
+        <file>pages/renter/RenterStackView.qml</file>
+        <file>pages/renter/components/RenterSidebar.qml</file>
+        <file>pages/renter/components/ToggleButton.qml</file>
+        <file>pages/renter/components/LeftMenuBtn.qml</file>
+        <file>pages/renter/components/Sidebar.qml</file>
+        <file>images/logout.png</file>
+        <file>images/dashboardWhite.png</file>
+        <file>images/userWhite.png</file>
+        <file>images/myBookingWhite.png</file>
+        <file>images/bookingWhite.png</file>
+        <file>pages/renter/DashboardStackView.qml</file>
+        <file>pages/renter/HomePage.qml</file>
+        <file>pages/renter/HomeStackView.qml</file>
     </qresource>
 </RCC>

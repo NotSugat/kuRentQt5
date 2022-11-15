@@ -47,8 +47,8 @@ bool CycleDatabase::restoreDataBase()
 
 bool CycleDatabase::openDataBase()
 {
-     db = QSqlDatabase::addDatabase("QSQLITE", "cycleDb");
-
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setHostName(DATABASE_HOSTNAME);
     db.setDatabaseName("/home/crux/qtProject/kuRentQt5/database/" DATABASE_NAME);
     if(db.open()){
         qDebug() << "connected to cycle db";

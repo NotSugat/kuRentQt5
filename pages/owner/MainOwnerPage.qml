@@ -5,11 +5,7 @@ import "../../components"
 import "components"
 import QtQuick.Layouts 1.3
 
-Window {
-    width: 1920
-    height: 1080
-    visible: true
-    title: qsTr("Owner Window")
+Item {
 
     //--------------------------------StatusBar start-------------------//
     //    Rectangle {

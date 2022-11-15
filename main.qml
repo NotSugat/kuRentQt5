@@ -4,8 +4,8 @@ import QtQuick.Controls 2.5
 
 Window {
     id: mainWindow
-    width: 1280
-    height: 720
+    width: 1920
+    height: 1080
     visible: true
     title: qsTr("KuRent Move Freely")
 
