@@ -12,7 +12,7 @@
 #include <QDebug>
 
 #define DATABASE_HOSTNAME   "NameDataBase"
-#define DATABASE_NAME       "Auth.db"
+#define DATABASE_NAME       "cycleDatabase.db"
 
 #define TABLE1                "CycleTable"
 #define TABLE_FNAME      "FirstName"

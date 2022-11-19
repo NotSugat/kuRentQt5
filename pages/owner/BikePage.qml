@@ -12,9 +12,6 @@ Rectangle {
     property bool isVisible: false
     color: "#262a33"
 
-    //        anchors{
-    //            fill: parent
-    //        }
     DatePicker {
         id: startCalender
         visible: dateStart.dropDownClick
@@ -273,7 +270,7 @@ Rectangle {
                                            plateNumber.text, price.text,
                                            dateStart.text, dateEnd.text,
                                            timePick.text, timeDrop.text)
-                               //                               goodMessageDialog.open()
+                               goodMessageDialog.open()
                            } else {
                                messageDialog.open()
                            }

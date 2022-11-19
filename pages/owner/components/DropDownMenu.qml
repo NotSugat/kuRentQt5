@@ -10,6 +10,7 @@ ColumnLayout {
     property string placeHolderText: "Pick up Point"
     property color titleColor: "white"
     property color bgColor: "black"
+    property alias text: comboBox.currentText
 
     Text {
         id: text1
@@ -18,6 +19,7 @@ ColumnLayout {
         color: textlayout.titleColor
     }
     ComboBox {
+        id: comboBox
         rightPadding: 0
         bottomPadding: 0
         leftPadding: 10
@@ -26,7 +28,7 @@ ColumnLayout {
         flat: true
         Layout.preferredHeight: 30
         Layout.preferredWidth: parent.width
-        model: ["Geared",  "Non-Geared"]
+        model: ["Geared", "Non-Geared"]
 
         background: Rectangle {
             color: textlayout.bgColor

@@ -9,14 +9,30 @@ Rectangle {
     id: bookNowPage
     property color bgColor: "#282c34"
     property real topValue: .04
+    property bool isVisible: false
     color: "black"
 
-    //    anchors{
-    //        fill: parent
-    //    }
+    DatePicker {
+        id: startCalender
+        visible: dateStart.dropDownClick
+        anchors {
+            left: parent.left
+            leftMargin: parent.width * 0.05
+            verticalCenter: parent.verticalCenter
+        }
+    }
+    DatePicker {
+        id: endCalender
+        visible: dateEnd.dropDownClick
+        anchors {
+            right: parent.right
+            rightMargin: parent.width * 0.05
+            verticalCenter: parent.verticalCenter
+        }
+    }
     Rectangle {
         id: bookNow
-        height: parent.height * .65
+        height: parent.height * .6
         color: "#282c34"
         width: parent.width * .4
         anchors.centerIn: parent
@@ -77,7 +93,7 @@ Rectangle {
             }
         }
         // ---------------Date Input-------------------//
-        RowLayout {
+        Rectangle {
             id: dateInput
             anchors {
                 top: avDate.bottom
@@ -88,21 +104,23 @@ Rectangle {
                 rightMargin: parent.width * 0.05
             }
             height: parent.height / 7
+            color: "transparent"
 
-            spacing: 12
-
-            InputText {
+            DateInput {
                 id: dateStart
-                width: parent.width / 2.1
+                width: parent.width / 2.05
+                date: dateStart.textVisible ? startCalender.text : ""
                 titleColor: "#ffffff"
                 bgColor: "#ffffff"
                 title: "Start Date"
                 placeHolderText: "DD/MM/YY"
             }
 
-            InputText {
+            DateInput {
                 id: dateEnd
-                width: parent.width / 2.1
+                anchors.right: parent.right
+                width: parent.width / 2.05
+                date: dateEnd.textVisible ? endCalender.text : ""
                 titleColor: "#ffffff"
                 bgColor: "#ffffff"
                 placeHolderText: "DD/MM/YY"
@@ -110,30 +128,14 @@ Rectangle {
             }
         }
 
-        Text {
-            id: avTime
-            color: "#ffffff"
-            text: qsTr("Available Time")
-            font.pixelSize: 20
-            font.family: "Verdana"
-            font.bold: false
-            anchors {
-                top: dateInput.bottom
-                left: parent.left
-                right: parent.right
-                topMargin: parent.height * bookNowPage.topValue
-                leftMargin: parent.width * 0.05
-                rightMargin: parent.width * 0.05
-            }
-        }
         // ---------------Time Input-------------------//
         RowLayout {
             id: time
             anchors {
-                top: avTime.bottom
+                top: dateInput.bottom
                 left: parent.left
                 right: parent.right
-
+                topMargin: 8
                 leftMargin: parent.width * 0.05
                 rightMargin: parent.width * 0.05
             }
@@ -168,7 +170,7 @@ Rectangle {
                 left: parent.left
                 right: parent.right
                 top: time.bottom
-                topMargin: parent.height * bookNowPage.topValue
+                topMargin: parent.height * 0.06
                 //                leftMargin: parent.width * 0.2
                 //                rightMargin: parent.width * 0.2
                 leftMargin: parent.width * 0.05
@@ -190,7 +192,7 @@ Rectangle {
                                            vehicleType.text, model.text,
                                            dateStart.text, dateEnd.text,
                                            timePick.text, timeDrop.text)
-                               //                               goodMessageDialog.open()
+                               goodMessageDialog.open()
                            } else {
                                messageDialog.open()
                            }
