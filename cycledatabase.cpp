@@ -26,11 +26,7 @@ CycleDatabase::~CycleDatabase()
 
 void CycleDatabase::connectToCycleDataBase()
 {
-    if(!QFile("/home/crux/qtProject/kuRentQt5/database/" DATABASE_NAME).exists()){
-        this->restoreDataBase();
-    } else {
-        this->openDataBase();
-    }
+   openDataBase();
 }
 
 bool CycleDatabase::restoreDataBase()

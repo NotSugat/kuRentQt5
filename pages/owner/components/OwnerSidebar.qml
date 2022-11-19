@@ -59,10 +59,9 @@ Rectangle {
             }
             text: qsTr("Home")
             btnIconSource: "qrc:/images/svg_images/home_icon.svg"
-            isActiveMenu: true
+            isActiveMenu: homeActive
             onClicked: {
-                btnHome.isActiveMenu = true
-                btnSettings.isActiveMenu = false
+
                 ownerStackView.push("qrc:/pages/owner/HomePage.qml")
             }
         }
@@ -76,7 +75,7 @@ Rectangle {
 
             text: qsTr("Stage")
             btnIconSource: "qrc:/images/report.png"
-            isActiveMenu: false
+            isActiveMenu: rentActive
             onClicked: {
                 btnRent.isActiveMenu = true
                 btnSettings.isActiveMenu = false
@@ -92,7 +91,7 @@ Rectangle {
             }
             text: qsTr("Account")
             btnIconSource: "qrc:/images/report.png"
-            isActiveMenu: false
+            isActiveMenu: accountActive
             onClicked: {
                 btnAccount.isActiveMenu = true
                 btnSettings.isActiveMenu = false
@@ -103,7 +102,7 @@ Rectangle {
             id: btnSettings
             width: leftMenu.width
             text: qsTr("Sign Out")
-            btnIconSource: "qrc:/images/svg_images/settings_icon.svg"
+            btnIconSource: "qrc:/images/logout.png"
             isActiveMenu: false
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 25

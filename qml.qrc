@@ -99,5 +99,9 @@
         <file>pages/renter/DashboardStackView.qml</file>
         <file>pages/renter/HomePage.qml</file>
         <file>pages/renter/HomeStackView.qml</file>
+        <file>test.qml</file>
+        <file>components/DatePicker.qml</file>
+        <file>pages/owner/components/DateInput.qml</file>
+        <file>images/dropDown.png</file>
     </qresource>
 </RCC>

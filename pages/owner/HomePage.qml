@@ -10,6 +10,7 @@ Item {
     //-------------------------- sidebar-----------------------------//
     OwnerSidebar {
         id: sidebar
+        homeActive: true
         z: 100
     }
     Text {

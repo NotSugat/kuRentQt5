@@ -185,7 +185,7 @@ Item {
                 color: "white"
             }
 
-            onClicked: database.insertIntoTable(email.text, password.text, )
+            onClicked: database.insertIntoTable(email.text, password.text)
                        && mainStackView.push("login.qml")
         }
 
@@ -246,7 +246,7 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.5}
+    D{i:0;autoSize:true;formeditorZoom:0.9;height:480;width:640}
 }
 ##^##*/
 
