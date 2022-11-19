@@ -7,17 +7,37 @@ import "../../components"
 
 Rectangle {
     id: bookNowPage
-    property color bgColor: "#282c34"
+    property color bgColor: "#282c3f"
     property real topValue: .04
-    color: "black"
+    property bool isVisible: false
+    color: "#262a33"
 
     //        anchors{
     //            fill: parent
     //        }
+    DatePicker {
+        id: startCalender
+        visible: dateStart.dropDownClick
+        anchors {
+            left: parent.left
+            leftMargin: parent.width * 0.05
+            verticalCenter: parent.verticalCenter
+        }
+    }
+    DatePicker {
+        id: endCalender
+        visible: dateEnd.dropDownClick
+        anchors {
+            right: parent.right
+            rightMargin: parent.width * 0.05
+            verticalCenter: parent.verticalCenter
+        }
+    }
+
     Rectangle {
         id: bookNow
         height: parent.height * .65
-        color: "#282c34"
+        color: "#353a48"
         width: parent.width * .4
         anchors.centerIn: parent
         radius: 16
@@ -44,22 +64,44 @@ Rectangle {
             titleColor: "#ffffff"
         }
         // -----------------pick up location -----------------//
-        InputText {
-            id: model
-            title: "Model"
-            placeHolderText: "Bike Model"
-            bgColor: "#ffffff"
+        RowLayout {
+            id: firstRow
+            spacing: 5
+
             anchors {
                 top: vehicleType.bottom
                 left: parent.left
                 right: parent.right
-                topMargin: parent.height * bookNowPage.topValue
-                leftMargin: parent.width * .05
-                rightMargin: parent.width * .05
-            }
 
-            titleColor: "#ffffff"
+                leftMargin: parent.width * 0.05
+                rightMargin: parent.width * 0.05
+            }
+            InputText {
+                id: model
+                title: "Model"
+                placeHolderText: "Bike Model"
+                bgColor: "#ffffff"
+                Layout.preferredWidth: parent.width * 0.3
+                titleColor: "#ffffff"
+            }
+            InputText {
+                id: plateNumber
+                title: "Plate Number"
+                placeHolderText: "03 BA 001 1234"
+                bgColor: "#ffffff"
+                Layout.preferredWidth: parent.width * 0.3
+                titleColor: "#ffffff"
+            }
+            InputText {
+                id: price
+                title: "Price (NRs)"
+                placeHolderText: "Price in Rs"
+                bgColor: "#ffffff"
+                Layout.preferredWidth: parent.width * 0.3
+                titleColor: "#ffffff"
+            }
         }
+
         Text {
             id: avDate
             color: "#ffffff"
@@ -69,7 +111,7 @@ Rectangle {
             font.styleName: "Regular"
             font.bold: false
             anchors {
-                top: model.bottom
+                top: firstRow.bottom
                 left: parent.left
                 right: parent.right
                 topMargin: parent.height * bookNowPage.topValue
@@ -78,7 +120,7 @@ Rectangle {
             }
         }
         // ---------------Date Input-------------------//
-        RowLayout {
+        Rectangle {
             id: dateInput
             anchors {
                 top: avDate.bottom
@@ -89,21 +131,23 @@ Rectangle {
                 rightMargin: parent.width * 0.05
             }
             height: parent.height / 7
+            color: "transparent"
 
-            spacing: 12
-
-            InputText {
+            DateInput {
                 id: dateStart
-                width: parent.width / 2.1
+                width: parent.width / 2.05
+                date: dateStart.textVisible ? startCalender.text : ""
                 titleColor: "#ffffff"
                 bgColor: "#ffffff"
                 title: "Start Date"
                 placeHolderText: "DD/MM/YY"
             }
 
-            InputText {
+            DateInput {
                 id: dateEnd
-                width: parent.width / 2.1
+                anchors.right: parent.right
+                width: parent.width / 2.05
+                date: dateEnd.textVisible ? endCalender.text : ""
                 titleColor: "#ffffff"
                 bgColor: "#ffffff"
                 placeHolderText: "DD/MM/YY"
@@ -111,6 +155,40 @@ Rectangle {
             }
         }
 
+        //        RowLayout {
+        //            id: dateInput
+        //            anchors {
+        //                top: avDate.bottom
+        //                left: parent.left
+        //                right: parent.right
+
+        //                leftMargin: parent.width * 0.05
+        //                rightMargin: parent.width * 0.05
+        //            }
+
+        //            height: parent.height / 7
+        //            DateInput {
+        //                id: random
+        //                width: 50
+        //            }
+
+        //            DateInput {
+        //                id: dateStart
+        //                Layout.preferredWidth: 100
+        //                titleColor: "#ffffff"
+        //                bgColor: "#ffffff"
+        //                title: "Start Date"
+        //                placeHolderText: "DD/MM/YY"
+        //            }
+        //            DateInput {
+        //                id: dateEnd
+
+        //                titleColor: "#ffffff"
+        //                bgColor: "#ffffff"
+        //                placeHolderText: "DD/MM/YY"
+        //                title: "End Date"
+        //            }
+        //        }
         Text {
             id: avTime
             color: "#ffffff"
@@ -179,21 +257,23 @@ Rectangle {
             width: parent.width
             height: 30
             colorMouseOver: "#0b58a5"
-            colorDefault: "#454575"
+            colorDefault: "#6993bc"
 
             title: "Add Vehicle"
             MouseArea {
                 id: mouse
                 anchors.fill: parent
+                cursorShape: Qt.PointingHandCursor
                 onClicked: if (model.text && dateStart.text && dateEnd.text
                                    && timePick.text && timeDrop.text) {
                                vehicleDatabase.insertIntoTable(
                                            database.FirstName,
                                            database.LastName, database.Number,
                                            vehicleType.text, model.text,
+                                           plateNumber.text, price.text,
                                            dateStart.text, dateEnd.text,
                                            timePick.text, timeDrop.text)
-                               goodMessageDialog.open()
+                               //                               goodMessageDialog.open()
                            } else {
                                messageDialog.open()
                            }
@@ -248,7 +328,7 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;formeditorZoom:0.66;height:850;width:640}
+    D{i:0;autoSize:true;height:850;width:640}
 }
 ##^##*/
 

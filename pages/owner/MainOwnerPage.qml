@@ -5,7 +5,12 @@ import "../../components"
 import "components"
 import QtQuick.Layouts 1.3
 
-Item {
+Window {
+    id: mainWindow
+    width: 1920
+    height: 1080
+    visible: true
+    title: qsTr("KuRent Move Freely")
 
     //--------------------------------StatusBar start-------------------//
     //    Rectangle {

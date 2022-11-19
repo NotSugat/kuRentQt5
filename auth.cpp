@@ -13,11 +13,7 @@ Database::~Database()
 
 void Database::connectToDataBase()
 {
-    if(!QFile("/home/crux/qtProject/kuRentQt5/database/" DATABASE_NAME).exists()){
-        this->restoreDataBase();
-    } else {
-        this->openDataBase();
-    }
+    this->restoreDataBase();
 }
 
 bool Database::restoreDataBase()

@@ -21,6 +21,7 @@ Button {
                                    }
     }
     text: qsTr(button.title)
+
     contentItem: Item {
         Text {
             id: name
