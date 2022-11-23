@@ -1,15 +1,15 @@
-import QtQuick 2.5
+import QtQuick 2.9
 import QtQuick.Window 2.3
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
-import "../../components"
-import "components"
+import "../../../components"
+import "../components"
 
 Rectangle {
     id: content
     color: "#282c34"
     anchors.left: parent.left
-    anchors.right: parent.right
+    anchors.right: sidebar.right
     anchors.top: parent.top
     anchors.bottom: parent.bottom
     anchors.topMargin: 0
@@ -27,7 +27,7 @@ Rectangle {
         radius: 8
         Text {
             id: heading
-            text: qsTr("Earn Money By Renting your Vehicles!")
+            text: qsTr("Rent Vehicle from KuRent")
             font.weight: Font.DemiBold
             font.pixelSize: 32
             anchors {
@@ -61,12 +61,12 @@ Rectangle {
                 horizontalCenter: container.horizontalCenter
             }
             spacing: parent.width * 0.08
-            Card {
+            RenterCard {
                 id: bike
                 text: "Bike"
-                page: "qrc:/pages/owner/BikePage.qml"
+                page: "qrc:/pages/renter/bookNowPages/BikePage.qml"
             }
-            Card {
+            RenterCard {
                 id: bicycle
                 text: "Bicycle"
                 source: "qrc:/images/bicycle.png"

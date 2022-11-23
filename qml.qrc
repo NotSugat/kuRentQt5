@@ -34,11 +34,9 @@
         <file>pages/renter/components/Test.qml</file>
         <file>pages/renter/components/TextInput.qml</file>
         <file>pages/renter/Account.qml</file>
-        <file>pages/renter/BookNow.qml</file>
         <file>pages/renter/Dashboard.qml</file>
         <file>pages/renter/StackViewPage.qml</file>
         <file>adminPanel.qml</file>
-        <file>renterPage.qml</file>
         <file>mainStackView.qml</file>
         <file>components/signupUi/SignUpNavbar.qml</file>
         <file>components/signupUi/InputText.qml</file>
@@ -47,7 +45,6 @@
         <file>pages/login/components/SignUpNavbar.qml</file>
         <file>pages/login/components/InputText.qml</file>
         <file>database/hello.qml</file>
-        <file>pages/login/SignUpFinal.qml</file>
         <file>pages/login/components/MenuBar.qml</file>
         <file>pages/login/components/ComboBar.qml</file>
         <file>pages/renter/components/InputText.qml</file>
@@ -103,5 +100,28 @@
         <file>components/DatePicker.qml</file>
         <file>pages/owner/components/DateInput.qml</file>
         <file>images/dropDown.png</file>
+        <file>pages/login/components/GenderBar.qml</file>
+        <file>pages/owner/components/ConditionDropDown.qml</file>
+        <file>pages/owner/components/CycleModelDropDown.qml</file>
+        <file>images/userInfo.png</file>
+        <file>images/plateNumberInfo.png</file>
+        <file>pages/owner/components/RowInput.qml</file>
+        <file>images/stockImages/bike/splender.png</file>
+        <file>images/stockImages/bike/RTR200.webp</file>
+        <file>images/stockImages/bike/rtr150.png</file>
+        <file>images/stockImages/bike/rs200.webp</file>
+        <file>images/stockImages/bike/pulsar150.jpg</file>
+        <file>pages/renter/bookNowPages/BookVehiclePage.qml</file>
+        <file>pages/renter/bookNowPages/BookStackView.qml</file>
+        <file>pages/renter/bookNowPages/BookNowPage.qml</file>
+        <file>pages/renter/bookNowPages/BookNow.qml</file>
+        <file>pages/renter/components/RenterCard.qml</file>
+        <file>pages/renter/bookNowPages/BikePage.qml</file>
+        <file>pages/renter/bookNowPages/components/BikeContainer.qml</file>
+        <file>pages/renter/bookNowPages/components/ImageTextField.qml</file>
+        <file>pages/renter/bookNowPages/components/Condition.qml</file>
+        <file>images/stockImages/bike/bikeNumber.png</file>
+        <file>pages/renter/bookNowPages/components/RowText.qml</file>
+        <file>pages/renter/components/RowInput.qml</file>
     </qresource>
 </RCC>

@@ -42,11 +42,37 @@ Item {
                 title: "Lastname"
             }
         }
+        // -----------------------------Gender and profile source------------------//
+        RowLayout {
+            id: profileContainer
+            anchors {
+                top: fullNameLayout.bottom
+                left: parent.left
+                right: parent.right
+                leftMargin: parent.width * 0.05
+                rightMargin: parent.width * 0.05
+            }
+            height: parent.height / 8
+
+            spacing: 12
+
+            GenderBar {
+                id: gender
+                width: parent.width / 2
+            }
+            InputText {
+                id: profileSource
+                width: parent.width / 2
+                title: "Profile Picture (URL) "
+                placeHolderText: "https://example.com/image/"
+            }
+        }
+
         //--------------------------- Email-----------------------------------------------//
         RowLayout {
             id: emailContainer
             anchors {
-                top: fullNameLayout.bottom
+                top: profileContainer.bottom
                 left: parent.left
                 right: parent.right
                 leftMargin: parent.width * 0.05
@@ -93,6 +119,7 @@ Item {
             InputText {
                 id: password
                 width: parent.width / 2
+                passwordMode: true
                 placeHolderText: "Password"
                 title: "Password"
             }
@@ -135,7 +162,7 @@ Item {
                 top: phoneLocation.bottom
                 left: parent.left
                 right: parent.right
-                topMargin: 12
+                topMargin: 5
                 leftMargin: parent.width / 6
                 rightMargin: parent.width / 10
             }
@@ -188,7 +215,7 @@ Item {
                 right: parent.right
                 leftMargin: parent.width * 0.05
                 rightMargin: parent.width * 0.05
-                topMargin: 24
+                topMargin: 12
             }
             height: parent.height / 16
             flat: true
@@ -218,7 +245,8 @@ Item {
                     database.insertIntoTable(email.text, password.text,
                                              username.text, firstName.text,
                                              lastName.text, location.text,
-                                             menuBar.text, phone.text)
+                                             menuBar.text, phone.text,
+                                             gender.text, profileSource.text)
                             && mainStackView.push("Login.qml")
                 } else {
                     messageDialog.open()
@@ -245,7 +273,7 @@ Item {
             height: 1
             anchors {
                 top: submitBtn.bottom
-                topMargin: 48
+                topMargin: 24
             }
 
             color: "purple"
@@ -275,7 +303,7 @@ Item {
                 left: parent.left
                 right: parent.right
                 top: alreadyText.bottom
-                topMargin: 24
+                topMargin: 12
             }
             text: "Login In"
             horizontalAlignment: Text.AlignHCenter

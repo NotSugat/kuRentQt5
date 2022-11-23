@@ -1,4 +1,4 @@
-import QtQuick 2.5
+import QtQuick 2.9
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 import QtQuick.Dialogs 1.1
@@ -8,9 +8,10 @@ import "../../components"
 Rectangle {
     id: bookNowPage
     property color bgColor: "#282c34"
-    property real topValue: .04
+    property real topValue: .05
+    property real rowGap: 0.06
     property bool isVisible: false
-    color: "black"
+    color: "#262a33"
 
     DatePicker {
         id: startCalender
@@ -32,18 +33,16 @@ Rectangle {
     }
     Rectangle {
         id: bookNow
-        height: parent.height * .6
-        color: "#282c34"
+        height: parent.height * .5
+        color: "#353a48"
         width: parent.width * .4
         anchors.centerIn: parent
         radius: 16
 
         // -----------------pick up point -----------------//
-        InputText {
-            id: vehicleType
-            text: "Bicycle"
-            title: "Vehicle Type"
-            bgColor: "#ffffff"
+        // -----------------Vehicle Details -----------------//
+        RowLayout {
+            id: vehicleDetails
             anchors {
                 top: parent.top
                 left: parent.left
@@ -54,52 +53,142 @@ Rectangle {
 
                 rightMargin: parent.width * .05
             }
-            readonly: true
+            height: parent.height / 7
 
-            titleColor: "#ffffff"
+            spacing: 12
+            InputText {
+                id: vehicleType
+                text: "Bicyle"
+                title: "Vehicle Type"
+                bgColor: "#ffffff"
+                anchors.right: parent
+                width: parent.width / 2.1
+                readonly: true
+
+                titleColor: "#ffffff"
+            }
+
+            InputText {
+                id: cycleSource
+                anchors.right: parent
+                titleColor: "#ffffff"
+                bgColor: "#ffffff"
+                width: parent.width / 2.1
+                placeHolderText: "https:/example.com/image/"
+                title: "Bike Photo (Url)"
+            }
         }
 
-        DropDownMenu {
-            id: model
+        //        InputText {
+        //            id: vehicleType
+        //            text: "Bicycle"
+        //            title: "Vehicle Type"
+        //            bgColor: "#ffffff"
+        //            anchors {
+        //                top: parent.top
+        //                left: parent.left
+        //                right: parent.right
+
+        //                topMargin: parent.height * bookNowPage.topValue
+        //                leftMargin: parent.width * .05
+
+        //                rightMargin: parent.width * .05
+        //            }
+        //            readonly: true
+
+        //            titleColor: "#ffffff"
+        //        }
+        //--------------------Model and price section----------------------------------//
+        RowLayout {
+            id: modelPriceSection
             anchors {
-                top: vehicleType.bottom
+                top: vehicleDetails.bottom
                 left: parent.left
                 right: parent.right
-                topMargin: parent.height * bookNowPage.topValue
+                topMargin: parent.height * bookNowPage.rowGap
                 leftMargin: parent.width * 0.05
                 rightMargin: parent.width * 0.05
             }
+            height: parent.height / 7
 
-            titleColor: "#ffffff"
-            bgColor: "#ffffff"
-            title: "Vehicle Type"
-            placeHolderText: ""
-        }
-        Text {
-            id: avDate
-            color: "#ffffff"
-            text: qsTr("Available Date")
-            font.pixelSize: 20
-            font.family: "Verdana"
-            font.styleName: "Regular"
-            font.bold: false
-            anchors {
-                top: model.bottom
-                left: parent.left
-                right: parent.right
-                topMargin: parent.height * bookNowPage.topValue
-                leftMargin: parent.width * 0.05
-                rightMargin: parent.width * 0.05
+            spacing: 12
+
+            CycleModelDropDown {
+                id: cycleModel
+
+                anchors.right: parent
+                width: parent.width / 2.1
+            }
+            InputText {
+                id: price
+                anchors.right: parent
+                title: "Price per day (NRs)"
+                placeHolderText: "Price in Rs (per day)"
+                bgColor: "#ffffff"
+                width: parent.width / 2.1
+                titleColor: "#ffffff"
             }
         }
+
+        //        DropDownMenu {
+        //            id: model
+        //            anchors {
+        //                top: vehicleDetails.bottom
+        //                left: parent.left
+        //                right: parent.right
+        //                topMargin: parent.height * bookNowPage.topValue
+        //                leftMargin: parent.width * 0.05
+        //                rightMargin: parent.width * 0.05
+        //            }
+
+        //            titleColor: "#ffffff"
+        //            bgColor: "#ffffff"
+        //            title: "Vehicle Type"
+        //            placeHolderText: ""
+        //        }
+
+        //----------------white margin box-------------------------//
+        Rectangle {
+            id: whiteSpace
+            anchors {
+                top: modelPriceSection.bottom
+                left: parent.left
+                right: parent.right
+            }
+
+            color: "transparent"
+            height: parent.height * 0.01
+        }
+
+        //        Text {
+        //            id: avDate
+        //            color: "#ffffff"
+        //            text: qsTr("Available Date")
+        //            font.pixelSize: 20
+        //            //            padding: parent.height * bookNowPage.rowGap
+        //            leftPadding: 0
+        //            horizontalAlignment: Text.AlignHCenter
+        //            font.family: "Verdana"
+        //            font.styleName: "Regular"
+        //            font.bold: false
+        //            anchors {
+        //                top: whiteSpace.bottom
+        //                left: parent.left
+        //                right: parent.right
+        //                topMargin: parent.height * 0.07
+        //                leftMargin: parent.width * 0.05
+        //                rightMargin: parent.width * 0.05
+        //            }
+        //        }
+
         // ---------------Date Input-------------------//
         Rectangle {
             id: dateInput
             anchors {
-                top: avDate.bottom
+                top: modelPriceSection.bottom
                 left: parent.left
                 right: parent.right
-
+                topMargin: parent.height * bookNowPage.rowGap
                 leftMargin: parent.width * 0.05
                 rightMargin: parent.width * 0.05
             }
@@ -108,7 +197,7 @@ Rectangle {
 
             DateInput {
                 id: dateStart
-                width: parent.width / 2.05
+                width: parent.width / 2.1
                 date: dateStart.textVisible ? startCalender.text : ""
                 titleColor: "#ffffff"
                 bgColor: "#ffffff"
@@ -118,8 +207,9 @@ Rectangle {
 
             DateInput {
                 id: dateEnd
-                anchors.right: parent.right
-                width: parent.width / 2.05
+                anchors.left: dateStart.right
+                anchors.leftMargin: parent.width * 0.04
+                width: parent.width / 2.12
                 date: dateEnd.textVisible ? endCalender.text : ""
                 titleColor: "#ffffff"
                 bgColor: "#ffffff"
@@ -128,51 +218,48 @@ Rectangle {
             }
         }
 
-        // ---------------Time Input-------------------//
-        RowLayout {
-            id: time
-            anchors {
-                top: dateInput.bottom
-                left: parent.left
-                right: parent.right
-                topMargin: 8
-                leftMargin: parent.width * 0.05
-                rightMargin: parent.width * 0.05
-            }
-            height: parent.height / 7
+        //        // ---------------Time Input-------------------//
+        //        RowLayout {
+        //            id: time
+        //            anchors {
+        //                top: dateInput.bottom
+        //                left: parent.left
+        //                right: parent.right
+        //                topMargin: 8
+        //                leftMargin: parent.width * 0.05
+        //                rightMargin: parent.width * 0.05
+        //            }
+        //            height: parent.height / 7
 
-            spacing: 12
+        //            spacing: 12
 
-            InputText {
-                id: timePick
-                anchors.right: parent
-                titleColor: "#ffffff"
-                bgColor: "#ffffff"
-                width: parent.width / 2.1
-                title: "Pick Up Time"
-                placeHolderText: "HH:MM"
-            }
+        //            InputText {
+        //                id: timePick
+        //                anchors.right: parent
+        //                titleColor: "#ffffff"
+        //                bgColor: "#ffffff"
+        //                width: parent.width / 2.1
+        //                title: "Pick Up Time"
+        //                placeHolderText: "HH:MM"
+        //            }
 
-            InputText {
-                id: timeDrop
-                anchors.right: parent
-                titleColor: "#ffffff"
-                bgColor: "#ffffff"
-                width: parent.width / 2.1
-                placeHolderText: "HH:MM"
-                title: "Drop Off Time"
-            }
-        }
-
+        //            InputText {
+        //                id: timeDrop
+        //                anchors.right: parent
+        //                titleColor: "#ffffff"
+        //                bgColor: "#ffffff"
+        //                width: parent.width / 2.1
+        //                placeHolderText: "HH:MM"
+        //                title: "Drop Off Time"
+        //            }
+        //        }
         CustomButton {
             id: customButton
             anchors {
                 left: parent.left
                 right: parent.right
-                top: time.bottom
-                topMargin: parent.height * 0.06
-                //                leftMargin: parent.width * 0.2
-                //                rightMargin: parent.width * 0.2
+                top: dateInput.bottom
+                topMargin: parent.height * 0.12
                 leftMargin: parent.width * 0.05
                 rightMargin: parent.width * 0.05
             }
@@ -184,14 +271,13 @@ Rectangle {
             MouseArea {
                 id: mouse
                 anchors.fill: parent
-                onClicked: if (dateStart.text && dateEnd.text && timePick.text
-                                   && timeDrop.text) {
+                onClicked: if (dateStart.text && dateEnd.text && price.text) {
                                cycleDatabase.insertIntoTable(
                                            database.FirstName,
                                            database.LastName, database.Number,
-                                           vehicleType.text, model.text,
+                                           vehicleType.text, cycleModel.text,
                                            dateStart.text, dateEnd.text,
-                                           timePick.text, timeDrop.text)
+                                           price.text, cycleSource.text)
                                goodMessageDialog.open()
                            } else {
                                messageDialog.open()
@@ -231,7 +317,7 @@ Rectangle {
                 top: customButton.bottom
                 left: parent.left
                 right: parent.right
-                topMargin: 5
+                topMargin: parent.height * 0.02
             }
             horizontalAlignment: Text.AlignHCenter
 

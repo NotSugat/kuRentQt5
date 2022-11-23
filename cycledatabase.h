@@ -22,8 +22,8 @@
 #define TABLE_MODEL         "Model"
 #define TABLE_STARTDATE     "StartDate"
 #define TABLE_ENDDATE      "EndDate"
-#define TABLE_PICKTIME      "PickUpTime"
-#define TABLE_DROPTIME      "DropOffTime"
+#define TABLE_PRICE     "Price"
+#define TABLE_CYCLEURL      "CycleUrl"
 
 class CycleDatabase : public QObject
 {

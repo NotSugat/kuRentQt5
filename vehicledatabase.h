@@ -25,8 +25,8 @@
 #define TABLE_PRICE         "Price"
 #define TABLE_STARTDATE     "StartDate"
 #define TABLE_ENDDATE      "EndDate"
-#define TABLE_PICKTIME      "PickUpTime"
-#define TABLE_DROPTIME      "DropOffTime"
+#define TABLE_BIKEURL      "BikeUrl"
+#define TABLE_CONDITION   "Condition"
 
 
 

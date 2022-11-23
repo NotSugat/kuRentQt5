@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.3
 ColumnLayout {
     id: textlayout
 
-    spacing: 10
+    width: parent.width
     property string title: "Pick up Point"
     property string placeHolderText: "Pick up Point"
     property color titleColor: "white"
@@ -15,7 +15,7 @@ ColumnLayout {
     Text {
         id: text1
         text: qsTr(textlayout.title)
-        font.pixelSize: 15
+        font.pixelSize: 16
         color: textlayout.titleColor
     }
     ComboBox {
@@ -35,6 +35,7 @@ ColumnLayout {
             border.width: parent && parent.activeFocus ? 2 : 1
             border.color: parent && parent.activeFocus ? "green" : "red"
         }
+        padding: 5
     }
 }
 

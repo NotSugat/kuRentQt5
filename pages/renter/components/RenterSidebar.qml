@@ -116,7 +116,8 @@ Rectangle {
             onClicked: {
                 btnBookNow.isActiveMenu = bookNowActive
                 btnSettings.isActiveMenu = false
-                renterStackView.push("qrc:/pages/renter/BookNow.qml")
+                renterStackView.push(
+                            "qrc:/pages/renter/bookNowPages/BookNowPage.qml")
             }
         }
         LeftMenuBtn {

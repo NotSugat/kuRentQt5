@@ -63,7 +63,9 @@ bool Database::createTable()
                             TABLE_LNAME     " VARCHAR(255)    NOT NULL,"
                             TABLE_LOCATION     " VARCHAR(255)    NOT NULL,"
                             TABLE_ROLE     " VARCHAR(255)    NOT NULL,"
-                            TABLE_NUMBER     " VARCHAR(255)    NOT NULL"
+                            TABLE_NUMBER     " VARCHAR(255)    NOT NULL,"
+                            TABLE_GENDER     " VARCHAR(255)    NOT NULL,"
+                            TABLE_SOURCE     " VARCHAR(255)    NOT NULL"
                         " )"
                     )){
         qDebug() << "DataBase: error of create " << TABLE;
@@ -94,8 +96,10 @@ bool Database::insertIntoTable(const QVariantList &data)
                                              TABLE_LNAME ", "
                                              TABLE_LOCATION ", "
                                              TABLE_ROLE ", "
-                                             TABLE_NUMBER " ) "
-                  "VALUES (:Email, :Password, :Username, :Fname, :Lname, :Location, :Role, :Number)");
+                                             TABLE_NUMBER ", "
+                                             TABLE_GENDER ", "
+                                             TABLE_SOURCE " ) "
+                  "VALUES (:Email, :Password, :Username, :Fname, :Lname, :Location, :Role, :Number, :Gender, :ProfileUrl)");
     query.bindValue(":Email",       data[0].toString());
     query.bindValue(":Password",       data[1].toString());
     query.bindValue(":Username",       data[2].toString());
@@ -104,6 +108,8 @@ bool Database::insertIntoTable(const QVariantList &data)
     query.bindValue(":Location",       data[5].toString());
     query.bindValue(":Role",       data[6].toString());
     query.bindValue(":Number",       data[7].toString());
+    query.bindValue(":Gender",       data[8].toString());
+    query.bindValue(":ProfileUrl",       data[9].toString());
 
 
     if(!query.exec()){
@@ -120,7 +126,7 @@ bool Database::insertIntoTable(const QVariantList &data)
 
 
 
-bool Database::insertIntoTable(const QString &email, const QString &password , const QString &username,const QString &fname, const QString &lname, const QString &location, const QString &role, const QString &number )
+bool Database::insertIntoTable(const QString &email, const QString &password , const QString &username,const QString &fname, const QString &lname, const QString &location, const QString &role, const QString &number, const QString &gender, const QString &profileUrl )
 {
     QVariantList data;
     data.append(email);
@@ -131,6 +137,8 @@ bool Database::insertIntoTable(const QString &email, const QString &password , c
     data.append(location);
     data.append(role);
     data.append(number);
+    data.append(gender);
+    data.append(profileUrl);
 
     if(insertIntoTable(data))
         return true;
@@ -158,6 +166,9 @@ QString Database::validation(const QString &email, const QString &password, cons
             QString lastNameFromDb = query.value(5).toString();
             QString number = query.value(8).toString();
             QString roleFromDb = query.value(7).toString();
+            QString genderFromDb = query.value(9).toString();
+            QString locationFromDb = query.value(6).toString();
+            QString profileFromDb = query.value(10).toString();
 
             if( (username == usernameFromDb || email == emailFromDb) && password == passwordFromDb) {
                 setUserId(idFromDb);
@@ -165,6 +176,11 @@ QString Database::validation(const QString &email, const QString &password, cons
                 setLastName(lastNameFromDb);
                 setNumber(number);
                 setUsername(fName);
+                setGender(genderFromDb);
+                setProfileUrl(profileFromDb);
+                setLocation(locationFromDb);
+                setEmail(emailFromDb);
+
                 if(roleFromDb == "Renter") {
                     return "renter";
                 } else if(roleFromDb == "Owner") {
@@ -259,4 +275,56 @@ void Database::setNumber(const QString &newNumber)
         return;
     m_Number = newNumber;
     emit NumberChanged();
+}
+
+const QString &Database::Gender() const
+{
+    return m_Gender;
+}
+
+void Database::setGender(const QString &newGender)
+{
+    if (m_Gender == newGender)
+        return;
+    m_Gender = newGender;
+    emit GenderChanged();
+}
+
+const QString &Database::ProfileUrl() const
+{
+    return m_ProfileUrl;
+}
+
+void Database::setProfileUrl(const QString &newProfileUrl)
+{
+    if (m_ProfileUrl == newProfileUrl)
+        return;
+    m_ProfileUrl = newProfileUrl;
+    emit ProfileUrlChanged();
+}
+
+const QString &Database::Location() const
+{
+    return m_Location;
+}
+
+void Database::setLocation(const QString &newLocation)
+{
+    if (m_Location == newLocation)
+        return;
+    m_Location = newLocation;
+    emit LocationChanged();
+}
+
+const QString &Database::Email() const
+{
+    return m_Email;
+}
+
+void Database::setEmail(const QString &newEmail)
+{
+    if (m_Email == newEmail)
+        return;
+    m_Email = newEmail;
+    emit EmailChanged();
 }

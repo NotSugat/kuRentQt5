@@ -29,6 +29,7 @@ ColumnLayout {
 
     Rectangle {
         id: fieldContainer
+        radius: 4
         anchors {
             top: text1.bottom
             left: parent.left
@@ -36,7 +37,7 @@ ColumnLayout {
         }
         Layout.preferredHeight: 40
         color: textlayout.bgColor
-        radius: 4
+
         TextField {
             id: textField
             anchors {
@@ -50,6 +51,10 @@ ColumnLayout {
             placeholderText: qsTr(textlayout.placeHolderText)
             leftPadding: 12
             readOnly: textlayout.readonly
+
+            background: Rectangle {
+                radius: 4
+            }
         }
         Image {
             id: dropDownImg

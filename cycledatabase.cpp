@@ -74,8 +74,8 @@ bool CycleDatabase::createTable()
                             TABLE_MODEL    " VARCHAR(255)    NOT NULL,"
                             TABLE_STARTDATE     " VARCHAR(255)    NOT NULL,"
                             TABLE_ENDDATE     " VARCHAR(255)    NOT NULL,"
-                            TABLE_PICKTIME     " VARCHAR(255)    NOT NULL,"
-                            TABLE_DROPTIME     " VARCHAR(255)    NOT NULL"
+                            TABLE_PRICE     " VARCHAR(255)    NOT NULL,"
+                            TABLE_CYCLEURL     " VARCHAR(255)    NOT NULL"
                         " )"
                     )){
         qDebug() << "DataBase: error of create " << TABLE1;
@@ -102,9 +102,9 @@ bool CycleDatabase::insertIntoTable(const QVariantList &data)
                                              TABLE_MODEL ", "
                                              TABLE_STARTDATE ", "
                                              TABLE_ENDDATE ", "
-                                             TABLE_PICKTIME ", "
-                                             TABLE_DROPTIME " ) "
-                  "VALUES (:FirstName, :LastName, :Number, :VehicleType, :Model, :StartDate, :EndDate, :PickTime, :DropTime)");
+                                             TABLE_PRICE ", "
+                                             TABLE_CYCLEURL " ) "
+                  "VALUES (:FirstName, :LastName, :Number, :VehicleType, :Model, :StartDate, :EndDate, :Price, :CycleUrl)");
 
     query.bindValue(":FirstName",       data[0].toString());
     query.bindValue(":LastName",       data[1].toString());
@@ -113,8 +113,8 @@ bool CycleDatabase::insertIntoTable(const QVariantList &data)
     query.bindValue(":Model",       data[4].toString());
     query.bindValue(":StartDate",       data[5].toString());
     query.bindValue(":EndDate",       data[6].toString());
-    query.bindValue(":PickTime",       data[7].toString());
-    query.bindValue(":DropTime",       data[8].toString());
+    query.bindValue(":Price",       data[7].toString());
+    query.bindValue(":CycleUrl",       data[8].toString());
 
 
     if(!query.exec()){
@@ -129,7 +129,7 @@ bool CycleDatabase::insertIntoTable(const QVariantList &data)
 }
 
 
-bool CycleDatabase::insertIntoTable(const QString &fname, const QString &lname, const QString &number, const QString &vehicleType, const QString &model, const QString &startDate, const QString &endDate, const QString &pickTime, const QString &dropTime)
+bool CycleDatabase::insertIntoTable(const QString &fname, const QString &lname, const QString &number, const QString &vehicleType, const QString &model, const QString &startDate, const QString &endDate, const QString &price, const QString &url)
 {
     QVariantList data;
     data.append(fname);
@@ -139,8 +139,8 @@ bool CycleDatabase::insertIntoTable(const QString &fname, const QString &lname, 
     data.append(model);
     data.append(startDate);
     data.append(endDate);
-    data.append(pickTime);
-    data.append(dropTime);
+    data.append(price);
+    data.append(url);
 
     if(insertIntoTable(data))
         return true;

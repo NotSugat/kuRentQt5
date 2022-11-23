@@ -10,6 +10,7 @@ ColumnLayout {
     property string placeHolderText: "Pick up Point"
     property color titleColor: "black"
     property color bgColor: "#E5E5E5"
+    property bool passwordMode: false
 
     property alias text: textField.text
 
@@ -24,7 +25,7 @@ ColumnLayout {
 
     TextField {
         id: textField
-
+        echoMode: textlayout.passwordMode ? "Password" : "Normal"
         Layout.preferredHeight: 40
         Layout.preferredWidth: parent.width
         horizontalAlignment: Text.AlignLeft

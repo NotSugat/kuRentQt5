@@ -11,6 +11,7 @@ ColumnLayout {
     property color titleColor: "black"
     property color bgColor: "#E5E5E5"
 
+
     property alias text: textField.text
 
     Text {

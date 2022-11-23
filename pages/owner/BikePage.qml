@@ -8,7 +8,8 @@ import "../../components"
 Rectangle {
     id: bookNowPage
     property color bgColor: "#282c3f"
-    property real topValue: .04
+    property real topValue: .06
+    property real rowGap: .045
     property bool isVisible: false
     color: "#262a33"
 
@@ -33,19 +34,16 @@ Rectangle {
 
     Rectangle {
         id: bookNow
-        height: parent.height * .65
+        height: parent.height * .6
         color: "#353a48"
         width: parent.width * .4
         anchors.centerIn: parent
         radius: 16
         anchors.verticalCenterOffset: 0
         anchors.horizontalCenterOffset: 0
-        // -----------------pick up point -----------------//
-        InputText {
-            id: vehicleType
-            text: "Bike"
-            title: "Vehicle Type"
-            bgColor: "#ffffff"
+        // -----------------Vehicle Details -----------------//
+        RowLayout {
+            id: vehicleDetails
             anchors {
                 top: parent.top
                 left: parent.left
@@ -56,74 +54,145 @@ Rectangle {
 
                 rightMargin: parent.width * .05
             }
-            readonly: true
+            height: parent.height / 7
 
-            titleColor: "#ffffff"
+            spacing: 12
+            InputText {
+                id: vehicleType
+                text: "Bike"
+                title: "Vehicle Type"
+                bgColor: "#ffffff"
+                anchors.right: parent
+                width: parent.width / 2.1
+                readonly: true
+
+                titleColor: "#ffffff"
+            }
+
+            InputText {
+                id: bikeSource
+                anchors.right: parent
+                titleColor: "#ffffff"
+                bgColor: "#ffffff"
+                width: parent.width / 2.1
+                placeHolderText: "https:/example.com/image/"
+                title: "Bike Photo (Url)"
+            }
         }
-        // -----------------pick up location -----------------//
+
+        // -----------------Model and plate Number section -----------------//
         RowLayout {
             id: firstRow
-            spacing: 5
-
             anchors {
-                top: vehicleType.bottom
+                top: vehicleDetails.bottom
                 left: parent.left
                 right: parent.right
-
+                topMargin: parent.height * bookNowPage.rowGap
                 leftMargin: parent.width * 0.05
                 rightMargin: parent.width * 0.05
             }
+            height: parent.height / 7
+
+            spacing: 12
+
             InputText {
                 id: model
+                anchors.right: parent
+                titleColor: "#ffffff"
+                bgColor: "#ffffff"
+                width: parent.width / 2.1
                 title: "Model"
                 placeHolderText: "Bike Model"
-                bgColor: "#ffffff"
-                Layout.preferredWidth: parent.width * 0.3
-                titleColor: "#ffffff"
             }
+
             InputText {
                 id: plateNumber
-                title: "Plate Number"
+                anchors.right: parent
+                titleColor: "#ffffff"
+                bgColor: "#ffffff"
+                width: parent.width / 2.1
                 placeHolderText: "03 BA 001 1234"
-                bgColor: "#ffffff"
-                Layout.preferredWidth: parent.width * 0.3
-                titleColor: "#ffffff"
-            }
-            InputText {
-                id: price
-                title: "Price (NRs)"
-                placeHolderText: "Price in Rs"
-                bgColor: "#ffffff"
-                Layout.preferredWidth: parent.width * 0.3
-                titleColor: "#ffffff"
+                title: "Plate Number"
             }
         }
+        //        RowLayout {
+        //            id: firstRow
+        //            spacing: 5
 
-        Text {
-            id: avDate
-            color: "#ffffff"
-            text: qsTr("Available Date")
-            font.pixelSize: 20
-            font.family: "Verdana"
-            font.styleName: "Regular"
-            font.bold: false
+        //            anchors {
+        //                top: vehicleDetails.bottom
+        //                left: parent.left
+        //                right: parent.right
+
+        //                leftMargin: parent.width * 0.05
+        //                rightMargin: parent.width * 0.05
+        //            }
+        //            InputText {
+        //                id: model
+        //                title: "Model"
+        //                placeHolderText: "Bike Model"
+        //                bgColor: "#ffffff"
+        //                Layout.preferredWidth: parent.width * 0.3
+        //                titleColor: "#ffffff"
+        //            }
+        //            InputText {
+        //                id: plateNumber
+        //                title: "Plate Number"
+        //                placeHolderText: "03 BA 001 1234"
+        //                bgColor: "#ffffff"
+        //                Layout.preferredWidth: parent.width * 0.3
+        //                titleColor: "#ffffff"
+        //            }
+        //        InputText {
+        //                id: plateNumber
+        //                title: "Plate Number"
+        //                placeHolderText: "03 BA 001 1234"
+        //                bgColor: "#ffffff"
+        //                Layout.preferredWidth: parent.width * 0.3
+        //                titleColor: "#ffffff"
+        //            }
+        //        }
+
+        //--------------------condition and price section----------------------------------//
+        RowLayout {
+            id: conditionPriceSection
             anchors {
                 top: firstRow.bottom
                 left: parent.left
                 right: parent.right
-                topMargin: parent.height * bookNowPage.topValue
+                topMargin: parent.height * bookNowPage.rowGap
                 leftMargin: parent.width * 0.05
                 rightMargin: parent.width * 0.05
             }
+            height: parent.height / 7
+
+            spacing: 12
+
+            ConditionDropDown {
+                id: condition
+
+                anchors.right: parent
+                width: parent.width / 2.1
+            }
+            InputText {
+                id: price
+                anchors.right: parent
+                title: "Price per day (NRs)"
+                placeHolderText: "Price in Rs (per day)"
+                bgColor: "#ffffff"
+                width: parent.width / 2.1
+                titleColor: "#ffffff"
+            }
         }
+
         // ---------------Date Input-------------------//
         Rectangle {
             id: dateInput
             anchors {
-                top: avDate.bottom
+                top: conditionPriceSection.bottom
                 left: parent.left
                 right: parent.right
-
+                topMargin: parent.height * bookNowPage.rowGap
                 leftMargin: parent.width * 0.05
                 rightMargin: parent.width * 0.05
             }
@@ -132,7 +201,7 @@ Rectangle {
 
             DateInput {
                 id: dateStart
-                width: parent.width / 2.05
+                width: parent.width / 2.1
                 date: dateStart.textVisible ? startCalender.text : ""
                 titleColor: "#ffffff"
                 bgColor: "#ffffff"
@@ -142,8 +211,9 @@ Rectangle {
 
             DateInput {
                 id: dateEnd
-                anchors.right: parent.right
-                width: parent.width / 2.05
+                anchors.left: dateStart.right
+                anchors.leftMargin: parent.width * 0.04
+                width: parent.width / 2.12
                 date: dateEnd.textVisible ? endCalender.text : ""
                 titleColor: "#ffffff"
                 bgColor: "#ffffff"
@@ -186,65 +256,58 @@ Rectangle {
         //                title: "End Date"
         //            }
         //        }
-        Text {
-            id: avTime
-            color: "#ffffff"
-            text: qsTr("Available Time")
-            font.pixelSize: 20
-            font.family: "Verdana"
-            font.bold: false
+        //        //---------------Time Input-------------------//
+        //        RowLayout {
+        //            id: time
+        //            anchors {
+        //                top: dateInput.bottom
+        //                left: parent.left
+        //                right: parent.right
+        //                topMargin: parent.height * bookNowPage.rowGap
+        //                leftMargin: parent.width * 0.05
+        //                rightMargin: parent.width * 0.05
+        //            }
+        //            height: parent.height / 7
+
+        //            spacing: 12
+
+        //            InputText {
+        //                id: timePick
+        //                anchors.right: parent
+        //                titleColor: "#ffffff"
+        //                bgColor: "#ffffff"
+        //                width: parent.width / 2.1
+        //                title: "Pick Up Time"
+        //                placeHolderText: "HH:MM"
+        //            }
+
+        //            InputText {
+        //                id: timeDrop
+        //                anchors.right: parent
+        //                titleColor: "#ffffff"
+        //                bgColor: "#ffffff"
+        //                width: parent.width / 2.1
+        //                placeHolderText: "HH:MM"
+        //                title: "Drop Off Time"
+        //            }
+        //        }
+        Rectangle {
+            id: margin
             anchors {
+                left: parent.left
+                right: parent.right
                 top: dateInput.bottom
-                left: parent.left
-                right: parent.right
-                topMargin: parent.height * bookNowPage.topValue
-                leftMargin: parent.width * 0.05
-                rightMargin: parent.width * 0.05
             }
+            height: 20
+            color: "transparent"
         }
-        // ---------------Time Input-------------------//
-        RowLayout {
-            id: time
-            anchors {
-                top: avTime.bottom
-                left: parent.left
-                right: parent.right
-
-                leftMargin: parent.width * 0.05
-                rightMargin: parent.width * 0.05
-            }
-            height: parent.height / 7
-
-            spacing: 12
-
-            InputText {
-                id: timePick
-                anchors.right: parent
-                titleColor: "#ffffff"
-                bgColor: "#ffffff"
-                width: parent.width / 2.1
-                title: "Pick Up Time"
-                placeHolderText: "HH:MM"
-            }
-
-            InputText {
-                id: timeDrop
-                anchors.right: parent
-                titleColor: "#ffffff"
-                bgColor: "#ffffff"
-                width: parent.width / 2.1
-                placeHolderText: "HH:MM"
-                title: "Drop Off Time"
-            }
-        }
-
         OwnerCustomButton {
             id: customButton
             anchors {
                 left: parent.left
                 right: parent.right
-                top: time.bottom
-                topMargin: parent.height * bookNowPage.topValue
+                top: margin.bottom
+                topMargin: parent.height * bookNowPage.rowGap
                 //                leftMargin: parent.width * 0.2
                 //                rightMargin: parent.width * 0.2
                 leftMargin: parent.width * 0.05
@@ -262,14 +325,14 @@ Rectangle {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
                 onClicked: if (model.text && dateStart.text && dateEnd.text
-                                   && timePick.text && timeDrop.text) {
+                                   && bikeSource.text) {
                                vehicleDatabase.insertIntoTable(
                                            database.FirstName,
                                            database.LastName, database.Number,
                                            vehicleType.text, model.text,
                                            plateNumber.text, price.text,
                                            dateStart.text, dateEnd.text,
-                                           timePick.text, timeDrop.text)
+                                           bikeSource.text, condition.text)
                                goodMessageDialog.open()
                            } else {
                                messageDialog.open()
@@ -307,7 +370,7 @@ Rectangle {
                 top: customButton.bottom
                 left: parent.left
                 right: parent.right
-                topMargin: 5
+                topMargin: parent.height * 0.02
             }
             horizontalAlignment: Text.AlignHCenter
 
