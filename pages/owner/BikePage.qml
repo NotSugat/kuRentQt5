@@ -57,16 +57,11 @@ Rectangle {
             height: parent.height / 7
 
             spacing: 12
-            InputText {
+            DropDownVehicle {
                 id: vehicleType
-                text: "Bike"
-                title: "Vehicle Type"
-                bgColor: "#ffffff"
+
                 anchors.right: parent
                 width: parent.width / 2.1
-                readonly: true
-
-                titleColor: "#ffffff"
             }
 
             InputText {
@@ -292,7 +287,7 @@ Rectangle {
         //            }
         //        }
         Rectangle {
-            id: margin
+            id: marginRect
             anchors {
                 left: parent.left
                 right: parent.right
@@ -306,7 +301,7 @@ Rectangle {
             anchors {
                 left: parent.left
                 right: parent.right
-                top: margin.bottom
+                top: marginRect.bottom
                 topMargin: parent.height * bookNowPage.rowGap
                 //                leftMargin: parent.width * 0.2
                 //                rightMargin: parent.width * 0.2
@@ -388,7 +383,7 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;height:850;width:640}
+    D{i:0;autoSize:true;height:480;width:640}
 }
 ##^##*/
 

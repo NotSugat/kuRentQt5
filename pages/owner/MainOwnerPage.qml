@@ -5,13 +5,13 @@ import "../../components"
 import "components"
 import QtQuick.Layouts 1.3
 
-Window {
+Item {
     id: mainWindow
-    width: 1920
-    height: 1080
-    visible: true
-    title: qsTr("KuRent Move Freely")
-
+    //    width: 1920
+    //    height: 1080
+    //    visible: true
+    //    title: qsTr("KuRent Move Freely")
+    anchors.fill: parent
     Loader {
         id: contentLoader
         anchors.fill: parent

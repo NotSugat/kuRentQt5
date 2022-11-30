@@ -123,5 +123,8 @@
         <file>images/stockImages/bike/bikeNumber.png</file>
         <file>pages/renter/bookNowPages/components/RowText.qml</file>
         <file>pages/renter/components/RowInput.qml</file>
+        <file>test2.qml</file>
+        <file>pages/login/components/LoginNavBar.qml</file>
+        <file>pages/owner/components/DropDownVehicle.qml</file>
     </qresource>
 </RCC>

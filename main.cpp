@@ -1,9 +1,15 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QtQml>
+
 #include "auth.h"
 #include "vehicledatabase.h"
 #include "cycledatabase.h"
+#include "bikemodel.h"
+#include "sqlbikemodel.h"
 
 
 int main(int argc, char *argv[])
@@ -23,12 +29,16 @@ int main(int argc, char *argv[])
     CycleDatabase cycleDatabase;
     cycleDatabase.connectToCycleDataBase();
 
+     BikeModel *model = new BikeModel();
+
+    qmlRegisterType<SqlBikeModel>("io.qt.examples.bikemodel", 1, 0, "SqlBikeModel");
 
 
 
+    engine.rootContext()->setContextProperty("_model", model);
     engine.rootContext()->setContextProperty("database", &database);
     engine.rootContext()->setContextProperty("vehicleDatabase", &vehicleDatabase);
-     engine.rootContext()->setContextProperty("cycleDatabase", &cycleDatabase);
+    engine.rootContext()->setContextProperty("cycleDatabase", &cycleDatabase);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
 

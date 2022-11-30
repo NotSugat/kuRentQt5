@@ -9,8 +9,10 @@ CONFIG += c++11
 
 SOURCES += \
         auth.cpp \
+        bikemodel.cpp \
         cycledatabase.cpp \
         main.cpp \
+        sqlbikemodel.cpp \
         vehicledatabase.cpp
 
 RESOURCES += qml.qrc
@@ -28,5 +30,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     auth.h \
+    bikemodel.h \
     cycledatabase.h \
+    sqlbikemodel.h \
     vehicledatabase.h

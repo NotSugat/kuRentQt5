@@ -144,6 +144,10 @@ Rectangle {
                             Text {
                                 id: prevMonth
                                 text: qsTr("<")
+                                anchors {
+                                    horizontalCenter: parent.horizontalCenter
+                                    verticalCenter: parent.verticalCenter
+                                }
                             }
                         }
                         background: Rectangle {
@@ -158,13 +162,23 @@ Rectangle {
 
                     RoundButton {
                         Material.background: 'transparent'
+                        Layout.preferredHeight: 40
+                        Layout.preferredWidth: 40
                         contentItem: Rectangle {
 
                             color: 'transparent'
                             Text {
                                 id: nextMonth
                                 text: qsTr(">")
+                                anchors {
+                                    horizontalCenter: parent.horizontalCenter
+                                    verticalCenter: parent.verticalCenter
+                                }
                             }
+                        }
+                        background: Rectangle {
+                            color: root.btnColor
+                            radius: 40
                         }
                         onClicked: {
                             set_month(month + 1)

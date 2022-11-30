@@ -6,21 +6,33 @@ import QtQuick.Dialogs 1.1
 import "components"
 
 Item {
+    anchors.fill: parent
 
+    //        SignUpNavbar{id: loginText}
     Rectangle {
         id: mainArea
-        width: parent.width * .45
-        height: parent.height
-        color: "#ffffff"
+        width: parent.width * .3
+        height: parent.height * .9
+        color: "#ececec"
+        radius: 16
+
+        anchors {
+
+            verticalCenter: parent.verticalCenter
+            horizontalCenter: parent.horizontalCenter
+        }
+        LoginNavBar {
+            id: loginTitle
+        }
 
         Image {
             id: loginLogo
 
-            height: parent.height / 3
-            anchors.top: parent.top
+            height: parent.height / 2
+            anchors.top: loginTitle.bottom
             source: "qrc:/images/logo.png"
             fillMode: Image.PreserveAspectFit
-            anchors.topMargin: 30
+
             anchors.left: parent.left
             anchors.leftMargin: 50
             anchors.right: parent.right
@@ -35,7 +47,7 @@ Item {
             anchors.right: parent.right
             anchors.rightMargin: 30
             anchors.top: loginLogo.bottom
-            anchors.topMargin: 50
+            anchors.topMargin: 20
             color: "transparent"
 
             TextField {
@@ -48,14 +60,14 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 font.pointSize: 12
                 placeholderText: "User Name"
-                color: "black"
+                color: "#444444"
 
                 background: Rectangle {
                     id: borderBottom
                     width: parent.width
                     height: 2
                     anchors.bottom: parent.bottom
-                    color: "black"
+                    color: "#696969"
                 }
             }
             TextField {
@@ -69,7 +81,7 @@ Item {
                 font.pointSize: 12
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                color: "black"
+                color: "#444444"
                 echoMode: TextInput.Password
 
                 background: Rectangle {
@@ -77,7 +89,7 @@ Item {
                     width: parent.width
                     height: 2
                     anchors.bottom: parent.bottom
-                    color: "black"
+                    color: "#696969"
                 }
             }
             //----------------------Login Btn --------------------------------------------//
@@ -86,7 +98,7 @@ Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.top: userPassword.bottom
-                anchors.topMargin: 30
+                anchors.topMargin: parent.height * 0.1
                 height: parent.height / 8
                 flat: true
 
@@ -154,7 +166,7 @@ Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.top: loginBtn.bottom
-                anchors.topMargin: 30
+                anchors.topMargin: 20
 
                 MouseArea {
                     id: signUpBtn
@@ -167,3 +179,10 @@ Item {
         }
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;formeditorZoom:0.66;height:480;width:640}
+}
+##^##*/
+

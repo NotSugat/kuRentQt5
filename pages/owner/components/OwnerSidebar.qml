@@ -109,7 +109,7 @@ Rectangle {
             onClicked: {
                 btnHome.isActiveMenu = false
                 btnSettings.isActiveMenu = true
-                ownerStackView.push("qrc:/pages/owner/HomePage.qml")
+                mainStackView.pop("qrc:/main.qml")
             }
         }
     }

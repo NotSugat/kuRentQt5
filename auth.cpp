@@ -38,7 +38,7 @@ bool Database::openDataBase()
     db.setHostName(DATABASE_HOSTNAME);
     db.setDatabaseName("/home/crux/qtProject/kuRentQt5/database/" DATABASE_NAME);
     if(db.open()){
-        qDebug() << "connected to db";
+        qDebug() << "connected to auth db";
         return true;
     } else {
         qDebug() << "not connected";

@@ -305,7 +305,7 @@ Item {
                 top: alreadyText.bottom
                 topMargin: 12
             }
-            text: "Login In"
+            text: "Login"
             horizontalAlignment: Text.AlignHCenter
 
             MouseArea {

@@ -31,7 +31,7 @@ RowLayout {
     Text {
         id: ownerName
         anchors {
-            left: image.right
+            left: circle.right
             leftMargin: 5
         }
 
