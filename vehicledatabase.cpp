@@ -67,6 +67,7 @@ bool VehicleDatabase::createTable()
                             TABLE_STARTDATE     " VARCHAR(255)    NOT NULL,"
                             TABLE_ENDDATE     " VARCHAR(255)    NOT NULL,"
                             TABLE_BIKEURL     " VARCHAR(255)    NOT NULL,"
+                            TABLE_AVAILABLE     " VARCHAR(255)    NOT NULL,"
                             TABLE_CONDITION    " VARCHAR(255)    NOT NULL"
                         " )"
                     )){
@@ -98,8 +99,9 @@ bool VehicleDatabase::insertIntoTable(const QVariantList &data)
                                              TABLE_STARTDATE ", "
                                              TABLE_ENDDATE ", "
                                              TABLE_BIKEURL ", "
+                                             TABLE_AVAILABLE ", "
                                              TABLE_CONDITION " ) "
-                  "VALUES (:FirstName, :LastName, :Number, :VehicleType, :Model, :PlateNumber, :Price, :StartDate, :EndDate, :BikeUrl, :Condition)");
+                  "VALUES (:FirstName, :LastName, :Number, :VehicleType, :Model, :PlateNumber, :Price, :StartDate, :EndDate, :BikeUrl, :Available , :Condition)");
 
     query.bindValue(":FirstName",       data[0].toString());
     query.bindValue(":LastName",       data[1].toString());
@@ -111,7 +113,8 @@ bool VehicleDatabase::insertIntoTable(const QVariantList &data)
     query.bindValue(":StartDate",       data[7].toString());
     query.bindValue(":EndDate",       data[8].toString());
     query.bindValue(":BikeUrl",       data[9].toString());
-    query.bindValue(":Condition",       data[10].toString());
+    query.bindValue(":Available",       data[10].toString());
+    query.bindValue(":Condition",       data[11].toString());
 
 
     if(!query.exec()){
@@ -129,6 +132,8 @@ bool VehicleDatabase::insertIntoTable(const QVariantList &data)
 bool VehicleDatabase::insertIntoTable(const QString &fname, const QString &lname, const QString &number, const QString &vehicleType, const QString &model,const QString &plateNumber, const QString &price,const QString &startDate, const QString &endDate, const QString &url, const QString &condition)
 {
     QVariantList data;
+    QString isAvailable = "Available";
+
     data.append(fname);
     data.append(lname);
     data.append(number);
@@ -139,6 +144,7 @@ bool VehicleDatabase::insertIntoTable(const QString &fname, const QString &lname
     data.append(startDate);
     data.append(endDate);
     data.append(url);
+    data.append(isAvailable);
     data.append(condition);
 
     if(insertIntoTable(data))

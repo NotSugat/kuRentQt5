@@ -13,7 +13,7 @@ Rectangle {
         top: parent.top
         topMargin: 0
     }
-
+    color: "transparent"
     width: parent.width
     height: parent.height / 8
 

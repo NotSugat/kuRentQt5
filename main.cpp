@@ -10,6 +10,7 @@
 #include "cycledatabase.h"
 #include "bikemodel.h"
 #include "sqlbikemodel.h"
+#include "currentdata.h"
 
 
 int main(int argc, char *argv[])
@@ -28,6 +29,7 @@ int main(int argc, char *argv[])
     vehicleDatabase.connectToVehicleDataBase();
     CycleDatabase cycleDatabase;
     cycleDatabase.connectToCycleDataBase();
+    CurrentData currentData;
 
      BikeModel *model = new BikeModel();
 
@@ -39,6 +41,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("database", &database);
     engine.rootContext()->setContextProperty("vehicleDatabase", &vehicleDatabase);
     engine.rootContext()->setContextProperty("cycleDatabase", &cycleDatabase);
+    engine.rootContext()->setContextProperty("_currentData", &currentData);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
 

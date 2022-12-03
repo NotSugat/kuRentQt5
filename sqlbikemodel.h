@@ -21,6 +21,7 @@ public:
         StartDateRole,
         EndDateRole,
         UrlRole,
+        Available,
         ConditionRole
     };
 

@@ -9,8 +9,8 @@ Rectangle {
     property string source: "../../../images/motorcycle.png"
     property string page: "../../../images/motorcycle.png"
 
-    property color beforeHovered: "black"
-    property color afterHovered: "white"
+    property color beforeHovered: "#557"
+    property color afterHovered: "#668"
     property string text: "Bicycle"
     property int customHeight: 200
     property int customWidth: 200
@@ -43,8 +43,8 @@ Rectangle {
             horizontalCenter: card.horizontalCenter
         }
         text: card.text
-        color: "white"
-        font.pixelSize: 20
+        color: "#111"
+        font.pixelSize: 24
         font.styleName: "Medium"
     }
 

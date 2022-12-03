@@ -43,7 +43,7 @@ Rectangle {
             id: choose
             text: qsTr("Choose your Vehicle type")
             font.weight: Font.Normal
-            font.pixelSize: 16
+            font.pixelSize: 20
             anchors {
                 top: heading.bottom
                 topMargin: 20
@@ -51,7 +51,7 @@ Rectangle {
                 right: parent.right
             }
             horizontalAlignment: Text.AlignHCenter
-            color: "white"
+            color: "#aaaaaa"
         }
         RowLayout {
             id: cardContainer
@@ -78,7 +78,7 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;formeditorZoom:0.5;height:480;width:640}
+    D{i:0;autoSize:true;formeditorZoom:1.1;height:480;width:640}
 }
 ##^##*/
 

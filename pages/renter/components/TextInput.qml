@@ -10,11 +10,12 @@ ColumnLayout {
     property string placeHolderText: "Pick up Point"
     property color titleColor: "white"
     property color bgColor: "white"
+    property int fontSize: 12
 
     Text {
         id: text1
         text: qsTr(textlayout.title)
-        font.pixelSize: 16
+        font.pixelSize: fontSize
         color: textlayout.titleColor
     }
 

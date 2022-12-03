@@ -47,6 +47,7 @@ Rectangle {
 
             CardImproved {
                 id: cardImproved1
+                textColor: "#222222"
                 circleColor: "#446e48"
                 hoverColor: "#34495e"
                 rectangleColor: "#4dbca1"

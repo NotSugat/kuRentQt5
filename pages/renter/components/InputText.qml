@@ -10,7 +10,8 @@ ColumnLayout {
     property string placeHolderText: "Pick up Point"
     property color titleColor: "black"
     property color bgColor: "#E5E5E5"
-
+    property bool canRead: false
+    property int fontSize: 16
 
     property alias text: textField.text
 
@@ -19,7 +20,7 @@ ColumnLayout {
         text: qsTr(textlayout.title)
         padding: 12
         leftPadding: 0
-        font.pixelSize: 16
+        font.pixelSize: fontSize
         color: textlayout.titleColor
     }
 
@@ -29,8 +30,10 @@ ColumnLayout {
         Layout.preferredHeight: 40
         Layout.preferredWidth: parent.width
         horizontalAlignment: Text.AlignLeft
+        font.pixelSize: fontSize
         placeholderText: qsTr(textlayout.placeHolderText)
         leftPadding: 12
+        readOnly: ReadOnly
 
         background: Rectangle {
             id: borderBottom

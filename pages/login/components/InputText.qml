@@ -8,8 +8,8 @@ ColumnLayout {
     width: parent.width
     property string title: "Pick up Point"
     property string placeHolderText: "Pick up Point"
-    property color titleColor: "black"
-    property color bgColor: "#E5E5E5"
+    property color titleColor: "#bbb"
+    property color bgColor: "#dddde4"
     property bool passwordMode: false
 
     property alias text: textField.text

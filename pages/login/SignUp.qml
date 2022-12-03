@@ -5,13 +5,17 @@ import QtQuick.Window 2.3
 import "components"
 import QtQuick.Dialogs 1.1
 
-Item {
+Rectangle {
+    anchors.fill: parent
+    color: "#262a33"
 
     Rectangle {
         id: loginContainer
         width: parent.width / 2
         height: parent.height / 1.1
         anchors.centerIn: parent
+        radius: 16
+        color: "#353a48"
 
         SignUpNavbar {
             id: header
@@ -154,16 +158,17 @@ Item {
             }
         }
 
-        // Agreement-------------------------------------------------
+        // Term and Agreement-------------------------------------------------
         Rectangle {
             id: agreementContainer
+            color: "transparent"
 
             anchors {
                 top: phoneLocation.bottom
                 left: parent.left
                 right: parent.right
                 topMargin: 5
-                leftMargin: parent.width / 6
+                leftMargin: parent.width * 0.05
                 rightMargin: parent.width / 10
             }
 
@@ -189,12 +194,13 @@ Item {
 
                     background: Rectangle {
                         height: parent.height
+                        color: "transparent"
 
                         border {
                             color: "transparent"
                         }
                     }
-                    color: "gray"
+                    color: "#bbb"
 
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -279,44 +285,47 @@ Item {
             color: "purple"
             //                    anchors.centerIn: parent
         }
-
-        Text {
-            id: alreadyText
-            text: "Already have An Account?"
+        Rectangle {
+            id: loginRow
             anchors {
                 top: borderBottom.bottom
                 left: parent.left
                 right: parent.right
                 topMargin: 12
             }
-            horizontalAlignment: Text.AlignHCenter
-        }
-
-        //----------------------login btn-----------------------//
-        Text {
-            id: loginText
-
-            property color hoverColor: "#00ff49"
-            property color textColor: "green"
-
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: alreadyText.bottom
-                topMargin: 12
-            }
-            text: "Login"
-            horizontalAlignment: Text.AlignHCenter
-
-            MouseArea {
-                id: text3Hover
-                anchors.fill: parent
-                hoverEnabled: true
-                cursorShape: Qt.PointingHandCursor
-                onClicked: mainStackView.push("Login.qml")
+            Text {
+                id: alreadyText
+                anchors {
+                    left: parent.left
+                    leftMargin: parent.width * 0.37
+                }
+                color: "#bbb"
+                text: "Already have An Account?"
             }
 
-            color: text3Hover.containsMouse ? loginText.hoverColor : loginText.textColor
+            //----------------------login btn-----------------------//
+            Text {
+                id: loginText
+
+                property color hoverColor: "#d08"
+                property color textColor: "#0d0"
+
+                text: "Login"
+                anchors {
+                    left: alreadyText.right
+                    leftMargin: 8
+                }
+
+                MouseArea {
+                    id: text3Hover
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: mainStackView.push("Login.qml")
+                }
+
+                color: text3Hover.containsMouse ? loginText.hoverColor : loginText.textColor
+            }
         }
     }
 }

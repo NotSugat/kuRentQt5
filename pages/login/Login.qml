@@ -5,15 +5,16 @@ import QtQuick.Layouts 1.12
 import QtQuick.Dialogs 1.1
 import "components"
 
-Item {
+Rectangle {
     anchors.fill: parent
+    color: "#262a33"
 
     //        SignUpNavbar{id: loginText}
     Rectangle {
         id: mainArea
         width: parent.width * .3
         height: parent.height * .9
-        color: "#ececec"
+        color: "#353a48"
         radius: 16
 
         anchors {
@@ -30,7 +31,7 @@ Item {
 
             height: parent.height / 2
             anchors.top: loginTitle.bottom
-            source: "qrc:/images/logo.png"
+            source: "qrc:/images/logoGreen.png"
             fillMode: Image.PreserveAspectFit
 
             anchors.left: parent.left
@@ -60,14 +61,14 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 font.pointSize: 12
                 placeholderText: "User Name"
-                color: "#444444"
+                color: "#bbb"
 
                 background: Rectangle {
                     id: borderBottom
                     width: parent.width
                     height: 2
                     anchors.bottom: parent.bottom
-                    color: "#696969"
+                    color: "#778"
                 }
             }
             TextField {
@@ -81,7 +82,7 @@ Item {
                 font.pointSize: 12
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                color: "#444444"
+                color: "#bbb"
                 echoMode: TextInput.Password
 
                 background: Rectangle {
@@ -89,7 +90,7 @@ Item {
                     width: parent.width
                     height: 2
                     anchors.bottom: parent.bottom
-                    color: "#696969"
+                    color: "#778"
                 }
             }
             //----------------------Login Btn --------------------------------------------//
@@ -106,7 +107,7 @@ Item {
                     id: loginBtnBg
                     width: parent.width
                     height: parent.height
-                    color: loginBtn.hovered ? "black" : "purple"
+                    color: loginBtn.hovered ? "#c26db4" : "purple"
                     border.color: "black"
 
                     radius: 20
@@ -174,7 +175,7 @@ Item {
                     hoverEnabled: true
                     onClicked: mainStackView.push("SignUp.qml")
                 }
-                color: signUpBtn.containsMouse ? "green" : "black"
+                color: signUpBtn.containsMouse ? "#adc9ed" : "#fedafe"
             }
         }
     }

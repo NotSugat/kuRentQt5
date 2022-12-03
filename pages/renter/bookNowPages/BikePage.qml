@@ -9,7 +9,7 @@ import io.qt.examples.bikemodel 1.0
 Rectangle {
     id: content
     property color lighColor: "gray"
-    color: "#282c34"
+    color: "#262a33" //262a33
     anchors.left: sidebar.right
     anchors.right: parent.right
     anchors.top: parent.top
@@ -35,7 +35,6 @@ Rectangle {
             font.pixelSize: content.height * 0.03
             font.bold: true
             color: "white"
-            z: 100
         }
     }
 
@@ -49,11 +48,12 @@ Rectangle {
             bottom: parent.bottom
         }
         spacing: parent.height * 0.02
-        z: 10
+
         model: SqlBikeModel {}
         delegate: BikeContainer {
 
             id: test1
+            bikeBg: "#467"
             anchors {
                 horizontalCenter: parent.horizontalCenter
             }
@@ -67,7 +67,7 @@ Rectangle {
             price: model.Price
             conditionText: model.Condition
 
-            width: bikeList.width * .8
+            width: bikeList.width * 0.5
             height: bikeList.height / 4
         }
     }

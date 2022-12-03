@@ -30,15 +30,15 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         font.bold: true
-        font.pointSize: 20
-        color: "Purple"
+        font.pointSize: 28
+        color: "#fedafe"
         readOnly: true
         background: Rectangle {
             id: borderBottom
             width: parent.width
             height: 2
             anchors.bottom: parent.bottom
-            color: "purple"
+            color: "transparent"
             //                    anchors.centerIn: parent
         }
     }

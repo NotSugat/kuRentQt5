@@ -90,7 +90,7 @@ Rectangle {
                 top: btnRent.bottom
             }
             text: qsTr("Account")
-            btnIconSource: "qrc:/images/report.png"
+            btnIconSource: "qrc:/images/userWhite.png"
             isActiveMenu: accountActive
             onClicked: {
                 btnAccount.isActiveMenu = true

@@ -6,7 +6,8 @@ import "../../components"
 
 Rectangle {
     id: container
-    color: "white"
+
+    color: bikeBg //"#252e4c"
     radius: 4
 
     property string bikeUrl: "qrc:/images/stockImages/bike/pulsar150.jpg"
@@ -17,6 +18,7 @@ Rectangle {
     property string endDate: "2022/02/07"
     property string price: "200"
     property string conditionText: "Perfect"
+    property color bikeBg: "#557"
 
     Image {
         id: bikeImage
@@ -24,13 +26,14 @@ Rectangle {
             top: parent.top
             left: parent.left
             bottom: parent.bottom
-            topMargin: 10
-            leftMargin: 10
-            bottomMargin: 10
+            topMargin: parent.height * 0.1
+            leftMargin: parent.height * 0.1
+            rightMargin: parent.height * 0.1
+            bottomMargin: parent.height * 0.1
         }
 
         source: bikeUrl
-        width: parent.width * 0.2
+        width: parent.width * 0.3
         height: parent.height
         fillMode: Image.PreserveAspectCrop
     }
@@ -45,32 +48,37 @@ Rectangle {
             bottom: parent.bottom
             leftMargin: 12
         }
+        color: bikeBg
         radius: 4
 
         Text {
             id: bikeModel
             text: modelName
+            font.pixelSize: parent.height * 0.15
             anchors {
                 top: parent.top
                 topMargin: 12
             }
-
+            color: "#fdfffd"
             font.bold: true
             padding: 12
         }
         ImageTextField {
             id: username
             name: fullName
+            colorName: "#222222"
             anchors {
                 top: bikeModel.bottom
                 left: parent.left
                 leftMargin: 12
             }
+            heightPx: parent.height * 0.1
         }
         ImageTextField {
             id: plateNumber
             imgUrl: "qrc:/images/stockImages/bike/bikeNumber.png"
             name: plateNumberName
+            colorName: "#111111"
             imgHeight: 25
             imgWidth: 80
             anchors {
@@ -79,6 +87,7 @@ Rectangle {
                 left: parent.left
                 leftMargin: 12
             }
+            heightPx: parent.height * 0.07
         }
 
         Condition {
@@ -90,23 +99,25 @@ Rectangle {
                 leftMargin: 12
             }
             condition: conditionText
+            heightPx: parent.height * 0.07
         }
 
         RowInput {
             id: dateStart
-            leftTextColor: "black"
-            rightTextColor: "#000000"
+            leftTextColor: "#bdb6b6"
+            rightTextColor: "#f8f8f8"
             leftText: "Start Date"
             rightText: startDate
             anchors {
                 bottom: parent.bottom
                 bottomMargin: 10
             }
+            fontSize: parent.height * 0.07
         }
         RowInput {
             id: dateEnd
-            leftTextColor: "black"
-            rightTextColor: "#000000"
+            leftTextColor: "#bfb9b9"
+            rightTextColor: "#f8f8f8"
             leftText: "End Date"
             rightText: endDate
             anchors {
@@ -115,31 +126,36 @@ Rectangle {
                 bottom: parent.bottom
                 bottomMargin: 10
             }
+            fontSize: parent.height * 0.07
         }
 
         Text {
             id: prices
-            text: "Rs " + price
-            font.pixelSize: 42
+            color: "#000000"
+            text: "Rs 200"
+            font.pixelSize: parent.height * .15
             anchors {
                 right: parent.right
-                rightMargin: 50
+                rightMargin: parent.width * 0.12
+                top: parent.top
+                topMargin: parent.height * 0.3
             }
         }
         Text {
             id: perDayText
             text: "/Day"
+            font.pixelSize: parent.height * 0.09
             anchors {
                 left: prices.right
                 leftMargin: 5
                 bottom: prices.bottom
             }
-            color: "gray"
+            color: "#111111"
         }
-        CustomButton {
+        BikeCustomButton {
             id: bookNow
-            height: 50
-            width: 200
+            height: parent.height * 0.2
+            width: parent.width * 0.25
             colorMouseOver: "#0b58a5"
             colorDefault: "#454575"
             title: "Book Now"
@@ -156,7 +172,7 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;height:480;width:640}
+    D{i:0;autoSize:true;formeditorZoom:0.9;height:480;width:640}
 }
 ##^##*/
 

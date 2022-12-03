@@ -6,11 +6,13 @@ import QtQuick.Layouts 1.3
 RowLayout {
     id: field
 
-    property string imgUrl: "qrc:/images/user.png"
+    property string imgUrl: "qrc:/images/userGreen.png"
     property string name: "value"
     property int imgHeight: 20
     property int imgWidth: 20
     property int leftValue: 12
+    property int heightPx: 20
+    property color colorName: "white"
 
     Image {
         id: image
@@ -27,14 +29,14 @@ RowLayout {
         }
 
         text: name
-        font.pixelSize: 12
-        color: lighColor
+        font.pixelSize: heightPx
+        color: colorName
     }
 }
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;height:480;width:640}
+    D{i:0;autoSize:true;formeditorZoom:0.75;height:480;width:640}
 }
 ##^##*/
 

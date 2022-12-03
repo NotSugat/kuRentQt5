@@ -7,8 +7,8 @@ ColumnLayout {
     spacing: 0
     width: parent.width
 
-    property color titleColor: "black"
-    property color bgColor: "#E5E5E5"
+    property color titleColor: "#bbb"
+    property color bgColor: "#dddde4"
     property alias text: menuBar.currentText
 
     Text {
@@ -17,7 +17,7 @@ ColumnLayout {
         padding: 12
         leftPadding: 0
         font.pixelSize: 16
-        color: textlayout.titleColor
+        color: titleColor
     }
     ComboBox {
         id: menuBar
@@ -25,7 +25,7 @@ ColumnLayout {
         model: ["Male", "Female", "Others"]
 
         background: Rectangle {
-            color: menuBarLayout.bgColor
+            color: bgColor
 
             radius: 4
         }

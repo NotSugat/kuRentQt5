@@ -126,5 +126,12 @@
         <file>test2.qml</file>
         <file>pages/login/components/LoginNavBar.qml</file>
         <file>pages/owner/components/DropDownVehicle.qml</file>
+        <file>pages/renter/bookNowPages/components/BikeCustomButton.qml</file>
+        <file>images/userGreen.png</file>
+        <file>pages/renter/bookNowPages/FormPage.qml</file>
+        <file>images/logoGreen.png</file>
+        <file>pages/renter/bookNowPages/components/OwnerDetail.qml</file>
+        <file>pages/renter/components/RowInputField.qml</file>
+        <file>pages/renter/components/PriceField.qml</file>
     </qresource>
 </RCC>

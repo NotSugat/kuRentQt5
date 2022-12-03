@@ -11,14 +11,15 @@ RowLayout {
     property int leftValue: 12
 
     property var dynamicColor: if (condition === "Perfect") {
-                                   "green"
+                                   "#3f3"
                                } else if (condition === "Good") {
                                    "lightgreen"
                                } else if (condition === "Fine") {
                                    "#dafeda"
                                } else {
-                                   "yellow"
+                                   "#f55"
                                }
+    property int heightPx: 20
 
     Rectangle {
         id: circle
@@ -36,8 +37,8 @@ RowLayout {
         }
 
         text: condition
-        font.pixelSize: 12
-        color: lighColor
+        font.pixelSize: heightPx
+        color: dynamicColor
     }
 }
 

@@ -10,6 +10,7 @@ CONFIG += c++11
 SOURCES += \
         auth.cpp \
         bikemodel.cpp \
+        currentdata.cpp \
         cycledatabase.cpp \
         main.cpp \
         sqlbikemodel.cpp \
@@ -31,6 +32,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     auth.h \
     bikemodel.h \
+    currentdata.h \
     cycledatabase.h \
     sqlbikemodel.h \
     vehicledatabase.h

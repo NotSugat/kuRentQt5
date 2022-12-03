@@ -35,6 +35,7 @@ QHash<int, QByteArray> SqlBikeModel::roleNames() const
     roles[StartDateRole]= "StartDate";
     roles[EndDateRole] = "EndDate";
     roles[UrlRole] = "Url";
+    roles[Available] = "Available";
     roles[ConditionRole] = "Condition";
 
     return roles;

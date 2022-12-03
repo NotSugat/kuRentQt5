@@ -142,17 +142,20 @@ Rectangle {
                         left: profileContainer.right
                         right: parent.right
                         top: parent.top
-                        topMargin: parent.width * 0.03
 
+                        //                        topMargin: parent.width * 0.03
                         bottom: parent.bottom
                     }
                     color: "transparent"
+
                     //-------------------full name------------//
                     RowInput {
                         id: name
                         anchors {
-                            top: fullName.bottom
-                            horizontalCenter: parent.horizontalCenter
+                            top: parent.top
+                            topMargin: parent.height * 0.15
+                            left: parent.left
+                            leftMargin: parent.height * 0.05
                         }
                         leftText: "Name"
                         rightText: database.FirstName + " " + database.LastName
@@ -161,7 +164,8 @@ Rectangle {
                         id: email
                         anchors {
                             top: name.bottom
-                            horizontalCenter: parent.horizontalCenter
+                            left: parent.left
+                            leftMargin: parent.height * 0.05
                         }
                         leftText: "Email"
                         rightText: database.Email
@@ -172,7 +176,8 @@ Rectangle {
                         id: phoneNumber
                         anchors {
                             top: email.bottom
-                            horizontalCenter: parent.horizontalCenter
+                            left: parent.left
+                            leftMargin: parent.height * 0.05
                         }
                         leftText: "Phone"
                         rightText: database.Number
@@ -182,7 +187,8 @@ Rectangle {
                         id: gender
                         anchors {
                             top: phoneNumber.bottom
-                            horizontalCenter: parent.horizontalCenter
+                            left: parent.left
+                            leftMargin: parent.height * 0.05
                         }
                         leftText: "Gender"
                         rightText: database.Gender
@@ -192,7 +198,8 @@ Rectangle {
                         id: location
                         anchors {
                             top: gender.bottom
-                            horizontalCenter: parent.horizontalCenter
+                            left: parent.left
+                            leftMargin: parent.height * 0.05
                         }
                         leftText: "Address"
                         rightText: database.Location
@@ -205,7 +212,7 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;height:480;width:640}
+    D{i:0;autoSize:true;formeditorZoom:1.75;height:480;width:640}
 }
 ##^##*/
 

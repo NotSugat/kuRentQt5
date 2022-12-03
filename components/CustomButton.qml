@@ -36,6 +36,7 @@ Button {
         color: internal.dynamicColor
         radius: 4
     }
+
 }
 /*##^##
 Designer {
