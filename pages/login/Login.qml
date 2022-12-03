@@ -138,7 +138,8 @@ Rectangle {
                                           userName.text, userPassword.text,
                                           userName.text) === "admin") {
 
-                               mainStackView.push("qrc:/adminPanel.qml")
+                               mainStackView.push(
+                                           "qrc:/pages/admin/adminPanel.qml")
                            } else {
                                messageDialog.open()
                            }

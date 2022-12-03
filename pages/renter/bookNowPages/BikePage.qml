@@ -67,6 +67,7 @@ Rectangle {
             price: model.Price
             conditionText: model.Condition
 
+
             width: bikeList.width * 0.5
             height: bikeList.height / 4
         }

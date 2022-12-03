@@ -10,6 +10,7 @@ RowLayout {
     property color rightTextColor: "white"
     property color leftTextColor: "#d8d8d8"
     property int fontSize: 12
+    property alias text: textRight.text
 
     Text {
         id: textLeft

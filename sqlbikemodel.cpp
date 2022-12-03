@@ -28,6 +28,9 @@ QHash<int, QByteArray> SqlBikeModel::roleNames() const
     roles[FNameRole] = "Fname";
     roles[LNameRole] = "Lname";
     roles[PhoneNumberRole] = "PhoneNumber";
+    roles[GenderRole] = "Gender";
+    roles[AddressRole] = "Address";
+    roles[OwnerUrlRole] = "OwnerUrl";
     roles[VehicleTypeRole] = "VehicleType";
     roles[ModelRole] = "BikeModel";
     roles[PlateNumberRole] = "PlateNumber";

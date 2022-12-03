@@ -322,12 +322,13 @@ Rectangle {
                 onClicked: if (model.text && dateStart.text && dateEnd.text
                                    && bikeSource.text) {
                                vehicleDatabase.insertIntoTable(
-                                           database.FirstName,
-                                           database.LastName, database.Number,
-                                           vehicleType.text, model.text,
-                                           plateNumber.text, price.text,
-                                           dateStart.text, dateEnd.text,
-                                           bikeSource.text, condition.text)
+                                           database.FirstName, database.LastName,
+                                           database.Number, vehicleType.text,
+                                           model.text, plateNumber.text,
+                                           price.text, dateStart.text,
+                                           dateEnd.text, bikeSource.text,
+                                           condition.text, database.Gender,
+                                           database.Location, database.ProfileUrl)
                                goodMessageDialog.open()
                            } else {
                                messageDialog.open()

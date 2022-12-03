@@ -1,6 +1,5 @@
-#ifndef VECHICLEDATABASE_H
-#define VECHICLEDATABASE_H
-
+#ifndef BIKERENTERDATABASE_H
+#define BIKERENTERDATABASE_H
 
 #include <QObject>
 #include <QDebug>
@@ -13,9 +12,9 @@
 #include <QDebug>
 
 #define DATABASE_HOSTNAME   "NameDataBase"
-#define DATABASE_NAME       "bikeDatabase.db"
+#define DATABASE_NAME       "renterDatabase.db"
 
-#define TABLE1                "bikeTable"
+#define TABLE1            "renterBikeTable"
 #define TABLE_FNAME      "FirstName"
 #define TABLE_LNAME      "LastName"
 #define TABLE_PHONENUM      "PhoneNumber"
@@ -25,24 +24,23 @@
 #define TABLE_VEHICLETYPE         "VehicleType"
 #define TABLE_MODEL         "Model"
 #define TABLE_PLATENUMBER   "PlateNumber"
-#define TABLE_PRICE         "Price"
-#define TABLE_STARTDATE     "StartDate"
-#define TABLE_ENDDATE      "EndDate"
+#define TABLE_PRICE         "PricePerDay"
+#define TABLE_TOTALPRICE         "TotalPrice"
+#define TABLE_DROPLOCATION  "DropLocation"
+#define TABLE_DAY     "LeaseDay"
 #define TABLE_BIKEURL      "BikeUrl"
-#define TABLE_CONDITION   "Condition"
-#define TABLE_AVAILABLE   "Availability"
+
+//#define TABLE_STARTDATE     "StartDate"
+//#define TABLE_ENDDATE      "EndDate"
 
 
-
-class VehicleDatabase : public QObject
+class BikeRenterDatabase : public QObject
 {
     Q_OBJECT
-public:
-    explicit VehicleDatabase(QObject *parent = nullptr);
-    ~VehicleDatabase();
-    void connectToVehicleDataBase();
-    int userId;
 
+public:
+    explicit BikeRenterDatabase(QObject *parent = nullptr);
+    void connectToVehicleDataBase();
 private:
     QSqlDatabase    db;
 
@@ -53,8 +51,12 @@ private:
 
 public slots:
     bool insertIntoTable(const QVariantList &data);      // Adding entries to the table
-    bool insertIntoTable(const QString &fname, const QString &lname, const QString &number, const QString &vehicleType, const QString &model,const QString &plateNumber, const QString &price,const QString &startDate, const QString &endDate, const QString &url, const QString &condition, const QString &gender, const QString &address, const QString &ownerUrl);
-    void updateAvailability();
+    bool insertIntoTable(const QString &fname, const QString &lname, const QString &number, const QString &gender, const QString &address,const QString &ownerUrl, const QString &vehicleType,const QString &model, const QString &plateNumber, const QString &price, const QString &dropLocation, const QString &day, const QString &bikeUrl);
+
+
+
+signals:
+
 };
 
-#endif // VECHICLEDATABASE_H
+#endif // BIKERENTERDATABASE_H

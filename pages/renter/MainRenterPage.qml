@@ -13,9 +13,18 @@ Item {
     //    title: qsTr("KuRent Move Freely")
     anchors.fill: parent
 
+
+
     Loader {
         id: renterLoader
         anchors.fill: parent
         source: "RenterStackView.qml"
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+##^##*/
+

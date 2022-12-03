@@ -132,7 +132,7 @@ Rectangle {
         Text {
             id: prices
             color: "#000000"
-            text: "Rs 200"
+            text: "Rs " + price
             font.pixelSize: parent.height * .15
             anchors {
                 right: parent.right

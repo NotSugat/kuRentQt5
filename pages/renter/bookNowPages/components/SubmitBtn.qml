@@ -37,18 +37,8 @@ Button {
         radius: 4
     }
     //    onClicked:
-    onClicked: afterClicked()
 
-    function afterClicked() {
-        _currentData.setCurrentData(model.Fname, model.Lname,
-                                    model.PhoneNumber, model.Gender,
-                                    model.Address, model.OwnerUrl,
-                                    model.VehicleType, model.PlateNumber,
-                                    model.BikeModel, model.Price, model.Url)
-        bookStackView.push("qrc:/pages/renter/bookNowPages/FormPage.qml")
-    }
 }
-
 /*##^##
 Designer {
     D{i:0;autoSize:true;height:40;width:200}

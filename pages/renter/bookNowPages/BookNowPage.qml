@@ -10,7 +10,7 @@ Item {
     //-------------------------- sidebar-----------------------------//
     RenterSidebar {
         id: sidebar
-        homeActive: true
+        bookNowActive: true
         z: 100
     }
     Text {

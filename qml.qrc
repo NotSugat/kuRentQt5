@@ -36,7 +36,6 @@
         <file>pages/renter/Account.qml</file>
         <file>pages/renter/Dashboard.qml</file>
         <file>pages/renter/StackViewPage.qml</file>
-        <file>adminPanel.qml</file>
         <file>mainStackView.qml</file>
         <file>components/signupUi/SignUpNavbar.qml</file>
         <file>components/signupUi/InputText.qml</file>
@@ -133,5 +132,9 @@
         <file>pages/renter/bookNowPages/components/OwnerDetail.qml</file>
         <file>pages/renter/components/RowInputField.qml</file>
         <file>pages/renter/components/PriceField.qml</file>
+        <file>pages/renter/bookNowPages/components/SubmitBtn.qml</file>
+        <file>images/stockImages/profileImages/hami.jpg</file>
+        <file>images/stockImages/profileImages/pro.jpg</file>
+        <file>pages/admin/adminPanel.qml</file>
     </qresource>
 </RCC>

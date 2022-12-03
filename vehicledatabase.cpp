@@ -60,6 +60,9 @@ bool VehicleDatabase::createTable()
                             TABLE_FNAME     " VARCHAR(255)    NOT NULL,"
                             TABLE_LNAME     " VARCHAR(255)    NOT NULL,"
                             TABLE_PHONENUM     " VARCHAR(255)    NOT NULL,"
+                            TABLE_GENDER     " VARCHAR(255)    NOT NULL,"
+                            TABLE_ADDRESS     " VARCHAR(255)    NOT NULL,"
+                            TABLE_OWNERURL     " VARCHAR(255)    NOT NULL,"
                             TABLE_VEHICLETYPE       " VARCHAR(255)    NOT NULL,"
                             TABLE_MODEL    " VARCHAR(255)    NOT NULL,"
                             TABLE_PLATENUMBER    " VARCHAR(255)    NOT NULL,"
@@ -81,6 +84,7 @@ bool VehicleDatabase::createTable()
     return false;
 }
 
+
 void VehicleDatabase::closeDataBase()
 {
     db.close();
@@ -92,6 +96,9 @@ bool VehicleDatabase::insertIntoTable(const QVariantList &data)
     query.prepare("INSERT INTO " TABLE1 " ( " TABLE_FNAME ", "
                                              TABLE_LNAME ", "
                                              TABLE_PHONENUM ", "
+                                             TABLE_GENDER ", "
+                                             TABLE_ADDRESS ", "
+                                             TABLE_OWNERURL ", "
                                              TABLE_VEHICLETYPE ", "
                                              TABLE_MODEL ", "
                                              TABLE_PLATENUMBER ", "
@@ -101,7 +108,7 @@ bool VehicleDatabase::insertIntoTable(const QVariantList &data)
                                              TABLE_BIKEURL ", "
                                              TABLE_AVAILABLE ", "
                                              TABLE_CONDITION " ) "
-                  "VALUES (:FirstName, :LastName, :Number, :VehicleType, :Model, :PlateNumber, :Price, :StartDate, :EndDate, :BikeUrl, :Available , :Condition)");
+                  "VALUES (:FirstName, :LastName, :Number, :Gender, :Address, :OwnerUrl, :VehicleType, :Model, :PlateNumber, :Price, :StartDate, :EndDate, :BikeUrl, :Available , :Condition)");
 
     query.bindValue(":FirstName",       data[0].toString());
     query.bindValue(":LastName",       data[1].toString());
@@ -115,6 +122,9 @@ bool VehicleDatabase::insertIntoTable(const QVariantList &data)
     query.bindValue(":BikeUrl",       data[9].toString());
     query.bindValue(":Available",       data[10].toString());
     query.bindValue(":Condition",       data[11].toString());
+    query.bindValue(":Gender",       data[12].toString());
+    query.bindValue(":Address",       data[13].toString());
+    query.bindValue(":OwnerUrl",       data[14].toString());
 
 
     if(!query.exec()){
@@ -129,7 +139,7 @@ bool VehicleDatabase::insertIntoTable(const QVariantList &data)
 }
 
 
-bool VehicleDatabase::insertIntoTable(const QString &fname, const QString &lname, const QString &number, const QString &vehicleType, const QString &model,const QString &plateNumber, const QString &price,const QString &startDate, const QString &endDate, const QString &url, const QString &condition)
+bool VehicleDatabase::insertIntoTable(const QString &fname, const QString &lname, const QString &number, const QString &vehicleType, const QString &model,const QString &plateNumber, const QString &price,const QString &startDate, const QString &endDate, const QString &url, const QString &condition, const QString &gender, const QString &address, const QString &ownerUrl)
 {
     QVariantList data;
     QString isAvailable = "Available";
@@ -146,10 +156,18 @@ bool VehicleDatabase::insertIntoTable(const QString &fname, const QString &lname
     data.append(url);
     data.append(isAvailable);
     data.append(condition);
+    data.append(gender);
+    data.append(address);
+    data.append(ownerUrl);
 
     if(insertIntoTable(data))
         return true;
     else
         return false;
+}
+
+void VehicleDatabase::updateAvailability()
+{
+
 }
 

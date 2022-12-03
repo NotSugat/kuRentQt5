@@ -11,6 +11,7 @@ import io.qt.examples.bikemodel 1.0
 
 Rectangle {
     id: bookNowPage
+
     property color bgColor: "#282c3f"
     property real topValue: .06
     property real rowGap: .045
@@ -21,6 +22,12 @@ Rectangle {
     property int h2: content.height * 0.1
     property int h3: content.height * 0.1
     property int priceInTotal: 100
+    property string fname: _currentData.Fname
+    property string lname: _currentData.Lname
+    property string ownerPic: _currentData.Url
+    property string bikePic: _currentData.BikeUrl
+    property color bikeDetailsBg: "#353a48"
+    property color ownerDetailBg: "#424354"
 
     color: "#262a33"
 
@@ -39,7 +46,7 @@ Rectangle {
 
         Rectangle {
             id: ownerContainer
-            color: "red"
+            color: ownerDetailBg
             anchors {
                 top: parent.top
                 bottom: parent.bottom
@@ -57,7 +64,7 @@ Rectangle {
                 height: parent.height * 0.15
 
                 width: ownerPart.width
-                color: "teal"
+                color: "transparent"
                 Text {
                     id: profileText
                     text: qsTr("Owner Details")
@@ -68,8 +75,9 @@ Rectangle {
                         verticalCenter: parent.verticalCenter
                         horizontalCenter: parent.horizontalCenter
                     }
-                    color: "white"
+                    color: "#a2dddd"
                     font.pixelSize: 24
+                    font.bold: true
                     font.family: "Tahoma"
                 }
             }
@@ -88,11 +96,24 @@ Rectangle {
                 }
                 width: parent.width * .4
 
-                Rectangle {
-                    id: profilePic
+                Image {
+                    id: ownerImage
+                    source: _currentData.Url
+                    anchors {
+                        centerIn: parent
+                    }
 
-                    anchors.fill: parent
+                    height: parent.width * 0.8
+                    width: parent.width * 0.8
+                    fillMode: Image.PreserveAspectCrop
+                    z: 1000
                 }
+
+                //                Rectangle {
+                //                    id: profilePic
+
+                //                    anchors.fill: parent
+                //                }
 
                 // owner details text containers----------------
                 Rectangle {
@@ -108,16 +129,18 @@ Rectangle {
 
                     RowInput {
                         id: name
+                        leftTextColor: "#ffaa00"
                         anchors {
                             top: parent.top
-                            topMargin: parent.height * rowGap
+                            topMargin: parent.height * .15
                         }
                         fontSize: parent.height * size
                         leftText: "Name"
-                        rightText: "Hello world"
+                        rightText: _currentData.Fname + " " + _currentData.Lname
                     }
                     RowInput {
                         id: number
+                        leftTextColor: "#ffaa00"
                         anchors {
                             top: name.bottom
                             topMargin: parent.height * rowGap
@@ -125,27 +148,30 @@ Rectangle {
                         fontSize: parent.height * size
 
                         leftText: "Phone Number"
-                        rightText: "913274189"
+                        rightText: _currentData.Number
                     }
                     RowInput {
                         id: gender
+
+                        leftTextColor: "#ffaa00"
                         anchors {
                             top: number.bottom
                             topMargin: parent.height * rowGap
                         }
                         fontSize: parent.height * size
                         leftText: "Gender"
-                        rightText: "male"
+                        rightText: _currentData.Gender
                     }
                     RowInput {
                         id: location
+                        leftTextColor: "#ffaa00"
                         anchors {
                             top: gender.bottom
                             topMargin: parent.height * rowGap
                         }
                         fontSize: parent.height * size
                         leftText: "Location"
-                        rightText: "fasdjhfsd"
+                        rightText: _currentData.Location
                     }
                 }
             }
@@ -156,8 +182,9 @@ Rectangle {
                 top: parent.top
                 bottom: parent.bottom
             }
+            color: bikeDetailsBg
             //            Layout.fillHeight: true
-            Layout.fillWidth: true
+            Layout.preferredWidth: parent.width * 0.6
 
             Rectangle {
                 id: renterTitleContainer
@@ -169,7 +196,7 @@ Rectangle {
                 height: parent.height * 0.15
 
                 width: ownerPart.width
-                color: "teal"
+                color: "transparent"
                 Text {
                     id: renterTitleText
                     text: qsTr("Renting Details")
@@ -180,8 +207,9 @@ Rectangle {
                         verticalCenter: parent.verticalCenter
                         horizontalCenter: parent.horizontalCenter
                     }
-                    color: "white"
+                    color: "#aaaa65"
                     font.pixelSize: 24
+                    font.bold: true
                     font.family: "Tahoma"
                 }
             }
@@ -190,7 +218,7 @@ Rectangle {
             Rectangle {
                 id: bikePicContainer
 
-                color: "blue"
+                color: "transparent"
 
                 anchors {
                     top: renterTitleContainer.bottom
@@ -200,14 +228,17 @@ Rectangle {
                 }
                 width: parent.width * .4
 
-                Rectangle {
-                    id: bikePic
-
+                Image {
+                    id: renterImage
+                    source: _currentData.BikeUrl
                     anchors {
-                        left: parent.left
-                        top: parent.top
-                        bottom: parent.bottom
+                        centerIn: parent
                     }
+
+                    height: parent.width * 0.8
+                    width: parent.width * 0.8
+                    fillMode: Image.PreserveAspectCrop
+                    z: 1000
                 }
             }
 
@@ -221,19 +252,21 @@ Rectangle {
                     right: parent.right
                 }
 
-                color: "gray"
+                color: "transparent"
                 RowInput {
                     id: vehicleType
+                    leftTextColor: "#ffaa00"
                     anchors {
                         top: parent.top
                         topMargin: parent.height * rowGap
                     }
                     fontSize: parent.height * size
                     leftText: "Vehicle Type"
-                    rightText: "Scooter"
+                    rightText: _currentData.VehicleType
                 }
                 RowInput {
                     id: plateNumber
+                    leftTextColor: "#ffaa00"
                     anchors {
                         top: parent.top
                         topMargin: parent.height * rowGap
@@ -241,28 +274,30 @@ Rectangle {
                     }
                     fontSize: parent.height * size
                     leftText: "Plate No"
-                    rightText: "123"
+                    rightText: _currentData.NumberPlate
                 }
                 RowInput {
                     id: modelName
+                    leftTextColor: "#ffaa00"
                     anchors {
                         top: vehicleType.bottom
                         topMargin: parent.height * rowGap
                     }
                     fontSize: parent.height * size
                     leftText: "Model"
-                    rightText: "Hello"
+                    rightText: _currentData.Model
                 }
                 RowInput {
                     id: pricePerDay
+                    leftTextColor: "#ffaa00"
                     anchors {
                         top: vehicleType.bottom
                         topMargin: parent.height * rowGap
                         left: modelName.right
                     }
                     fontSize: parent.height * size
-                    leftText: "Price"
-                    rightText: "500"
+                    leftText: "Price (per day)"
+                    rightText: _currentData.Price
                 }
 
                 InputText {
@@ -276,6 +311,8 @@ Rectangle {
                     fontSize: parent.height * size
                     width: parent.width * 0.5
                     height: parent.height * 0.1
+                    bgColor: "#dddde4"
+                    titleColor: "#bbbbbb"
                 }
 
                 //----------------day and price picker----------//
@@ -290,45 +327,65 @@ Rectangle {
                     fontSize: parent.height * size
                     width: parent.width * 0.3
                     height: parent.height * 0.1
+                    titleColor: "#bbbbbb"
+                    bgColor: "#dddde4"
                     title: "Lease"
                     placeHolderText: "No of Day"
                 }
 
-                //                PriceField {
-                //                    id: price
-                //                    anchors {
-                //                        top: dayInputField.bottom
-                //                        topMargin: parent.height * rowGap
-                //                        left: parent.left
-                //                        leftMargin: 24
-                //                    }
-                //                    width: parent.width * 0.5
-                //                    height: parent.height * 0.1
-                //                    title: "Total Price"
-                //                    placeHolderText: "Rs" + parseInt(
-                //                                         pricePerDay.text) * parseInt(
-                //                                         dayInputField.text)
-                //                    fieldText: dayInputField.text ? priceInTotal : ""
-                //                }
-                //                Text {
-                //                    id: textPrice
-                //                    anchors {
-                //                        top: dayInputField.bottom
-                //                        topMargin: parent.height * rowGap
-                //                        left: parent.left
-                //                        leftMargin: 24
-                //                    }
-                //                    text: "Rs " + priceInTotal
-                //                }
-                CustomButton {
+                SubmitBtn {
                     id: bookNowButton
                     anchors {
                         bottom: parent.bottom
-                        bottomMargin: 16
+                        bottomMargin: parent.height * 0.1
                         horizontalCenter: parent.horizontalCenter
                     }
                     width: parent.width * 0.4
-                    height: parent.height * 0.1
+                    height: parent.height * 0.15
+                    title: "Book Now"
+                    MouseArea {
+                        id: mouse
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: if (locationDrop.text
+                                           && dayInputField.text) {
+
+                                       bikeRenterDatabase.insertIntoTable(
+                                                   fname, lname,
+                                                   number.text, gender.text,
+                                                   location.text, ownerPic,
+                                                   vehicleType.text, modelName.text,
+                                                   plateNumber.text, pricePerDay.text,
+                                                   locationDrop.text, dayInputField.text,
+                                                   bikePic)
+
+                                       goodMessageDialog.open()
+                                   } else {
+                                       messageDialog.open()
+                                   }
+                    }
+                }
+                MessageDialog {
+                    id: goodMessageDialog
+                    title: "Thank you!"
+                    text: "Your vehicle has been Listed"
+                    icon: StandardIcon.Information
+                    standardButtons: StandardButton.Ok
+
+                    onAccepted: {
+                        ownerStackView.push("HomePage.qml")
+                    }
+                }
+                MessageDialog {
+                    id: messageDialog
+                    title: "Incomplete text Field"
+                    text: "Fill all the empty Field before submitting"
+                    icon: StandardIcon.Warning
+                    standardButtons: StandardButton.Retry
+                    //            informativeText: "Fill all the empty Field before submitting"
+                    onAccepted: {
+                        console.log("And of course you could only agree.")
+                    }
                 }
             }
         }
@@ -337,7 +394,7 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}
+    D{i:0;formeditorZoom:0.5}
 }
 ##^##*/
 

@@ -14,7 +14,7 @@ Rectangle {
     anchors.bottomMargin: 0
     anchors.leftMargin: 0
 
-    property bool homeActive: true
+    property bool homeActive: false
     property bool rentActive: false
     property bool myBookingActive: false
     property bool bookNowActive: false
@@ -63,8 +63,7 @@ Rectangle {
             btnIconSource: "qrc:/images/dashboardWhite.png"
             isActiveMenu: homeActive
             onClicked: {
-                btnHome.isActiveMenu = homeActive
-                btnSettings.isActiveMenu = false
+
                 renterStackView.push("qrc:/pages/renter/HomePage.qml")
             }
         }
@@ -80,8 +79,7 @@ Rectangle {
             btnIconSource: "qrc:/images/myBookingWhite.png"
             isActiveMenu: myBookingActive
             onClicked: {
-                btnBooking.isActiveMenu = myBookingActive
-                btnSettings.isActiveMenu = false
+
                 renterStackView.push("qrc:/pages/renter/HomePage.qml")
             }
         }
@@ -96,9 +94,8 @@ Rectangle {
             btnIconSource: "qrc:/images/userWhite.png"
             isActiveMenu: accountActive
             onClicked: {
-                btnAccount.isActiveMenu = accountActive
-                btnSettings.isActiveMenu = false
-                renterStackView.push("qrc:/pages/renter/RenterAccount.qml")
+
+                renterStackView.push("qrc:/pages/renter/Account.qml")
             }
         }
 
@@ -114,8 +111,7 @@ Rectangle {
             btnIconSource: "qrc:/images/bookingWhite.png"
             isActiveMenu: bookNowActive
             onClicked: {
-                btnBookNow.isActiveMenu = bookNowActive
-                btnSettings.isActiveMenu = false
+
                 renterStackView.push(
                             "qrc:/pages/renter/bookNowPages/BookNowPage.qml")
             }
@@ -129,8 +125,7 @@ Rectangle {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 25
             onClicked: {
-                btnHome.isActiveMenu = false
-                btnSettings.isActiveMenu = true
+
                 mainStackView.pop("qrc:/main.qml")
             }
         }

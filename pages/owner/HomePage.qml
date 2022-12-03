@@ -13,6 +13,7 @@ Item {
         homeActive: true
         z: 100
     }
+    // user image and name container
     Rectangle {
         id: profile
         anchors {
