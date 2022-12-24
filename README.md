@@ -2,9 +2,10 @@
 
 ### KuRent is vehicle renting platform providing application develop to eliminate gap between renting vehicle for a student. This is my II semester project as an computer Engineer studying at Kathmandu University.
 
-###Some Screenshots on How the Project looks like when you run your computer.
+###Some Screenshots on How the Project looks like when you run your computer
 
 ##Login Page
+
 ![Screenshot from 2022-12-24 16-50-36](https://user-images.githubusercontent.com/73330912/209433139-ed1791b4-4bd3-4018-a987-eed76e6ea25f.png)
 
 ##Vehicle Owner Page
