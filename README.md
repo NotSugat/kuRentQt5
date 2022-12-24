@@ -1,6 +1,6 @@
 # kuRentQt5
 
-## KuRent is vehicle renting platform providing application develop to eliminate gap between renting vehicle for a student. This is my II semester project as an computer Engineer studying at Kathmandu University.
+### KuRent is vehicle renting platform providing application develop to eliminate gap between renting vehicle for a student. This is my II semester project as an computer Engineer studying at Kathmandu University.
 
 ### How to run on your Desktop
 
